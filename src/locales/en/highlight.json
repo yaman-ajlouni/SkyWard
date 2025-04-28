@@ -1,0 +1,27 @@
+{
+    "highlight": {
+        "title": "What's New - Highlights",
+        "items": [
+            {
+                "id": 1,
+                "title": "Ancient City of Damascus",
+                "description": "Explore the oldest continuously inhabited city in the world"
+            },
+            {
+                "id": 2,
+                "title": "Krak des Chevaliers",
+                "description": "Visit one of the most important preserved medieval castles in the world"
+            },
+            {
+                "id": 3,
+                "title": "Palmyra Ruins",
+                "description": "Discover the monumental ruins of this ancient oasis city"
+            },
+            {
+                "id": 4,
+                "title": "Mediterranean Coastline",
+                "description": "Enjoy the beautiful beaches along Syria's western shore"
+            }
+        ]
+    }
+}

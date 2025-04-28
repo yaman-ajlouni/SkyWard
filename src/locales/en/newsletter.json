@@ -1,0 +1,12 @@
+{
+    "newsletter": {
+        "title": "Subscribe to our newsletter for unique travel ideas",
+        "description": "Join our mailing list to receive exclusive content about top travel destinations and special trip offers.",
+        "emailPlaceholder": "Enter your email address",
+        "subscribeButton": "Subscribe Now",
+        "subscribingButton": "Subscribing...",
+        "emptyEmailError": "Please enter your email address",
+        "invalidEmailError": "Please enter a valid email address",
+        "successMessage": "Thank you for subscribing!"
+    }
+}

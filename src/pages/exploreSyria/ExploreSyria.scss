@@ -1,0 +1,418 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.explore-syria-section {
+    padding: $spacing-xl 0;
+    background-color: $white;
+    overflow: hidden; // Prevents horizontal overflow issues
+
+    // RTL support
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .section-header {
+            .section-title {
+                &::after {
+                    left: auto;
+                    right: 0;
+                }
+            }
+
+            .navigation-arrows {
+flex-direction: row-reverse;
+            }
+        }
+
+        .location-slider {
+            direction: rtl;
+        }
+
+        .location-card {
+            &.first-card {
+                border-top-left-radius: $border-radius-lg;
+                border-bottom-left-radius: $border-radius-lg;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                margin-left: 0;
+                margin-right: $spacing-lg;
+            }
+
+            &.last-card {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-top-left-radius: $border-radius-lg;
+                border-bottom-left-radius: $border-radius-lg;
+                margin-right: 0;
+                margin-left: $spacing-lg;
+            }
+
+            .card-image {
+                .location-container {
+                    .location-badge {
+                        margin-left: 0;
+                        margin-right: $spacing-md;
+
+                        svg {
+                            margin-right: 0;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .container {
+        position: relative;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    // Section header with title and navigation arrows
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        padding: 0 $spacing-lg;
+        margin: 0 auto $spacing-xl auto;
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: $font-weight-bold;
+            color: $text-color;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background-color: $primary-color;
+            }
+        }
+
+        .navigation-arrows {
+            display: flex;
+            gap: $spacing-sm;
+            z-index: 10; // Ensure arrows are clickable
+            pointer-events: auto; // Make sure arrows can be clicked
+
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                border: 1px solid $border-color;
+                background-color: $white;
+                color: $text-color;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
+
+                &:hover:not(.disabled) {
+                    background-color: $primary-color;
+                    color: $white;
+                    border-color: $primary-color;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 2px rgba($primary-color, 0.4);
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    // Slider container for horizontal scrolling
+    .location-slider {
+        display: flex;
+        gap: $spacing-lg;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none; // Hide scrollbar for Firefox
+        -ms-overflow-style: none; // Hide scrollbar for IE/Edge
+        -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+        scroll-snap-type: x mandatory; // Enable scroll snap
+
+        &::-webkit-scrollbar {
+            display: none; // Hide scrollbar for Chrome/Safari
+        }
+    }
+
+    // Individual location cards
+    .location-card {
+        min-width: 300px;
+        height: 350px;
+        flex: 0 0 600px;
+        border-radius: $border-radius-lg;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        scroll-snap-align: start; // Snap to the start of each card
+        position: relative;
+
+        &.first-card {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: $spacing-lg; // Add spacing for the first card
+        }
+
+        &.last-card {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-right: $spacing-lg; // Add spacing for the last card
+        }
+
+        &:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+            .location-container {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+                padding-top: 60px; // Height of the gradient
+                display: flex;
+                flex-direction: column;
+
+                .location-badge {
+                    display: flex;
+                    align-items: center;
+                    background-color: transparent;
+                    padding: 5px 10px;
+                    margin-left: $spacing-md;
+                    margin-bottom: $spacing-xs;
+                    border-radius: 20px;
+                    font-size: $font-size-sm;
+                    color: $white;
+                    width: fit-content;
+
+                    svg {
+                        color: $white;
+                        margin-right: 5px;
+                    }
+                }
+
+                .location-title {
+                    padding: $spacing-sm $spacing-md $spacing-md $spacing-md;
+                    font-size: $font-size-lg;
+                    font-weight: $font-weight-medium;
+                    color: $white;
+                    margin: 0;
+                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+}
+
+// Media queries for responsiveness
+@media (max-width: $breakpoint-xl) {
+    .explore-syria-section {
+        .location-card {
+            min-width: 280px;
+            flex: 0 0 500px;
+            height: 320px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .explore-syria-section {
+        padding: $spacing-lg 0;
+
+        .section-header {
+            margin-bottom: $spacing-lg;
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        .location-slider {
+            gap: $spacing-md;
+        }
+
+        .location-card {
+            min-width: 280px;
+            flex: 0 0 280px;
+            height: 300px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .explore-syria-section {
+        padding: $spacing-md 0;
+
+        .section-header {
+            padding: 0 $spacing-md;
+            
+            .section-title {
+                font-size: 1.5rem;
+                
+                &::after {
+                    width: 50px;
+                    height: 2px;
+                }
+            }
+            
+            .navigation-arrows .nav-arrow {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .location-slider {
+            gap: $spacing-sm;
+        }
+
+
+        .location-card {
+            min-width: 240px;
+            flex: 0 0 240px;
+            height: 280px;
+
+            &.first-card {
+                margin-left: $spacing-md;
+            }
+
+            &.last-card {
+                margin-right: $spacing-md;
+            }
+
+            .rtl & {
+                &.first-card {
+                    margin-left: 0;
+                    margin-right: $spacing-md;
+                }
+
+                &.last-card {
+                    margin-right: 0;
+                    margin-left: $spacing-md;
+                }
+            }
+
+            .card-image .location-container {
+                .location-badge {
+                    padding: 4px 8px;
+                    font-size: $font-size-xs;
+                }
+
+                .location-title {
+                    padding: $spacing-xs $spacing-md $spacing-md $spacing-md;
+                    font-size: $font-size-md;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .explore-syria-section {
+        padding: $spacing-lg 0;
+
+        .section-header {
+            align-items: flex-start;
+            gap: $spacing-md;
+            padding: 0 $spacing-sm;
+            margin-bottom: $spacing-md;
+
+            .section-title {
+                font-size: 1.25rem;
+                margin-bottom: $spacing-sm;
+            }
+
+            .navigation-arrows {
+                align-self: center;
+                
+                .nav-arrow {
+                    width: 36px;
+                    height: 36px;
+                }
+            }
+        }
+
+        .location-slider {
+            gap: $spacing-xs;
+        }
+
+        .location-card {
+            min-width: 200px;
+            flex: 0 0 200px;
+            height: 250px;
+            border-radius: $border-radius-md;
+
+            &.first-card {
+                margin-left: $spacing-sm;
+            }
+
+            &.last-card {
+                margin-right: $spacing-sm;
+            }
+
+            .rtl & {
+                &.first-card {
+                    margin-left: 0;
+                    margin-right: $spacing-sm;
+                }
+
+                &.last-card {
+                    margin-right: 0;
+                    margin-left: $spacing-sm;
+                }
+            }
+
+            .card-image {
+                .location-container {
+                    padding-top: 40px;
+                    
+                    .location-badge {
+                        margin-left: $spacing-sm;
+                        margin-bottom: 2px;
+                        font-size: 10px;
+                        
+                        svg {
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+
+                    .rtl & .location-badge {
+                        margin-left: 0;
+                        margin-right: $spacing-sm;
+                    }
+
+                    .location-title {
+                        padding: $spacing-xs $spacing-sm $spacing-sm $spacing-sm;
+                        font-size: $font-size-base;
+                    }
+                }
+            }
+        }
+    }
+}

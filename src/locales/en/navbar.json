@@ -1,0 +1,11 @@
+{
+    "navbar": {
+        "explore": "Explore",
+        "experience": "Experience",
+        "flight": "Flight",
+        "events": "Events",
+        "support": "Support",
+        "contact": "Contact",
+        "login": "Log in"
+    }
+}

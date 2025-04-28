@@ -1,0 +1,188 @@
+{
+    "footer": {
+        "socialText": "You can follow us here",
+        "columns": [
+            {
+                "title": "Our Network",
+                "links": [
+                    {
+                        "text": "Middle East",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Asia",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Africa",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Europe",
+                        "url": "#"
+                    },
+                    {
+                        "text": "North America",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Flight Deals",
+                "links": [
+                    {
+                        "text": "Damascus",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Riyadh",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Dubai",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Cairo",
+                        "url": "#"
+                    },
+                    {
+                        "text": "London",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Other Deals",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Book",
+                "links": [
+                    {
+                        "text": "Flights",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Hotels",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Cars",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Help",
+                "links": [
+                    {
+                        "text": "FAQs",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Contact us",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Our Offices",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "About Us",
+                "links": [
+                    {
+                        "text": "About Syrian",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Careers",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Sustainability",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Media Center",
+                        "url": "#"
+                    },
+                    {
+                        "text": "SkyTeam partners",
+                        "url": "#"
+                    }
+                ]
+            },
+            {
+                "title": "Manage",
+                "links": [
+                    {
+                        "text": "Change flights",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Cancel flights",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Upgrade flights",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Refunds",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Check-in",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Extra baggage",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Seats reservation",
+                        "url": "#"
+                    },
+                    {
+                        "text": "Meal selection",
+                        "url": "#"
+                    }
+                ]
+            }
+        ],
+        "legal": [
+            {
+                "text": "Terms & Conditions",
+                "url": "#"
+            },
+            {
+                "text": "Cookies policy",
+                "url": "#"
+            },
+            {
+                "text": "Privacy",
+                "url": "#"
+            },
+            {
+                "text": "Accessibility",
+                "url": "#"
+            },
+            {
+                "text": "Passenger rights",
+                "url": "#"
+            },
+            {
+                "text": "Service agreement",
+                "url": "#"
+            },
+            {
+                "text": "Sitemap",
+                "url": "#"
+            }
+        ],
+        "copyright": "FlySyria Airlines. All Rights Reserved."
+    }
+}

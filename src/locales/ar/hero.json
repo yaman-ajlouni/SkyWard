@@ -1,0 +1,28 @@
+{
+    "hero": {
+      "heading": "من قلب سوريا إلى العالم.",
+      "subheading": "الرحلة، الناس، قصة سوريا",
+      "tripOptions": {
+        "roundTrip": "ذهاب وعودة",
+        "oneWay": "اتجاه واحد"
+      },
+      "passengers": "مسافر",
+      "passengers_plural": "مسافرين",
+      "search": {
+        "flyingFrom": "المغادرة من",
+        "flyingTo": "الوصول إلى",
+        "departureDate": "تاريخ المغادرة",
+        "returnDate": "تاريخ العودة",
+        "selectOrigin": "اختر نقطة المغادرة",
+        "selectDestination": "اختر الوجهة",
+        "selectDate": "اختر التاريخ",
+        "searchButton": "بحث"
+      },
+      "cabinClass": {
+        "economy": "اقتصادية",
+        "premiumEconomy": "اقتصادية ممتازة",
+        "business": "رجال الأعمال",
+        "firstClass": "الدرجة الأولى"
+      }
+    }
+  }

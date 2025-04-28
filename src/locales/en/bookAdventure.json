@@ -1,0 +1,44 @@
+{
+    "bookAdventures": {
+        "title": "Book your next adventure in Syria",
+        "adventures": [
+            {
+                "id": 1,
+                "city": "Damascus",
+                "title": "Visit Umayyad Mosque",
+                "price": 200
+            },
+            {
+                "id": 2,
+                "city": "Aleppo",
+                "title": "Explore the Ancient Citadel",
+                "price": 180
+            },
+            {
+                "id": 3,
+                "city": "Palmyra",
+                "title": "Ancient Ruins Tour",
+                "price": 250
+            },
+            {
+                "id": 4,
+                "city": "Lattakia",
+                "title": "Beach Day Experience",
+                "price": 150
+            },
+            {
+                "id": 5,
+                "city": "Homs",
+                "title": "Krak des Chevaliers Tour",
+                "price": 220
+            },
+            {
+                "id": 6,
+                "city": "Tartus",
+                "title": "Arwad Island Boat Trip",
+                "price": 160
+            }
+        ],
+        "bookNow": "Book now"
+    }
+}

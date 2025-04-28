@@ -1,0 +1,56 @@
+{
+    "topDestinations": {
+        "title": "أفضل الوجهات من سوريا",
+        "roundTripFrom": "رحلة ذهاب وإياب من $",
+        "destinations": [
+            {
+                "id": 1,
+                "city": "إسطنبول",
+                "country": "تركيا",
+                "price": 400
+            },
+            {
+                "id": 2,
+                "city": "دبي",
+                "country": "الإمارات",
+                "price": 550
+            },
+            {
+                "id": 3,
+                "city": "بيروت",
+                "country": "لبنان",
+                "price": 250
+            },
+            {
+                "id": 4,
+                "city": "القاهرة",
+                "country": "مصر",
+                "price": 350
+            },
+            {
+                "id": 5,
+                "city": "عمان",
+                "country": "الأردن",
+                "price": 270
+            },
+            {
+                "id": 6,
+                "city": "أثينا",
+                "country": "اليونان",
+                "price": 650
+            },
+            {
+                "id": 7,
+                "city": "موسكو",
+                "country": "روسيا",
+                "price": 780
+            },
+            {
+                "id": 8,
+                "city": "الدوحة",
+                "country": "قطر",
+                "price": 490
+            }
+        ]
+    }
+}

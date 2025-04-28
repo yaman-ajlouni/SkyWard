@@ -1,0 +1,28 @@
+{
+    "hero": {
+      "heading": "From the Heart of Syria to the World.",
+      "subheading": "The journey, The people, The Story of Syria",
+      "tripOptions": {
+        "roundTrip": "Round Trip",
+        "oneWay": "One Way"
+      },
+      "passengers": "Passenger",
+      "passengers_plural": "Passengers",
+      "search": {
+        "flyingFrom": "Flying from",
+        "flyingTo": "Flying to",
+        "departureDate": "Departure date",
+        "returnDate": "Return date",
+        "selectOrigin": "Select origin",
+        "selectDestination": "Select destination",
+        "selectDate": "Select date",
+        "searchButton": "Search"
+      },
+      "cabinClass": {
+        "economy": "Economy",
+        "premiumEconomy": "Premium Economy",
+        "business": "Business",
+        "firstClass": "First Class"
+      }
+    }
+  }

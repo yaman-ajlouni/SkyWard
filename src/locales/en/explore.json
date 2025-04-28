@@ -1,0 +1,47 @@
+{
+    "exploreSyria": {
+        "title": "Explore Syria",
+        "locations": [
+            {
+                "id": 1,
+                "city": "Lattakia City",
+                "title": "Holiday Beach Hotel"
+            },
+            {
+                "id": 2,
+                "city": "Damascus",
+                "title": "Old City Experience"
+            },
+            {
+                "id": 3,
+                "city": "Aleppo",
+                "title": "Ancient Citadel Tour"
+            },
+            {
+                "id": 4,
+                "city": "Palmyra",
+                "title": "Historical Ruins"
+            },
+            {
+                "id": 5,
+                "city": "Tartus",
+                "title": "Arwad Island Getaway"
+            },
+            {
+                "id": 6,
+                "city": "Homs",
+                "title": "Krak des Chevaliers"
+            },
+            {
+                "id": 7,
+                "city": "Busra",
+                "title": "Roman Amphitheater"
+            },
+            {
+                "id": 8,
+                "city": "Hama",
+                "title": "Water Wheels Experience"
+            }
+        ]
+    }
+}

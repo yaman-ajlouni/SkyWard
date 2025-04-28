@@ -1,0 +1,261 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.site-footer {
+    background-color: $primary-color; // Using green primary color
+    color: $white;
+    padding: $spacing-xl 0; // Increased padding top and bottom
+    
+    // RTL support
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+        
+        .links-column {
+            h4 {
+                &::after {
+                    right: 0;
+                    left: auto;
+                }
+            }
+        }
+        
+        .social-icons {
+            margin-right: -$spacing-md; // Adjust for the gap
+            
+            @media (max-width: $breakpoint-md) {
+                margin-right: 0;
+            }
+        }
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+        
+        @media (max-width: $breakpoint-sm) {
+            padding: 0 $spacing-md;
+        }
+    }
+    
+    // Top section of the footer with logo, social and links
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: $spacing-lg;
+        margin-bottom: $spacing-lg;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        
+        @media (max-width: $breakpoint-md) {
+            flex-direction: column;
+            gap: $spacing-xl;
+        }
+    }
+    
+    // Left column with logo and social
+    .footer-branding {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25%;
+        
+        @media (max-width: $breakpoint-lg) {
+            width: 30%;
+        }
+        
+        @media (max-width: $breakpoint-md) {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            margin-bottom: $spacing-xl;
+            
+            img {
+                max-width: 250px;
+                height: auto;
+                
+                @media (max-width: $breakpoint-sm) {
+                    max-width: 200px;
+                }
+                
+                &.white-filter {
+                    // CSS filter to convert any logo to white
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+        
+        .social-media {
+            p {
+                margin-bottom: $spacing-md;
+                font-size: $font-size-base;
+                color: rgba(255, 255, 255, 0.9);
+                font-weight: $font-weight-medium;
+            }
+            
+            .social-icons {
+                display: flex;
+                gap: $spacing-md;
+                
+                @media (max-width: $breakpoint-md) {
+                    justify-content: center;
+                }
+                
+                .social-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    color: $white;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.2);
+                        transform: translateY(-3px);
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Right column with links - using grid layout
+    .footer-links {
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-lg $spacing-xl; // Increased horizontal gap
+        
+        @media (max-width: $breakpoint-lg) {
+            width: 65%;
+        }
+        
+        @media (max-width: $breakpoint-md) {
+            width: 100%;
+            grid-template-columns: repeat(3, 1fr);
+            gap: $spacing-lg;
+        }
+        
+        @media (max-width: $breakpoint-sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (max-width: 350px) {
+            grid-template-columns: 1fr;
+        }
+        
+        .links-column {
+            margin-bottom: $spacing-lg;
+            
+            h4 {
+                font-size: $font-size-sm;
+                font-weight: $font-weight-bold;
+                margin-bottom: $spacing-md;
+                color: $white;
+                position: relative;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    left: 0;
+                    width: 30px;
+                    height: 2px;
+                    background-color: rgba(255, 255, 255, 0.3);
+                }
+            }
+            
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                
+                li {
+                    margin-bottom: $spacing-sm;
+                    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    a {
+                        color: rgba(255, 255, 255, 0.8);
+                        text-decoration: none;
+                        font-size: $font-size-sm;
+                        transition: all 0.2s ease;
+                        
+                        &:hover {
+                            color: $white;
+                            text-decoration: underline;
+                        }
+
+                        @media (max-width: $breakpoint-sm) {
+                            font-size: $font-size-xs;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Footer bottom with legal links and copyright
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: $spacing-lg;
+        
+        @media (max-width: $breakpoint-md) {
+            flex-direction: column;
+            gap: $spacing-lg;
+        }
+        
+        .legal-links {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: $spacing-md;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                
+                @media (max-width: $breakpoint-md) {
+                    justify-content: center;
+                }
+                
+                @media (max-width: $breakpoint-sm) {
+                    gap: $spacing-md;
+                }
+                
+                li {
+                    a {
+                        color: rgba(255, 255, 255, 0.8);
+                        text-decoration: none;
+                        font-size: $font-size-sm;
+                        transition: all 0.2s ease;
+                        
+                        &:hover {
+                            color: $white;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .copyright {
+            p {
+                font-size: $font-size-sm;
+                color: rgba(255, 255, 255, 0.8);
+                font-weight: $font-weight-medium;
+                
+                @media (max-width: $breakpoint-md) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,409 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.book-adventure-section {
+    padding: $spacing-xl;
+    background-color: $white;
+    overflow: hidden; // Prevents horizontal overflow issues
+
+    // RTL support
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .section-header {
+            .section-title {
+                &::after {
+                    left: auto;
+                    right: 0;
+                }
+            }
+
+            .navigation-arrows {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .adventure-slider {
+            direction: rtl;
+        }
+
+        .location {
+            svg {
+                margin-right: 0;
+                margin-left: $spacing-xs;
+            }
+        }
+    }
+
+    // Section header with title and navigation arrows
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        padding: 0 $spacing-lg;
+        margin: 0 auto $spacing-xl auto;
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: $font-weight-bold;
+            color: $text-color;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background-color: $primary-color;
+            }
+        }
+
+        .navigation-arrows {
+            display: flex;
+            gap: $spacing-sm;
+            z-index: 10; // Ensure arrows are clickable
+            pointer-events: auto; // Make sure arrows can be clicked
+
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                border: 1px solid $border-color;
+                background-color: $white;
+                color: $text-color;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                -webkit-tap-highlight-color: transparent; // Remove tap highlight on mobile
+
+                &:hover:not(.disabled) {
+                    background-color: $primary-color;
+                    color: $white;
+                    border-color: $primary-color;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 2px rgba($primary-color, 0.4);
+                }
+
+                &.disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    // Slider container for horizontal scrolling
+    .adventure-slider {
+        display: flex;
+        gap: $spacing-lg;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none; // Hide scrollbar for Firefox
+        -ms-overflow-style: none; // Hide scrollbar for IE/Edge
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+        -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+        scroll-snap-type: x mandatory; // Enable scroll snap
+
+        &::-webkit-scrollbar {
+            display: none; // Hide scrollbar for Chrome/Safari
+        }
+    }
+
+    // Individual adventure cards
+    .adventure-card {
+        min-width: 450px;
+        flex: 0 0 450px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        scroll-snap-align: start; // Snap to the start of each card
+
+        .card-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+                border-radius: $border-radius-lg;
+            }
+        }
+
+        .card-info {
+            padding: $spacing-lg $spacing-md;
+            background-color: transparent;
+            border-top: 1px solid $border-color;
+
+            .info-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: $spacing-md;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .location {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        color: $primary-color;
+                        margin-right: $spacing-xs;
+                    }
+
+                    span {
+                        font-size: $font-size-base;
+                        color: $text-color;
+                    }
+                }
+
+                .price {
+                    font-size: $font-size-md;
+                    font-weight: $font-weight-bold;
+                    color: $primary-color;
+                }
+
+                .title {
+                    font-size: $font-size-lg;
+                    margin: 0;
+                    color: $text-color;
+                    max-width: 70%;
+                }
+
+                .book-button {
+                    padding: $spacing-md;
+                    background-color: $primary-color;
+                    color: $white;
+                    border: none;
+                    border-radius: $border-radius-md;
+                    font-weight: $font-weight-medium;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background-color: darken($primary-color, 5%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Media queries for responsiveness - Updated to match top-destinations-section
+@media (max-width: $breakpoint-xl) {
+    .book-adventure-section {
+        .adventure-card {
+            min-width: 400px;
+            flex: 0 0 400px;
+
+            .card-image {
+                height: 280px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .book-adventure-section {
+        padding: $spacing-lg;
+
+        .section-header {
+            margin-bottom: $spacing-lg;
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
+        .adventure-slider {
+            gap: $spacing-md;
+        }
+
+        .adventure-card {
+            min-width: 380px;
+            flex: 0 0 380px;
+
+            .card-image {
+                height: 260px;
+            }
+
+            .card-info {
+                padding: $spacing-md;
+
+                .info-row {
+                    .title {
+                        font-size: $font-size-md;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .book-adventure-section {
+        .section-header {
+            padding: 0 $spacing-md;
+
+            .section-title {
+                font-size: 1.5rem;
+
+                &::after {
+                    width: 50px;
+                    height: 2px;
+                }
+            }
+
+            .navigation-arrows .nav-arrow {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .adventure-slider {
+            gap: $spacing-sm;
+            padding: 0 $spacing-md;
+        }
+
+        .adventure-card {
+            min-width: 320px;
+            flex: 0 0 320px;
+
+            .card-image {
+                height: 220px;
+            }
+
+            .card-info {
+                padding: $spacing-sm;
+
+                .info-row {
+                    margin-bottom: $spacing-sm;
+
+                    .location {
+                        span {
+                            font-size: $font-size-sm;
+                        }
+                    }
+
+                    .price {
+                        font-size: $font-size-base;
+                    }
+
+                    .title {
+                        font-size: $font-size-base;
+                    }
+
+                    .book-button {
+                        padding: $spacing-sm;
+                        font-size: $font-size-sm;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .book-adventure-section {
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-md;
+            padding: 0 $spacing-sm;
+            margin-bottom: $spacing-md;
+
+            .section-title {
+                font-size: 1.25rem;
+                margin-bottom: $spacing-sm;
+            }
+
+            .navigation-arrows {
+                align-self: center;
+
+                .nav-arrow {
+                    width: 36px;
+                    height: 36px;
+                }
+            }
+        }
+
+        .adventure-slider {
+            gap: $spacing-xs;
+            padding: 0 $spacing-sm;
+        }
+
+        .adventure-card {
+            min-width: 260px;
+            flex: 0 0 260px;
+            border-radius: $border-radius-md;
+
+            .card-image {
+                height: 180px;
+
+                img {
+                    border-radius: $border-radius-md;
+                }
+            }
+
+            .card-info {
+                border-top-width: 1px;
+
+                .info-row {
+                    gap: $spacing-xs;
+                    margin-top: $spacing-xs;
+
+                    &:first-child {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .location {
+                        svg {
+                            width: 14px;
+                            height: 14px;
+                        }
+
+                        span {
+                            font-size: $font-size-xs;
+                        }
+                    }
+
+                    .price {
+                        font-size: $font-size-sm;
+                    }
+
+                    .title {
+                        font-size: $font-size-sm;
+                        max-width: 100%;
+                        margin-bottom: $spacing-xs;
+                    }
+
+                    .book-button {
+                        align-self: flex-end;
+                        padding: 4px 8px;
+                        font-size: $font-size-xs;
+                        border-radius: $border-radius-sm;
+                    }
+                }
+            }
+        }
+    }
+}

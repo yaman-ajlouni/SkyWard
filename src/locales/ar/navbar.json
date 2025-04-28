@@ -1,0 +1,11 @@
+{
+    "navbar": {
+        "explore": "استكشف",
+        "experience": "تجربة",
+        "flight": "رحلات",
+        "events": "فعاليات",
+        "support": "الدعم",
+        "contact": "اتصل بنا",
+        "login": "تسجيل الدخول"
+    }
+}

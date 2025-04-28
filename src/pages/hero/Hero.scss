@@ -1,0 +1,766 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    height: calc(100vh - 85px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; // Position content at the bottom
+    padding: $spacing-xl 0;
+    overflow: hidden;
+
+    // RTL support
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .dropdown-toggle svg {
+            margin-right: 0;
+            margin-left: $spacing-xs;
+        }
+
+        .input-icon {
+            margin-right: 0;
+            margin-left: $spacing-md;
+        }
+
+        .search-button svg {
+            margin-right: 0;
+            margin-left: $spacing-xs;
+        }
+
+        .radio-circle {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        .trip-type-buttons button {
+            margin-right: 0;
+            margin-left: $spacing-sm;
+        }
+    }
+
+    // Image grid styling
+    .image-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        // Exactly 4 columns with equal width
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        padding: 15px;
+        overflow: hidden;
+
+        .image-container {
+            width: 100%;
+            border-radius: $border-radius-xl;
+            overflow: hidden;
+            position: relative;
+            height: 300px; // Default height for all images
+
+            // Make only the FIRST image in column 2 half-height
+            &:nth-child(2) {
+                height: 150px; // Half height only for the first image in second column
+                margin-top: 0 !important;
+            }
+
+            // Make only the FIRST image in column 4 half-height
+            &:nth-child(4) {
+                height: 150px; // Half height only for the first image in fourth column
+                margin-top: 0 !important;
+            }
+
+            // Position the image in column 2 and 4 directly below the first half-height image
+            &:nth-child(even) {
+                margin-top: -150px; // Move up to remove the gap
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+        }
+    }
+
+    // Green gradient at the bottom
+    .green-gradient {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background:
+            // Left side gradient
+            linear-gradient(105deg,
+                rgba(0, 104, 55, 0.9) 0%,
+                rgba(0, 104, 55, 0.7) 30%,
+                rgba(0, 104, 55, 0.4) 50%,
+                transparent 80%),
+            // Right side gradient (mirrored)
+            linear-gradient(255deg,
+                rgba(0, 104, 55, 0.9) 0%,
+                rgba(0, 104, 55, 0.7) 30%,
+                rgba(0, 104, 55, 0.4) 50%,
+                transparent 80%);
+        mask-image:
+            linear-gradient(to top,
+                rgba(0, 0, 0, 1) 50%,
+                rgba(0, 0, 0, 0) 100%);
+        z-index: 1;
+        pointer-events: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top,
+                    rgba(0, 104, 55, 1) 0%,
+                    rgba(0, 104, 55, 0) 100%);
+        }
+    }
+
+    // Search form container
+    .search-form-wrapper {
+        position: relative;
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-end;
+        padding: 0 $spacing-lg;
+        margin-top: auto;
+
+        // Hero text
+        .hero-text {
+            display: flex;
+            justify-content: space-between;
+            color: $white;
+            margin-bottom: $spacing-lg;
+
+            .hero-text-left {
+                max-width: 40%;
+
+                h1 {
+                    font-size: 2.5rem;
+                    font-weight: $font-weight-bold;
+                    margin-bottom: $spacing-sm;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                }
+            }
+
+            .hero-text-right {
+                max-width: 35%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                p {
+                    font-size: $font-size-md;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                }
+            }
+
+            // RTL support for hero text
+            .rtl & {
+                .hero-text-right {
+                    justify-content: flex-start;
+                }
+
+                .hero-text-left {
+                    text-align: right;
+                }
+            }
+        }
+
+        // Search form
+        .search-form-container {
+            background-color: $white;
+            border-radius: $border-radius-xl;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+
+            // Trip options
+            .trip-options {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: $spacing-md $spacing-lg;
+
+                .trip-type-buttons {
+                    display: flex;
+
+                    button {
+                        display: flex;
+                        align-items: center;
+                        background: none;
+                        color: black;
+                        border: none;
+                        padding: $spacing-sm $spacing-md;
+                        margin-right: $spacing-sm;
+                        border-radius: 20px;
+                        font-weight: $font-weight-medium;
+                        cursor: pointer;
+                        transition: $transition-default;
+
+                        .radio-circle {
+                            display: inline-block;
+                            width: 18px;
+                            height: 18px;
+                            border: 2px solid #ccc;
+                            border-radius: 50%;
+                            margin-right: 8px;
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 3px;
+                                left: 3px;
+                                width: 8px;
+                                height: 8px;
+                                border-radius: 50%;
+                                background-color: transparent;
+                                transition: all 0.2s ease;
+                            }
+                        }
+
+                        &.active {
+                            background-color: rgba($primary-color, 0.1);
+                            color: $primary-color;
+
+                            .radio-circle {
+                                border-color: $primary-color;
+
+                                &::before {
+                                    background-color: $primary-color;
+                                }
+                            }
+                        }
+
+                        &:hover:not(.active) {
+                            background-color: $light-gray;
+
+                            .radio-circle {
+                                border-color: #999;
+                            }
+                        }
+                    }
+                }
+
+                .trip-preferences {
+                    display: flex;
+                    align-items: center;
+
+                    .passengers-dropdown,
+                    .cabin-dropdown {
+                        position: relative;
+
+                        .dropdown-toggle {
+                            display: flex;
+                            align-items: center;
+                            padding: $spacing-sm $spacing-md;
+                            cursor: pointer;
+                            border-radius: $border-radius-sm;
+                            transition: $transition-default;
+
+                            svg {
+                                margin-right: $spacing-xs;
+                                transition: transform 0.3s ease;
+
+                                &.rotated {
+                                    transform: rotate(180deg);
+                                }
+                            }
+
+                            &:hover {
+                                background-color: $light-gray;
+                            }
+                        }
+
+                        .dropdown-menu {
+                            position: absolute;
+                            top: calc(100% + 5px);
+                            right: 0;
+                            background-color: $white;
+                            border-radius: $border-radius-md;
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                            z-index: 10;
+                            min-width: 180px;
+                            overflow: hidden;
+                            animation: fadeIn 0.2s ease;
+
+                            // RTL support for dropdown
+                            .rtl & {
+                                right: auto;
+                                left: 0;
+                            }
+
+                            .dropdown-item {
+                                padding: $spacing-sm $spacing-md;
+                                transition: $transition-default;
+                                cursor: pointer;
+
+                                &.active {
+                                    background-color: rgba($primary-color, 0.1);
+                                    color: $primary-color;
+                                }
+
+                                &:hover {
+                                    background-color: $light-gray;
+                                    color: $primary-color;
+                                }
+                            }
+                        }
+                    }
+
+                    .divider {
+                        height: 24px;
+                        width: 1px;
+                        background-color: $border-color;
+                        margin: 0 $spacing-md;
+                    }
+                }
+            }
+
+            // Search inputs
+            .search-inputs {
+                display: flex;
+                padding: $spacing-md $spacing-lg;
+                gap: 15px;
+
+                .origin-input,
+                .destination-input,
+                .date-input {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    padding: $spacing-sm;
+                    border: 1px solid $border-color;
+                    border-radius: $border-radius-lg;
+                    transition: all 0.3s ease;
+
+                    &:focus-within {
+                        border-color: $primary-color;
+                        box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+                    }
+
+                    .input-icon {
+                        color: $primary-color;
+                        margin-right: $spacing-md;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        min-width: 22px;
+
+                        svg {
+                            width: 26px;
+                            height: 18px;
+                        }
+                    }
+
+                    .input-field {
+                        flex: 1;
+
+                        label {
+                            display: block;
+                            font-size: $font-size-sm;
+                            margin-bottom: 4px;
+                            color: #777;
+                        }
+
+                        input,
+                        .date-picker {
+                            width: 100%;
+                            border: none;
+                            font-size: $font-size-base;
+                            padding: 4px 0;
+                            outline: none;
+                            background: transparent;
+
+                            &::placeholder {
+                                color: #aaa;
+                            }
+                        }
+                    }
+                }
+
+                .direction-arrows {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0 $spacing-sm;
+                    color: $primary-color;
+                    margin: 0 -5px;
+                    cursor: pointer;
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                .search-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $primary-color;
+                    color: white;
+                    border: none;
+                    border-radius: $border-radius-md;
+                    padding: $spacing-md $spacing-lg;
+                    font-weight: $font-weight-medium;
+                    cursor: pointer;
+                    transition: $transition-default;
+                    min-width: 120px;
+
+                    svg {
+                        margin-right: $spacing-xs;
+                    }
+
+                    &:hover {
+                        background-color: darken($primary-color, 5%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// React DatePicker styles
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker {
+    // font-family: $font-family-base;
+    border-radius: $border-radius-md;
+    border-color: $border-color;
+
+    &__header {
+        background-color: $light-gray;
+        border-bottom: 1px solid $border-color;
+    }
+
+    &__navigation {
+        top: 10px;
+    }
+
+    &__day {
+
+        &--selected,
+        &--keyboard-selected {
+            background-color: $primary-color;
+
+            &:hover {
+                background-color: darken($primary-color, 5%);
+            }
+        }
+
+        &:hover {
+            background-color: $light-gray;
+        }
+    }
+
+    &__current-month {
+        color: black;
+        font-weight: $font-weight-medium;
+    }
+}
+
+// Animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Media queries for responsiveness
+@media (max-width: $breakpoint-xl) {
+    .hero-section {
+        .search-form-wrapper {
+            padding: 0 $spacing-md;
+
+            .hero-text {
+                .hero-text-left h1 {
+                    font-size: 2.25rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .hero-section {
+        .search-form-wrapper {
+            .hero-text {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: $spacing-md;
+
+                .hero-text-left,
+                .hero-text-right {
+                    max-width: 100%;
+                    margin-bottom: $spacing-md;
+                }
+
+                .hero-text-left h1 {
+                    font-size: 2rem;
+                }
+
+                .hero-text-right {
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+            }
+
+            .search-form-container {
+                .search-inputs {
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    .origin-input,
+                    .destination-input,
+                    .date-input {
+                        flex: 0 0 calc(50% - 10px);
+                    }
+
+                    .direction-arrows {
+                        display: none;
+                    }
+
+                    .search-button {
+                        flex: 0 0 100%;
+                        margin-top: $spacing-sm;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .hero-section {
+        .image-grid {
+            gap: 15px;
+            grid-template-columns: 2fr; // Single column for very small screens
+
+            .image-container {
+                // All images are full height on medium screens
+                height: 250px;
+
+                // Only first images in columns 2 and 4 are half height
+                &:nth-child(2),
+                &:nth-child(4) {
+                    height: 125px;
+                }
+
+                // Adjust margin for second images in columns 2 and 4
+                &:nth-child(even) {
+                    margin-top: -125px; // Adjusted for smaller heights on medium screens
+                }
+            }
+        }
+
+        .search-form-wrapper {
+            .hero-text {
+                h1 {
+                    font-size: 1.75rem;
+                }
+            }
+
+            .trip-options {
+                flex-direction: column;
+                align-items: flex-start;
+
+                .trip-type-buttons,
+                .trip-preferences {
+                    width: 100%;
+                    margin-bottom: $spacing-sm;
+                }
+
+                .trip-preferences {
+                    justify-content: space-between;
+                }
+            }
+
+            .search-form-container {
+                .search-inputs {
+
+                    .flying-input-from-and-to-container {
+                        flex-direction: column;
+                    }
+
+                    .date-inputs-container {
+                        flex-direction: column;
+                    }
+
+                    .origin-input,
+                    .destination-input,
+                    .date-input {
+                        flex: 0 0 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .hero-section {
+        .image-grid {
+            // For very small screens, simplify to 2 columns
+            grid-template-columns: 1fr; // Single column for very small screens
+            gap: 10px;
+            padding: 10px;
+
+            .image-container {
+                // All images same height on mobile
+                height: 200px !important;
+
+                // Remove any negative margins on mobile
+                margin-top: 0 !important;
+            }
+        }
+
+        .search-form-wrapper {
+            padding: 0 $spacing-md;
+
+            .hero-text {
+                margin-bottom: $spacing-sm;
+
+                .hero-text-left h1 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .search-form-container {
+                border-radius: $border-radius-lg;
+
+                .trip-options {
+                    padding: $spacing-md;
+
+                    .trip-type-buttons {
+                        width: 100%;
+                        justify-content: space-between;
+                        margin-bottom: $spacing-lg;
+
+                        button {
+                            flex: 1;
+                            justify-content: center;
+                            padding: $spacing-xs $spacing-sm;
+                            border-radius: $border-radius-lg;
+                            margin-right: $spacing-xs;
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+
+                    .trip-preferences {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .passengers-dropdown,
+                        .cabin-dropdown {
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .divider {
+                            margin: 0;
+                            height: 20px;
+                        }
+
+                        .dropdown-toggle {
+                            padding: $spacing-xs $spacing-sm;
+                            white-space: nowrap;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .search-inputs {
+                    padding: $spacing-sm;
+                    gap: $spacing-sm;
+
+                    .origin-input,
+                    .destination-input,
+                    .date-input {
+                        padding: $spacing-xs;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .hero-section {
+
+        // Enhanced dark overlay for better text contrast on small screens
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        // Full-height green gradient for better text contrast
+        .green-gradient {
+            height: 100%; // Full height instead of 70%
+            background:
+                // Left side gradient with increased opacity
+                linear-gradient(105deg,
+                    rgba(0, 104, 55, 0.95) 0%,
+                    rgba(0, 104, 55, 0.85) 30%,
+                    rgba(0, 104, 55, 0.6) 50%,
+                    rgba(0, 104, 55, 0.2) 80%),
+                // Right side gradient (mirrored) with increased opacity
+                linear-gradient(255deg,
+                    rgba(0, 104, 55, 0.95) 0%,
+                    rgba(0, 104, 55, 0.85) 30%,
+                    rgba(0, 104, 55, 0.6) 50%,
+                    rgba(0, 104, 55, 0.2) 80%);
+
+            // Adjust mask to allow more of the gradient to be visible
+
+
+            &::after {
+                opacity: 0.9; // Increase the opacity of the bottom gradient
+                height: 180px; // Slightly taller bottom gradient
+            }
+        }
+
+        // Rest of your mobile styles...
+    }
+}

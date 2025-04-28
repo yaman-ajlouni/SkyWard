@@ -1,0 +1,56 @@
+{
+    "topDestinations": {
+        "title": "Top Destinations From Syria",
+        "roundTripFrom": "Round trip from $",
+        "destinations": [
+            {
+                "id": 1,
+                "city": "Istanbul",
+                "country": "Turkey",
+                "price": 400
+            },
+            {
+                "id": 2,
+                "city": "Dubai",
+                "country": "UAE",
+                "price": 550
+            },
+            {
+                "id": 3,
+                "city": "Beirut",
+                "country": "Lebanon",
+                "price": 250
+            },
+            {
+                "id": 4,
+                "city": "Cairo",
+                "country": "Egypt",
+                "price": 350
+            },
+            {
+                "id": 5,
+                "city": "Amman",
+                "country": "Jordan",
+                "price": 270
+            },
+            {
+                "id": 6,
+                "city": "Athens",
+                "country": "Greece",
+                "price": 650
+            },
+            {
+                "id": 7,
+                "city": "Moscow",
+                "country": "Russia",
+                "price": 780
+            },
+            {
+                "id": 8,
+                "city": "Doha",
+                "country": "Qatar",
+                "price": 490
+            }
+        ]
+    }
+}
