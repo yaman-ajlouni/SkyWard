@@ -2,22 +2,50 @@ import React from 'react';
 import './Highlight.scss';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import damascus from '../../assets/images/highlights/high-damascus.jpg';
+import hoson from '../../assets/images/highlights/high-hoson.jpg';
+import palmyra from '../../assets/images/highlights/high-palmyra.jpg';
+import lattakia from '../../assets/images/highlights/high-lattakia.jpg';
 
-// Import sample image (replace with real images)
-import sampleImage from '../../assets/images/damascus.jpg';
 
 const Highlight = () => {
     const { t } = useTranslation();
     const { dir } = useLanguage();
-    
+
     // Get highlights from translations
     const highlights = t('highlight.items', { returnObjects: true }) || [];
-    
-    // Add images to highlights
+
+    // Create a mapping between highlight IDs and their corresponding images
+    const imageMapping = {
+        1: damascus,    // Ancient City of Damascus
+        2: hoson,  // Krak des Chevaliers
+        3: palmyra,    // Palmyra Ruins
+        4: lattakia        // Mediterranean Coastline
+    };
+
+    // Function to get the appropriate image based on highlight
+    const getImageByHighlight = (highlight) => {
+        // First try to get by ID
+        if (imageMapping[highlight.id]) {
+            return imageMapping[highlight.id];
+        }
+
+        // Complete fallback logic for all highlights
+        if (highlight.title.includes("Damascus")) return damascusCity;
+        if (highlight.title.includes("Krak")) return krakChevaliers;
+        if (highlight.title.includes("Palmyra")) return palmyraRuins;
+        if (highlight.title.includes("Mediterranean") || highlight.title.includes("Coastline")) return coastline;
+
+        // Default fallback
+        return sampleImage;
+    };
+
+    // Add images to highlights using the mapping
     const highlightsWithImages = highlights.map(highlight => ({
         ...highlight,
-        image: sampleImage
+        image: getImageByHighlight(highlight)
     }));
+
 
     return (
         <section className={`highlights-section ${dir}`}>

@@ -1,131 +1,101 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import './BookAdventure.scss';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 
-// Import sample image (replace with real images)
-import sampleImage from '../../assets/images/damascus.jpg';
+// Import Swiper and required modules
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, A11y } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+import damascusMosque from '../../assets/images/book/book-umayyad.jpg';
+import aleppoCitadel from '../../assets/images/book/book-aleppo.jpg';
+import palmyraRuins from '../../assets/images/book/book-palmyra.jpg';
+import lattakiaBeach from '../../assets/images/book/book-lattakia.jpg';
+import homsKrak from '../../assets/images/book/book-hoson.webp';
+import tartusArwad from '../../assets/images/book/book-arwad.jpg';
 
 const BookAdventure = () => {
     const { t } = useTranslation();
     const { dir } = useLanguage();
-    const sliderRef = useRef(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [maxScroll, setMaxScroll] = useState(0);
-    const [cardWidth, setCardWidth] = useState(450);
-    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
     const isRTL = dir === 'rtl';
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+    
+    // Add a key state to force re-render when language changes
+    const [swiperKey, setSwiperKey] = useState(0);
+
+    // Update key when direction changes to force re-render
+    useEffect(() => {
+        setSwiperKey(prevKey => prevKey + 1);
+    }, [dir]);
 
     // Get adventures from translations
     const adventures = t('bookAdventures.adventures', { returnObjects: true }) || [];
 
-    // Add images to adventures
+    // Create a mapping between adventure IDs and their corresponding images
+    const imageMapping = {
+        1: damascusMosque,   // Damascus - Visit Umayyad Mosque
+        2: aleppoCitadel,    // Aleppo - Explore the Ancient Citadel
+        3: palmyraRuins,     // Palmyra - Ancient Ruins Tour
+        4: lattakiaBeach,    // Lattakia - Beach Day Experience
+        5: homsKrak,         // Homs - Krak des Chevaliers Tour
+        6: tartusArwad       // Tartus - Arwad Island Boat Trip
+    };
+
+    // Function to get the appropriate image based on adventure
+    const getImageByAdventure = (adventure) => {
+        // First try to get by ID
+        if (imageMapping[adventure.id]) {
+            return imageMapping[adventure.id];
+        }
+
+        // Complete fallback logic for all adventures
+        if (adventure.city === "Damascus" || adventure.title.includes("Umayyad Mosque")) return damascusMosque;
+        if (adventure.city === "Aleppo" || adventure.title.includes("Citadel")) return aleppoCitadel;
+        if (adventure.city === "Palmyra" || adventure.title.includes("Ruins")) return palmyraRuins;
+        if (adventure.city === "Lattakia" || adventure.title.includes("Beach")) return lattakiaBeach;
+        if (adventure.city === "Homs" || adventure.title.includes("Krak des Chevaliers")) return homsKrak;
+        if (adventure.city === "Tartus" || adventure.title.includes("Arwad")) return tartusArwad;
+
+        // Default fallback
+        return damascusMosque;
+    };
+
+    // Add images to adventures using the mapping
     const adventuresWithImages = adventures.map(adventure => ({
         ...adventure,
-        image: sampleImage
+        image: getImageByAdventure(adventure)
     }));
 
-    // Update card width based on viewport
-    useEffect(() => {
-        const updateSizes = () => {
-            const width = window.innerWidth;
-            setViewportWidth(width);
-
-            // Adjust card width based on screen size
-            if (width <= 576) { // Mobile
-                setCardWidth(270);
-            } else if (width <= 768) { // Tablet
-                setCardWidth(350);
-            } else if (width <= 1024) { // Small desktop
-                setCardWidth(400);
-            } else { // Large desktop
-                setCardWidth(450);
-            }
+    // Determine breakpoints for responsive design
+    const getSwiperBreakpoints = () => {
+        return {
+            0: {
+                slidesPerView: 1.2,
+                spaceBetween: 8,
+            },
+            576: {
+                slidesPerView: 1.3,
+                spaceBetween: 12,
+            },
+            768: {
+                slidesPerView: 2.1,
+                spaceBetween: 16,
+            },
+            1024: {
+                slidesPerView: 2.5,
+                spaceBetween: 20,
+            },
+            1440: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+            },
         };
-
-        updateSizes();
-        window.addEventListener('resize', updateSizes);
-
-        return () => {
-            window.removeEventListener('resize', updateSizes);
-        };
-    }, []);
-
-    // Update maxScroll when component mounts, window resizes, or cardWidth changes
-    useEffect(() => {
-        const updateMaxScroll = () => {
-            if (sliderRef.current) {
-                const containerWidth = sliderRef.current.clientWidth;
-                const scrollWidth = sliderRef.current.scrollWidth;
-                const newMaxScroll = Math.max(0, scrollWidth - containerWidth);
-                setMaxScroll(newMaxScroll);
-
-                // Also update current scroll position
-                setScrollPosition(sliderRef.current.scrollLeft);
-            }
-        };
-
-        // Initial update
-        updateMaxScroll();
-
-        // Add event listeners
-        window.addEventListener('resize', updateMaxScroll);
-
-        // Create resize observer
-        const resizeObserver = new ResizeObserver(updateMaxScroll);
-        if (sliderRef.current) {
-            resizeObserver.observe(sliderRef.current);
-        }
-
-        return () => {
-            window.removeEventListener('resize', updateMaxScroll);
-            if (resizeObserver) {
-                resizeObserver.disconnect();
-            }
-        };
-    }, [cardWidth, viewportWidth, isRTL]);
-
-    // Handle slider scroll
-    const handleScroll = () => {
-        if (sliderRef.current) {
-            setScrollPosition(sliderRef.current.scrollLeft);
-        }
-    };
-
-    // Calculate scroll amount based on card width
-    const getScrollAmount = () => {
-        return Math.max(300, cardWidth * 1.5);
-    };
-
-    // Determine if we can scroll in each direction (for LTR mode only)
-    const canScrollPrev = !isRTL && scrollPosition > 0;
-    const canScrollNext = !isRTL && scrollPosition < maxScroll;
-
-    // In RTL mode, we keep the left arrow functionality to move left and right arrow to move right
-    const handleLeftArrowClick = () => {
-        if (!sliderRef.current) return;
-
-        const scrollAmount = getScrollAmount();
-
-        // Both in RTL and LTR modes, left arrow scrolls left
-        sliderRef.current.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-    };
-
-    // Handle right arrow click
-    const handleRightArrowClick = () => {
-        if (!sliderRef.current) return;
-
-        const scrollAmount = getScrollAmount();
-
-        // Both in RTL and LTR modes, right arrow scrolls right
-        sliderRef.current.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
     };
 
     return (
@@ -135,31 +105,42 @@ const BookAdventure = () => {
                     <h2 className="section-title">{t('bookAdventures.title')}</h2>
                     <div className="navigation-arrows">
                         <button
-                            className={`nav-arrow ${!isRTL && !canScrollPrev ? 'disabled' : ''}`}
-                            onClick={handleLeftArrowClick}
-                            disabled={!isRTL && !canScrollPrev}
+                            ref={prevRef}
+                            className="nav-arrow prev-arrow"
                             aria-label="Previous"
                         >
-                            <ChevronLeft size={24} />
+                            {isRTL ? <ChevronRight size={24} /> : <ChevronLeft size={24} />}
                         </button>
                         <button
-                            className={`nav-arrow ${!isRTL && !canScrollNext ? 'disabled' : ''}`}
-                            onClick={handleRightArrowClick}
-                            disabled={!isRTL && !canScrollNext}
+                            ref={nextRef}
+                            className="nav-arrow next-arrow"
                             aria-label="Next"
                         >
-                            <ChevronRight size={24} />
+                            {isRTL ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
                         </button>
                     </div>
                 </div>
 
-                <div
+                <Swiper
+                    key={swiperKey} // Add key to force complete re-render when language changes
+                    modules={[Navigation, A11y]}
+                    spaceBetween={24}
+                    slidesPerView={3}
+                    navigation={{
+                        prevEl: prevRef.current,
+                        nextEl: nextRef.current,
+                    }}
+                    onBeforeInit={(swiper) => {
+                        swiper.params.navigation.prevEl = prevRef.current;
+                        swiper.params.navigation.nextEl = nextRef.current;
+                    }}
+                    loop={true}
+                    dir={dir}
+                    breakpoints={getSwiperBreakpoints()}
                     className="adventure-slider"
-                    ref={sliderRef}
-                    onScroll={handleScroll}
                 >
                     {adventuresWithImages.map(adventure => (
-                        <div className="adventure-card" key={adventure.id}>
+                        <SwiperSlide key={adventure.id} className="adventure-card">
                             <div className="card-image">
                                 <img src={adventure.image} alt={adventure.title} />
                             </div>
@@ -176,9 +157,9 @@ const BookAdventure = () => {
                                     <button className="book-button">{t('bookAdventures.bookNow')}</button>
                                 </div>
                             </div>
-                        </div>
+                        </SwiperSlide>
                     ))}
-                </div>
+                </Swiper>
             </div>
         </section>
     );

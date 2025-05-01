@@ -17,14 +17,6 @@
                     right: 0;
                 }
             }
-
-            .navigation-arrows{
-                flex-direction: row-reverse;
-            }
-        }
-
-        .destination-slider {
-            direction: rtl;
         }
 
         .destination-card {
@@ -97,7 +89,7 @@
                     box-shadow: 0 0 0 2px rgba($primary-color, 0.4);
                 }
 
-                &.disabled {
+                &.disabled, &.swiper-button-disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
                 }
@@ -105,35 +97,33 @@
         }
     }
 
+    // Container for slider with fixed width
+    .destination-slider-container {
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
     // Slider container for horizontal scrolling
     .destination-slider {
-        display: flex;
-        gap: $spacing-lg;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        scrollbar-width: none; // Hide scrollbar for Firefox
-        -ms-overflow-style: none; // Hide scrollbar for IE/Edge
-        max-width: 1400px;
-        margin: 0 auto;
+        width: 100%;
         padding: 0 $spacing-lg;
-        -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
-        scroll-snap-type: x mandatory; // Enable scroll snap
-
-        &::-webkit-scrollbar {
-            display: none; // Hide scrollbar for Chrome/Safari
+        overflow: visible; // Allow for overflow to create the "peek" effect
+        
+        .swiper-wrapper {
+            align-items: stretch; // Ensure all slides have the same height
         }
     }
 
     // Individual destination cards
     .destination-card {
-        min-width: 360px;
-        flex: 0 0 360px;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        scroll-snap-align: start; // Snap to the start of each card
+        height: auto; // Let the card height be determined by its content
 
         .card-image {
             position: relative;
@@ -188,9 +178,6 @@
 @media (max-width: $breakpoint-xl) {
     .top-destinations-section {
         .destination-card {
-            min-width: 320px;
-            flex: 0 0 320px;
-
             .card-image {
                 height: 250px;
             }
@@ -211,13 +198,10 @@
         }
 
         .destination-slider {
-            gap: $spacing-md;
+            padding: 0 $spacing-md;
         }
 
         .destination-card {
-            min-width: 280px;
-            flex: 0 0 280px;
-
             .card-image {
                 height: 220px;
             }
@@ -246,14 +230,10 @@
         }
 
         .destination-slider {
-            gap: $spacing-sm;
             padding: 0 $spacing-md;
         }
 
         .destination-card {
-            min-width: 240px;
-            flex: 0 0 240px;
-
             .card-image {
                 height: 200px;
             }
@@ -305,13 +285,10 @@
         }
 
         .destination-slider {
-            gap: $spacing-xs;
             padding: 0 $spacing-sm;
         }
 
         .destination-card {
-            min-width: 200px;
-            flex: 0 0 200px;
             border-radius: $border-radius-md;
 
             .card-image {

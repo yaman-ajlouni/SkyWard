@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.scss';
 import { Globe, Menu, X } from 'lucide-react';
 import logoImage from '../../assets/images/FlySyria-With-Text-cropped.svg';
@@ -10,22 +10,48 @@ const Navbar = () => {
     const { language, changeLanguage } = useLanguage();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const scrollTimeoutRef = useRef(null);
 
-    // Handle scrolling effect
+    // Handle scrolling effect with stronger debounce and hysteresis
     useEffect(() => {
+        // Add hysteresis to prevent rapid toggling
+        const scrollDownThreshold = 15; // Higher threshold for scrolling down
+        const scrollUpThreshold = 5;   // Lower threshold for scrolling up
+        
+        // Track last known scroll position
+        let lastScrollY = window.scrollY;
+        
         const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
+            const currentScrollY = window.scrollY;
+            
+            // Clear any pending timeout
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
             }
+            
+            // Use a longer debounce for stability
+            scrollTimeoutRef.current = setTimeout(() => {
+                // Apply hysteresis based on scroll direction
+                if (!scrolled && currentScrollY > scrollDownThreshold) {
+                    setScrolled(true);
+                } else if (scrolled && currentScrollY < scrollUpThreshold) {
+                    setScrolled(false);
+                }
+                
+                // Update last known position
+                lastScrollY = currentScrollY;
+            }, 50); // Longer timeout for better stability
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            // Clear timeout on cleanup
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
         };
-    }, []);
+    }, [scrolled]); // Add scrolled to dependencies
 
     // Close mobile menu when window resizes to desktop size
     useEffect(() => {
@@ -74,7 +100,7 @@ const Navbar = () => {
                     <div className="divider"></div>
 
                     <div className="sap-prices">
-                        <span>SYP</span>
+                        <span>USD</span>
                     </div>
 
                     <button className="login-button">
@@ -110,7 +136,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="mobile-sap">
-                        <span>SAP</span>
+                        <span>USD</span>
                     </div>
 
                     <button className="mobile-login-button">

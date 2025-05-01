@@ -150,6 +150,10 @@
         
         .links-column {
             margin-bottom: $spacing-lg;
+
+            @media(max-width: $breakpoint-md){
+                text-align: center;
+            }
             
             h4 {
                 font-size: $font-size-sm;
@@ -166,6 +170,12 @@
                     width: 30px;
                     height: 2px;
                     background-color: rgba(255, 255, 255, 0.3);
+
+                    @media(max-width: $breakpoint-md){
+                        left: 50%;
+                        transform: translateX(-50%); // Adjust for the element's own width
+                        bottom: -8px;                
+                    }
                 }
             }
             

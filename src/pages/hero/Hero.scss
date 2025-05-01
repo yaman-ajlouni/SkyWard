@@ -4,12 +4,25 @@
     position: relative;
     width: 100%;
     min-height: 85vh;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 82px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end; // Position content at the bottom
     padding: $spacing-xl 0;
-    overflow: hidden;
+    overflow: visible; // Changed from 'hidden' to 'visible' to allow dropdowns to overflow
+
+    // Background images will still need to be contained
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+    }
 
     // RTL support
     &.rtl {
@@ -40,6 +53,15 @@
             margin-right: 0;
             margin-left: $spacing-sm;
         }
+
+        // RTL support for city dropdowns
+        .city-dropdown-menu {
+            left: 0;
+            right: auto;
+            text-align: right;
+            opacity: 1; // Changed from 5 to 1 for proper visibility
+            z-index: 10000;
+        }
     }
 
     // Image grid styling
@@ -52,32 +74,30 @@
         display: grid;
         // Exactly 4 columns with equal width
         grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: min(150px, 12.5vw); // Base row height is the half-height
+        grid-gap: 15px;
         gap: 15px;
         padding: 15px;
-        overflow: hidden;
+        overflow: hidden; // Keep this as 'hidden' to contain the background images
 
         .image-container {
             width: 100%;
             border-radius: $border-radius-xl;
             overflow: hidden;
             position: relative;
-            height: 300px; // Default height for all images
+            height: min(300px, 25vw); // Responsive height based on viewport width
 
-            // Make only the FIRST image in column 2 half-height
-            &:nth-child(2) {
-                height: 150px; // Half height only for the first image in second column
-                margin-top: 0 !important;
+            // Make only the FIRST image in column 2 and 4 half-height
+            &:nth-child(n) {
+                grid-row: span 2;
+                height: 100%;
             }
 
-            // Make only the FIRST image in column 4 half-height
+            // First images in column 2 and 4 take 1 row
+            &:nth-child(2),
             &:nth-child(4) {
-                height: 150px; // Half height only for the first image in fourth column
-                margin-top: 0 !important;
-            }
-
-            // Position the image in column 2 and 4 directly below the first half-height image
-            &:nth-child(even) {
-                margin-top: -150px; // Move up to remove the gap
+                grid-row: span 1;
+                height: 100%;
             }
 
             img {
@@ -191,6 +211,8 @@
             border-radius: $border-radius-xl;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            position: relative; // Added to establish a positioning context
+            overflow: visible; // Ensure dropdowns can be visible
 
             // Trip options
             .trip-options {
@@ -340,6 +362,7 @@
                 display: flex;
                 padding: $spacing-md $spacing-lg;
                 gap: 15px;
+                position: relative; // Added to establish a positioning context
 
                 .origin-input,
                 .destination-input,
@@ -351,10 +374,55 @@
                     border: 1px solid $border-color;
                     border-radius: $border-radius-lg;
                     transition: all 0.3s ease;
+                    position: relative; // Added to establish a positioning context
 
                     &:focus-within {
                         border-color: $primary-color;
                         box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+                    }
+
+                    // City input field specific styling
+                    .input-field {
+                        flex: 1;
+                        position: relative;
+
+                        // City dropdown menu
+                        .city-dropdown-menu {
+                            position: absolute;
+                            top: calc(100% + 8px);
+                            left: -40px; // Offset to align with input field
+                            right: -10px;
+                            max-height: 250px;
+                            overflow-y: auto;
+                            background-color: $white;
+                            border-radius: $border-radius-md;
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+                            z-index: 9999; // Increased z-index to ensure it stays on top
+                            animation: fadeIn 0.2s ease;
+
+                            // Make sure dropdown doesn't overflow viewport
+                            @supports (max-height: 100vh) {
+                                max-height: min(250px, 40vh);
+                            }
+
+                            .city-dropdown-item {
+                                padding: $spacing-sm $spacing-md;
+                                transition: $transition-default;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: rgba($primary-color, 0.1);
+                                    color: $primary-color;
+                                }
+                            }
+
+                            .city-dropdown-no-results {
+                                padding: $spacing-md;
+                                color: #777;
+                                text-align: center;
+                                font-style: italic;
+                            }
+                        }
                     }
 
                     .input-icon {
@@ -394,6 +462,17 @@
                                 color: #aaa;
                             }
                         }
+                    }
+                }
+
+                .origin-input.error,
+                .destination-input.error,
+                .date-input.error {
+                    border-color: #e53935 !important; // Red border for error state
+                    position: relative;
+
+                    .input-field {
+                        position: relative;
                     }
                 }
 
@@ -439,7 +518,7 @@
     }
 }
 
-// React DatePicker styles
+// React DatePicker styles - kept outside to ensure they're not affected by overflow settings
 .react-datepicker-wrapper {
     width: 100%;
 }
@@ -448,6 +527,7 @@
     // font-family: $font-family-base;
     border-radius: $border-radius-md;
     border-color: $border-color;
+    z-index: 10000; // Ensure date picker is above other elements
 
     &__header {
         background-color: $light-gray;
@@ -493,6 +573,16 @@
     }
 }
 
+// Ensure dropdown menus are always visible with this global style
+body {
+
+    .city-dropdown-menu,
+    .dropdown-menu,
+    .react-datepicker-popper {
+        z-index: 10000; // High z-index to ensure visibility
+    }
+}
+
 // Media queries for responsiveness
 @media (max-width: $breakpoint-xl) {
     .hero-section {
@@ -533,23 +623,38 @@
             }
 
             .search-form-container {
+                // Make sure the form container has proper overflow handling
+                overflow: visible;
+
                 .search-inputs {
                     flex-wrap: wrap;
+                    justify-content: center;
                     gap: 10px;
+                    position: relative;
+                    overflow: visible;
 
                     .origin-input,
                     .destination-input,
                     .date-input {
                         flex: 0 0 calc(50% - 10px);
-                    }
+                        position: relative;
+                        overflow: visible;
 
-                    .direction-arrows {
-                        display: none;
+                        .city-dropdown-menu {
+                            left: 0;
+                            right: 0;
+                            position: absolute;
+                            width: 100%; // Make sure dropdown is full width of input
+                        }
                     }
 
                     .search-button {
                         flex: 0 0 100%;
                         margin-top: $spacing-sm;
+                    }
+
+                    .direction-arrows {
+                        display: none;
                     }
                 }
             }
@@ -557,25 +662,24 @@
     }
 }
 
-@media (max-width: $breakpoint-lg) {
+@media (max-width: $breakpoint-md) {
     .hero-section {
         .image-grid {
-            gap: 15px;
-            grid-template-columns: 2fr; // Single column for very small screens
+            grid-template-columns: repeat(2, 1fr); // Two columns for medium screens
+            grid-auto-rows: min(125px, 12.5vw); // Smaller row height for medium screens
+            gap: 10px;
 
             .image-container {
-                // All images are full height on medium screens
-                height: 250px;
+                height: min(250px, 25vw); // Slightly smaller for medium screens
 
-                // Only first images in columns 2 and 4 are half height
-                &:nth-child(2),
-                &:nth-child(4) {
-                    height: 125px;
+                &:nth-child(n) {
+                    grid-row: span 2;
                 }
 
-                // Adjust margin for second images in columns 2 and 4
-                &:nth-child(even) {
-                    margin-top: -125px; // Adjusted for smaller heights on medium screens
+                // Make first images in column 1 and 2 half-height
+                &:nth-child(1),
+                &:nth-child(2) {
+                    grid-row: span 1;
                 }
             }
         }
@@ -587,132 +691,53 @@
                 }
             }
 
-            .trip-options {
-                flex-direction: column;
-                align-items: flex-start;
-
-                .trip-type-buttons,
-                .trip-preferences {
-                    width: 100%;
-                    margin-bottom: $spacing-sm;
-                }
-
-                .trip-preferences {
-                    justify-content: space-between;
-                }
-            }
-
             .search-form-container {
-                .search-inputs {
-
-                    .flying-input-from-and-to-container {
-                        flex-direction: column;
-                    }
-
-                    .date-inputs-container {
-                        flex-direction: column;
-                    }
-
-                    .origin-input,
-                    .destination-input,
-                    .date-input {
-                        flex: 0 0 100%;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-md) {
-    .hero-section {
-        .image-grid {
-            // For very small screens, simplify to 2 columns
-            grid-template-columns: 1fr; // Single column for very small screens
-            gap: 10px;
-            padding: 10px;
-
-            .image-container {
-                // All images same height on mobile
-                height: 200px !important;
-
-                // Remove any negative margins on mobile
-                margin-top: 0 !important;
-            }
-        }
-
-        .search-form-wrapper {
-            padding: 0 $spacing-md;
-
-            .hero-text {
-                margin-bottom: $spacing-sm;
-
-                .hero-text-left h1 {
-                    font-size: 1.5rem;
-                }
-            }
-
-            .search-form-container {
-                border-radius: $border-radius-lg;
-
                 .trip-options {
-                    padding: $spacing-md;
+                    flex-direction: column;
+                    align-items: flex-start;
 
-                    .trip-type-buttons {
-                        width: 100%;
+                    .trip-type-buttons,
+                    .trip-preferences {
                         justify-content: space-between;
-                        margin-bottom: $spacing-lg;
+                        width: 100%;
+                        margin-bottom: $spacing-sm;
 
                         button {
                             flex: 1;
                             justify-content: center;
-                            padding: $spacing-xs $spacing-sm;
-                            border-radius: $border-radius-lg;
-                            margin-right: $spacing-xs;
-
-                            &:last-child {
-                                margin-right: 0;
-                            }
+                            margin-right: 0;
+                            margin-left: 0;
                         }
                     }
 
                     .trip-preferences {
-                        width: 100%;
                         display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-
-                        .passengers-dropdown,
-                        .cabin-dropdown {
-                            flex: 1;
-                            display: flex;
-                            justify-content: center;
-                        }
-
-                        .divider {
-                            margin: 0;
-                            height: 20px;
-                        }
+                        justify-content: center;
 
                         .dropdown-toggle {
-                            padding: $spacing-xs $spacing-sm;
-                            white-space: nowrap;
-                            display: flex;
                             justify-content: center;
-                            align-items: center;
+                        }
+
+                        .passengers-dropdown {
                             width: 100%;
+                            flex: 1;
+                            text-align: center;
+                        }
+
+                        .cabin-dropdown {
+                            flex: 1;
+                            justify-content: center;
                         }
                     }
                 }
 
                 .search-inputs {
-                    padding: $spacing-sm;
-                    gap: $spacing-sm;
 
                     .origin-input,
                     .destination-input,
                     .date-input {
-                        padding: $spacing-xs;
+                        flex: 0 0 100%; // Full width on medium screens
+                        margin-bottom: $spacing-xs;
                     }
                 }
             }
@@ -722,6 +747,10 @@
 
 @media (max-width: $breakpoint-sm) {
     .hero-section {
+        overflow: visible; // Ensure this is maintained for smallest screens
+        min-height: 100vh; // Ensure full height on smallest screens
+        height: auto;
+        padding-bottom: $spacing-lg;
 
         // Enhanced dark overlay for better text contrast on small screens
         &::before {
@@ -740,20 +769,20 @@
             height: 100%; // Full height instead of 70%
             background:
                 // Left side gradient with increased opacity
-                linear-gradient(105deg,
+                linear-gradient(0deg,
                     rgba(0, 104, 55, 0.95) 0%,
                     rgba(0, 104, 55, 0.85) 30%,
                     rgba(0, 104, 55, 0.6) 50%,
-                    rgba(0, 104, 55, 0.2) 80%),
+                    rgba(0, 104, 55, 0) 80%),
                 // Right side gradient (mirrored) with increased opacity
-                linear-gradient(255deg,
+                linear-gradient(0deg,
                     rgba(0, 104, 55, 0.95) 0%,
                     rgba(0, 104, 55, 0.85) 30%,
                     rgba(0, 104, 55, 0.6) 50%,
-                    rgba(0, 104, 55, 0.2) 80%);
+                    rgba(0, 104, 55, 0) 80%);
 
             // Adjust mask to allow more of the gradient to be visible
-
+            mask-image: none; // Remove mask on mobile for better visibility
 
             &::after {
                 opacity: 0.9; // Increase the opacity of the bottom gradient
@@ -761,6 +790,130 @@
             }
         }
 
-        // Rest of your mobile styles...
+        .image-grid {
+            grid-template-columns: 1fr; // Single column for smallest screens
+            grid-auto-rows: 100px; // Fixed height for smallest screens
+
+            .image-container {
+                height: 200px; // Fixed height for all containers on mobile
+
+                &:nth-child(n) {
+                    grid-row: span 2;
+                }
+
+                // All images same height on smallest screens
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4) {
+                    grid-row: span 2;
+                }
+            }
+        }
+
+        .search-form-wrapper {
+            .hero-text {
+                margin-bottom: $spacing-md;
+
+                .hero-text-left,
+                .hero-text-right {
+                    max-width: 100%;
+
+                    h1 {
+                        font-size: 1.5rem;
+                        margin-bottom: $spacing-xs;
+                    }
+
+                    p {
+                        font-size: $font-size-sm;
+                    }
+                }
+            }
+
+            .search-form-container {
+                border-radius: $border-radius-lg;
+
+                .trip-options {
+                    padding: $spacing-md;
+
+                    .trip-type-buttons {
+                        button {
+                            flex: 0 0 calc(50% - $spacing-xs);
+                            margin-bottom: $spacing-xs;
+                            white-space: nowrap;
+
+                            .radio-circle {
+                                min-width: 16px;
+                                width: 16px;
+                                height: 16px;
+
+                                &::before {
+                                    top: 2px;
+                                    left: 2px;
+                                    width: 8px;
+                                    height: 8px;
+                                }
+                            }
+                        }
+                    }
+
+                    .trip-preferences {
+                        .dropdown-toggle {
+                            font-size: $font-size-sm;
+                            padding: $spacing-xs;
+                        }
+
+                        .dropdown-menu {
+                            min-width: 150px;
+                            right: auto;
+                            left: 0;
+                        }
+                    }
+                }
+
+                .search-inputs {
+                    padding: $spacing-md;
+                    gap: 4px;
+
+                    .origin-input,
+                    .destination-input,
+                    .date-input {
+
+                        .input-icon {
+                            margin-right: $spacing-sm;
+
+                            svg {
+                                width: 20px;
+                                height: 16px;
+                            }
+                        }
+
+                        .input-field {
+                            label {
+                                font-size: 11px;
+                                margin-bottom: 2px;
+                            }
+
+                            input,
+                            .date-picker {
+                                font-size: $font-size-sm;
+                            }
+
+                            .city-dropdown-menu {
+                                max-height: 180px;
+                                left: 0;
+                                right: 0;
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    .search-button {
+                        padding: $spacing-sm;
+                        font-size: $font-size-sm;
+                    }
+                }
+            }
+        }
     }
 }
