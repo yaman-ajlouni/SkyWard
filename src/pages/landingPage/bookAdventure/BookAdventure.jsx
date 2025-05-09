@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import './BookAdventure.scss';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 
 // Import Swiper and required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,12 +12,12 @@ import { Navigation, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import damascusMosque from '../../assets/images/book/book-umayyad.jpg';
-import aleppoCitadel from '../../assets/images/book/book-aleppo.jpg';
-import palmyraRuins from '../../assets/images/book/book-palmyra.jpg';
-import lattakiaBeach from '../../assets/images/book/book-lattakia.jpg';
-import homsKrak from '../../assets/images/book/book-hoson.webp';
-import tartusArwad from '../../assets/images/book/book-arwad.jpg';
+import damascusMosque from '../../../assets/images/book/book-umayyad.jpg';
+import aleppoCitadel from '../../../assets/images/book/book-aleppo.jpg';
+import palmyraRuins from '../../../assets/images/book/book-palmyra.jpg';
+import lattakiaBeach from '../../../assets/images/book/book-lattakia.jpg';
+import homsKrak from '../../../assets/images/book/book-hoson.webp';
+import tartusArwad from '../../../assets/images/book/book-arwad.jpg';
 
 const BookAdventure = () => {
     const { t } = useTranslation();

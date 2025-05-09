@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './TopDestinations.scss';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 
 // Import Swiper and required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,14 +12,14 @@ import { Navigation, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import istanbul from '../../assets/images/topDestinations/istanbul.jpg';
-import dubai from '../../assets/images/topDestinations/dubai.jpg';
-import beirut from '../../assets/images/topDestinations/beirut.webp';
-import cairo from '../../assets/images/topDestinations/cairo.jpg';
-import amman from '../../assets/images/topDestinations/amman.jpg';
-import athens from '../../assets/images/topDestinations/athens.jpg';
-import moscow from '../../assets/images/topDestinations/moscow.jpg';
-import doha from '../../assets/images/topDestinations/doha.webp';
+import istanbul from '../../../assets/images/topDestinations/istanbul.jpg';
+import dubai from '../../../assets/images/topDestinations/dubai.jpg';
+import beirut from '../../../assets/images/topDestinations/beirut.webp';
+import cairo from '../../../assets/images/topDestinations/cairo.jpg';
+import amman from '../../../assets/images/topDestinations/amman.jpg';
+import athens from '../../../assets/images/topDestinations/athens.jpg';
+import moscow from '../../../assets/images/topDestinations/moscow.jpg';
+import doha from '../../../assets/images/topDestinations/doha.webp';
 
 const TopDestinations = () => {
     const { t } = useTranslation();

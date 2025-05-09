@@ -1,0 +1,514 @@
+@use '../../../assets/styles/variables.scss' as *;
+
+.plan-journey-section {
+    padding: $spacing-xl; // Increased padding
+    overflow: hidden;
+    position: relative;
+
+    // Container uses the same max-width as other sections
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+        position: relative;
+        z-index: 2;
+    }
+
+    // Modified section header to align left like BookAdventure
+    .section-header {
+        margin: 0 auto $spacing-xl auto;
+        text-align: left; // Changed from center to left align
+        max-width: 100%; // Changed from 800px
+
+        .section-title {
+            font-size: 2.5rem;
+            color: $text-color;
+            margin-bottom: $spacing-md;
+            position: relative;
+            display: inline-block;
+            
+            &::after { // Added underline like BookAdventure
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background-color: $primary-color;
+            }
+        }
+
+        .header-line {
+            display: none; // Remove the centered line
+        }
+
+        .section-subtitle {
+            font-size: $font-size-md;
+            color: rgba($text-color, 0.7);
+            margin: 0;
+        }
+    }
+
+    // Card layout - adjusted to match BookAdventure
+    .journey-content {
+        position: relative;
+        perspective: 1500px;
+    }
+
+    .journey-cards {
+        display: flex;
+        gap: $spacing-xl * 1.5;
+        margin-bottom: $spacing-xl * 1.5;
+
+        @media (max-width: $breakpoint-md) {
+            flex-direction: column;
+            gap: $spacing-xl;
+        }
+    }
+
+    // 3D flip card styling - adjusted height to match BookAdventure
+    .journey-card {
+        flex: 1;
+        min-height: 420px; // Adjusted from 500px to closer match BookAdventure
+        position: relative;
+        perspective: 1500px;
+        transform-style: preserve-3d;
+
+        &:hover {
+            .card-side-front {
+                transform: rotateY(-180deg);
+            }
+
+            .card-side-back {
+                transform: rotateY(0);
+            }
+        }
+
+        // Common card sides styling
+        .card-side {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        // Front of card
+        .card-side-front {
+            background: $white;
+            transform: rotateY(0);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: $spacing-xl;
+
+            .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: rgba($white, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: $spacing-md;
+                color: $primary-color;
+                position: relative;
+                z-index: 3;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                border: 1px solid rgba($white, 0.8);
+                backdrop-filter: blur(5px);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                }
+            }
+
+            h3 {
+                font-size: 1.8rem;
+                color: $white;
+                margin-bottom: $spacing-sm;
+                position: relative;
+                z-index: 3;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .rating {
+                display: flex;
+                gap: 5px;
+                color: #FFD700;
+                position: relative;
+                z-index: 3;
+            }
+
+            .card-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+
+            .card-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0.4) 0%,
+                        rgba(0, 0, 0, 0.7) 100%);
+                z-index: 2;
+            }
+        }
+
+        // Back of card
+        .card-side-back {
+            background: $white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+
+            .card-content {
+                padding: $spacing-md; // Reduced from $spacing-xl
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+
+                h4 {
+                    font-size: 1.3rem; // Reduced from 1.5rem
+                    color: $primary-color;
+                    margin-bottom: $spacing-sm; // Reduced from $spacing-md
+                    position: relative;
+                    padding-bottom: $spacing-sm;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 30px; // Reduced from 40px
+                        height: 2px;
+                        background-color: $primary-color;
+                    }
+                }
+
+                p {
+                    color: rgba($text-color, 0.8);
+                    line-height: 1.5; // Reduced from 1.7
+                    margin-bottom: $spacing-sm; // Reduced from $spacing-md
+                    flex-grow: 0;
+                    font-size: $font-size-sm; // Added smaller font size
+                }
+
+                .feature-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 auto;
+
+                    li {
+                        position: relative;
+                        padding-left: 20px; // Reduced from 28px
+                        margin-bottom: $spacing-xs; // Reduced from $spacing-sm
+                        color: $text-color;
+                        font-size: $font-size-sm; // Added smaller font size
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 5px; // Adjusted for smaller text
+                            width: 6px; // Reduced from 8px
+                            height: 6px; // Reduced from 8px
+                            border-radius: 50%;
+                            background-color: $primary-color;
+                        }
+
+                        span {
+                            transition: color 0.3s ease;
+                        }
+
+                        &:hover span {
+                            color: $primary-color;
+                        }
+                    }
+                }
+
+                .learn-more {
+                    display: flex;
+                    align-items: center;
+                    color: $primary-color;
+                    text-decoration: none;
+                    margin-top: $spacing-sm; // Reduced from $spacing-md
+                    font-weight: $font-weight-medium;
+                    transition: color 0.3s ease;
+                    font-size: $font-size-sm; // Smaller font size
+
+                    svg {
+                        margin-left: 4px; // Reduced from 5px
+                        transition: transform 0.3s ease;
+                        width: 14px; // Smaller icon
+                        height: 14px; // Smaller icon
+                    }
+
+                    &:hover {
+                        color: darken($primary-color, 10%);
+
+                        svg {
+                            transform: translateX(4px); // Reduced from 5px
+                        }
+                    }
+                    
+                    @media (max-width: $breakpoint-sm) {
+                        font-size: $font-size-xs; // Even smaller on mobile
+                        
+                        svg {
+                            width: 12px; // Smaller on mobile
+                            height: 12px; // Smaller on mobile
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // CTA button - unchanged
+    .journey-cta {
+        display: flex;
+        justify-content: center;
+        margin-top: $spacing-xl;
+
+        .discover-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            padding: $spacing-md $spacing-xl;
+            background-color: transparent;
+            color: $primary-color;
+            text-decoration: none;
+            font-weight: $font-weight-medium;
+            font-size: $font-size-md;
+            transition: all 0.3s ease;
+            border: 2px solid $primary-color;
+            border-radius: 2px;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background-color: $primary-color;
+                transition: width 0.3s ease;
+                z-index: -1;
+            }
+
+            span {
+                margin-right: $spacing-sm;
+                position: relative;
+                z-index: 1;
+                transition: color 0.3s ease;
+            }
+
+            svg {
+                position: relative;
+                z-index: 1;
+                transition: transform 0.3s ease, color 0.3s ease;
+            }
+
+            &:hover {
+                color: $white;
+
+                &::before {
+                    width: 100%;
+                }
+
+                svg {
+                    transform: translateX(5px);
+                }
+            }
+        }
+    }
+
+    // Media queries - updated to match BookAdventure
+    @media (max-width: $breakpoint-xl) {
+        padding: $spacing-xl;
+
+        .journey-card {
+            min-height: 350px; // Match BookAdventure card size
+        }
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        padding: $spacing-lg;
+
+        .section-header {
+            margin-bottom: $spacing-lg;
+
+            .section-title {
+                font-size: 1.75rem; // Match BookAdventure
+                
+                &::after {
+                    width: 50px;
+                }
+            }
+        }
+
+        .journey-card {
+            min-height: 330px; // Reduced height for lg screens
+
+            .card-side-front {
+                padding: $spacing-lg;
+
+                .icon-wrapper {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                h3 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .card-side-back {
+                .card-content {
+                    padding: $spacing-sm; // Reduced from $spacing-lg
+                    
+                    h4 {
+                        font-size: 1.2rem; // Reduced slightly
+                        margin-bottom: $spacing-xs; // Further reduced
+                    }
+                    
+                    .feature-list li {
+                        margin-bottom: 6px; // Even smaller spacing
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+
+        .container {
+            padding: 0 $spacing-md;
+        }
+
+        .section-header {
+            .section-title {
+                font-size: 1.5rem;
+                
+                &::after {
+                    width: 50px;
+                    height: 2px;
+                }
+            }
+        }
+        .journey-cards{
+            margin-bottom: 20px;
+        }
+
+        .journey-card {
+            height: 300px; // Fixed height for md screens to match BookAdventure
+        }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        padding: $spacing-lg;
+
+        .container {
+            padding: 0 $spacing-sm;
+        }
+
+        .section-header {
+            margin-bottom: $spacing-lg;
+
+            .section-title {
+                font-size: 1.25rem;
+                
+                &::after {
+                    width: 40px;
+                    height: 2px;
+                    bottom: -8px;
+                }
+            }
+
+            .section-subtitle {
+                font-size: $font-size-sm;
+            }
+        }
+
+        .journey-cards {
+            gap: $spacing-lg;
+        }
+
+        .journey-card {
+            min-height: 250px; // Fixed height for sm screens to match BookAdventure
+
+            .card-side-front {
+                padding: $spacing-md;
+
+                .icon-wrapper {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                h3 {
+                    font-size: 1.3rem;
+                }
+            }
+
+            .card-side-back {
+                .card-content {
+                    padding: $spacing-xs; // Further reduced for smallest screens
+                    
+                    h4 {
+                        font-size: 1.1rem; // Smaller on mobile
+                        margin-bottom: $spacing-xs;
+                        padding-bottom: $spacing-xs;
+                    }
+
+                    p {
+                        font-size: $font-size-xs; // Even smaller text
+                        margin-bottom: $spacing-xs;
+                        line-height: 1.4;
+                    }
+
+                    .feature-list li {
+                        font-size: $font-size-xs; // Smallest text size
+                        padding-left: 16px; // Smaller indent
+                        margin-bottom: 5px; // Tighter spacing
+                        
+                        &::before {
+                            width: 5px; // Smaller bullet
+                            height: 5px; // Smaller bullet
+                            top: 4px; // Adjusted position
+                        }
+                    }
+                }
+            }
+        }
+
+        .journey-cta {
+            margin-top: 30px;
+            .discover-button {
+                width: 100%;
+                justify-content: center;
+                padding: $spacing-sm $spacing-md;
+                font-size: $font-size-sm;
+            }
+        }
+    }
+}

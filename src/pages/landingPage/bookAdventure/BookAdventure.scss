@@ -1,6 +1,6 @@
-@use '../../assets/styles/variables.scss' as *;
+@use '../../../assets/styles/variables.scss' as *;
 
-.top-destinations-section {
+.book-adventure-section {
     padding: $spacing-xl;
     background-color: $white;
     overflow: hidden; // Prevents horizontal overflow issues
@@ -19,15 +19,10 @@
             }
         }
 
-        .destination-card {
-            .card-info {
-                .destination-details {
-                    text-align: right;
-                }
-
-                .price {
-                    text-align: right;
-                }
+        .location {
+            svg {
+                margin-right: 0;
+                margin-left: $spacing-xs;
             }
         }
     }
@@ -89,7 +84,8 @@
                     box-shadow: 0 0 0 2px rgba($primary-color, 0.4);
                 }
 
-                &.disabled, &.swiper-button-disabled {
+                &.disabled,
+                &.swiper-button-disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
                 }
@@ -98,26 +94,27 @@
     }
 
     // Container for slider with fixed width
-    .destination-slider-container {
+    .adventure-slider-container {
         max-width: 1400px;
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
     }
 
-    // Slider container for horizontal scrolling
-    .destination-slider {
+    // Slider container using Swiper
+    .adventure-slider {
         width: 100%;
+        max-width: 1400px;
         padding: 0 $spacing-lg;
-        overflow: visible; // Allow for overflow to create the "peek" effect
-        
+        overflow: hidden; // Allow for overflow to create the "peek" effect
+
         .swiper-wrapper {
             align-items: stretch; // Ensure all slides have the same height
         }
     }
 
-    // Individual destination cards
-    .destination-card {
+    // Individual adventure cards
+    .adventure-card {
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
@@ -127,7 +124,7 @@
 
         .card-image {
             position: relative;
-            height: 280px;
+            height: 300px;
             overflow: hidden;
 
             img {
@@ -140,120 +137,165 @@
         }
 
         .card-info {
-            position: relative;
-            padding: $spacing-md;
+            padding: $spacing-lg $spacing-md;
             background-color: transparent;
-            color: $text-color;
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border-top: 1px solid $border-color;
 
-            .destination-details {
-                .city {
+            .info-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: $spacing-md;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .location {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        color: $primary-color;
+                        margin-right: $spacing-xs;
+                    }
+
+                    span {
+                        font-size: $font-size-base;
+                        color: $text-color;
+                    }
+                }
+
+                .price {
                     font-size: $font-size-md;
                     font-weight: $font-weight-bold;
-                    margin: 0 0 8px 0;
+                    color: $primary-color;
                 }
 
-                .country {
-                    font-size: $font-size-base;
-                    margin: 0 0 $spacing-sm 0;
-                    opacity: 0.9;
-                    color: gray;
+                .title {
+                    font-size: $font-size-lg;
+                    margin: 0;
+                    color: $text-color;
+                    max-width: 70%;
                 }
-            }
 
-            .price {
-                font-size: $font-size-base;
-                font-weight: $font-weight-medium;
-                margin: 0;
-                color: gray;
+                .book-button {
+                    padding: $spacing-md;
+                    background-color: $primary-color;
+                    color: $white;
+                    border: none;
+                    border-radius: $border-radius-md;
+                    font-weight: $font-weight-medium;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background-color: darken($primary-color, 5%);
+                    }
+                }
             }
         }
     }
 }
 
-// Media queries for responsiveness - Updated to match explore-syria-section
+// Media queries for responsiveness - Updated to match top-destinations-section
 @media (max-width: $breakpoint-xl) {
-    .top-destinations-section {
-        .destination-card {
+    .book-adventure-section {
+        .adventure-card {
             .card-image {
-                height: 250px;
+                height: 280px;
             }
         }
     }
 }
 
 @media (max-width: $breakpoint-lg) {
-    .top-destinations-section {
+    .book-adventure-section {
         padding: $spacing-lg;
 
         .section-header {
             margin-bottom: $spacing-lg;
-            
+
             .section-title {
                 font-size: 1.75rem;
             }
         }
 
-        .destination-slider {
+        .adventure-slider {
             padding: 0 $spacing-md;
         }
 
-        .destination-card {
+        .adventure-card {
             .card-image {
-                height: 220px;
+                height: 260px;
+            }
+
+            .card-info {
+                padding: $spacing-md;
+
+                .info-row {
+                    .title {
+                        font-size: $font-size-md;
+                    }
+                }
             }
         }
     }
 }
 
 @media (max-width: $breakpoint-md) {
-    .top-destinations-section {
+    .book-adventure-section {
         .section-header {
             padding: 0 $spacing-md;
-            
+
             .section-title {
                 font-size: 1.5rem;
-                
+
                 &::after {
                     width: 50px;
                     height: 2px;
                 }
             }
-            
+
             .navigation-arrows .nav-arrow {
                 width: 40px;
                 height: 40px;
             }
         }
 
-        .destination-slider {
+        .adventure-slider {
             padding: 0 $spacing-md;
         }
 
-        .destination-card {
+        .adventure-card {
             .card-image {
-                height: 200px;
+                height: 220px;
             }
 
             .card-info {
-                min-height: 90px;
                 padding: $spacing-sm;
 
-                .destination-details {
-                    .city {
+                .info-row {
+                    margin-bottom: $spacing-sm;
+
+                    .location {
+                        span {
+                            font-size: $font-size-sm;
+                        }
+                    }
+
+                    .price {
                         font-size: $font-size-base;
                     }
 
-                    .country {
+                    .title {
+                        font-size: $font-size-base;
+                    }
+
+                    .book-button {
+                        padding: $spacing-sm;
                         font-size: $font-size-sm;
                     }
-                }
-
-                .price {
-                    font-size: $font-size-base;
                 }
             }
         }
@@ -261,7 +303,7 @@
 }
 
 @media (max-width: $breakpoint-sm) {
-    .top-destinations-section {
+    .book-adventure-section {
         .section-header {
             flex-direction: column;
             align-items: flex-start;
@@ -276,7 +318,7 @@
 
             .navigation-arrows {
                 align-self: center;
-                
+
                 .nav-arrow {
                     width: 36px;
                     height: 36px;
@@ -284,39 +326,61 @@
             }
         }
 
-        .destination-slider {
+        .adventure-slider {
             padding: 0 $spacing-sm;
         }
 
-        .destination-card {
+        .adventure-card {
             border-radius: $border-radius-md;
 
             .card-image {
                 height: 180px;
-                
+
                 img {
                     border-radius: $border-radius-md;
                 }
             }
 
             .card-info {
-                min-height: 80px;
-                gap: $spacing-sm;
+                border-top-width: 1px;
 
-                .destination-details {
-                    .city {
+                .info-row {
+                    gap: $spacing-xs;
+                    margin-top: $spacing-xs;
+
+                    &:first-child {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .location {
+                        svg {
+                            width: 14px;
+                            height: 14px;
+                        }
+
+                        span {
+                            font-size: $font-size-xs;
+                        }
+                    }
+
+                    .price {
                         font-size: $font-size-sm;
-                        margin: 0 0 4px 0;
                     }
 
-                    .country {
+                    .title {
+                        font-size: $font-size-sm;
+                        max-width: 100%;
+                        margin-bottom: $spacing-xs;
+                    }
+
+                    .book-button {
+                        align-self: flex-end;
+                        padding: 4px 8px;
                         font-size: $font-size-xs;
-                        margin: 0 0 $spacing-xs 0;
+                        border-radius: $border-radius-sm;
                     }
-                }
-
-                .price {
-                    font-size: $font-size-xs;
                 }
             }
         }

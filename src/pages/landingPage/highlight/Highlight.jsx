@@ -1,11 +1,11 @@
 import React from 'react';
 import './Highlight.scss';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from '../../context/LanguageContext';
-import damascus from '../../assets/images/highlights/high-damascus.jpg';
-import hoson from '../../assets/images/highlights/high-hoson.jpg';
-import palmyra from '../../assets/images/highlights/high-palmyra.jpg';
-import lattakia from '../../assets/images/highlights/high-lattakia.jpg';
+import { useLanguage } from '../../../context/LanguageContext';
+import damascus from '../../../assets/images/highlights/high-damascus.jpg';
+import hoson from '../../../assets/images/highlights/high-hoson.jpg';
+import palmyra from '../../../assets/images/highlights/high-palmyra.jpg';
+import lattakia from '../../../assets/images/highlights/high-lattakia.jpg';
 
 
 const Highlight = () => {

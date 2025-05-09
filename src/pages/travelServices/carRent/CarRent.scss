@@ -1,0 +1,603 @@
+@import '../../../assets/styles/variables.scss';
+
+.car-section {
+    // Removed search-card styling since we're removing that section
+
+    .cars-container {
+        margin-bottom: $spacing-xl * 1.5;
+
+        .section-header {
+            margin-bottom: $spacing-xl;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+
+            h2 {
+                font-size: 2rem;
+                font-weight: $font-weight-bold;
+                color: $text-color;
+                margin-bottom: $spacing-md;
+                position: relative;
+                display: inline-block;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -12px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 60px;
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, $primary-color, transparent);
+                    border-radius: 2px;
+                }
+            }
+
+            p {
+                color: rgba($text-color, 0.7);
+                font-size: $font-size-md;
+                line-height: 1.6;
+                margin: 0;
+            }
+        }
+
+        // Filter tags - matching hotel section
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $spacing-sm;
+            margin-bottom: $spacing-xl;
+            justify-content: center;
+
+            .tag {
+                padding: $spacing-xs $spacing-md;
+                border: 1px solid rgba($primary-color, 0.2);
+                border-radius: 30px;
+                font-size: $font-size-sm;
+                color: $text-color;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                background-color: $white;
+                position: relative;
+                overflow: hidden;
+
+                &:hover {
+                    border-color: $primary-color;
+                    color: $primary-color;
+                    transform: translateY(-2px);
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+                }
+
+                &.active {
+                    background-color: $primary-color;
+                    color: $white;
+                    border-color: $primary-color;
+                    box-shadow: 0 3px 15px rgba($primary-color, 0.2);
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(255, 255, 255, 0.15);
+                        transform: translateX(-100%);
+                        animation: shimmer 1.5s infinite;
+                    }
+
+                    @keyframes shimmer {
+                        100% {
+                            transform: translateX(100%);
+                        }
+                    }
+                }
+            }
+        }
+
+        // No results message
+        .no-results-message {
+            text-align: center;
+            padding: $spacing-xl;
+            background-color: rgba($light-gray, 0.5);
+            border-radius: 3px;
+            margin-bottom: $spacing-xl;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            animation: fadeIn 0.5s ease-out forwards;
+
+            p {
+                color: rgba($text-color, 0.7);
+                font-size: $font-size-md;
+                margin: 0;
+            }
+        }
+
+        .cars-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: $spacing-xl;
+            transition: opacity 0.3s ease;
+
+            &.no-results {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+            }
+
+            .car-card {
+                background-color: $white;
+                border-radius: 3px;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid rgba($primary-color, 0.15);
+                animation: fadeIn 0.5s ease-out forwards;
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+                    border-color: rgba($primary-color, 0.3);
+
+                    .car-image img {
+                        transform: scale(1.05);
+                    }
+
+                    .image-overlay {
+                        opacity: 0.3;
+                    }
+
+                    .details-button {
+                        background-color: $primary-color;
+                        color: $white;
+
+                        svg {
+                            transform: translateX(3px);
+                        }
+                    }
+
+                    .car-type-badge {
+                        opacity: 1;
+                        transform: translateY(-3px);
+                    }
+                }
+
+                .car-image {
+                    height: 220px;
+                    position: relative;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.5s ease;
+                    }
+
+                    .image-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+                        opacity: 0.4;
+                        transition: opacity 0.3s ease;
+                    }
+
+                    .car-type-badge {
+                        position: absolute;
+                        left: $spacing-md;
+                        bottom: $spacing-md;
+                        background-color: rgba($primary-color, 0.9);
+                        color: $white;
+                        padding: 4px $spacing-md;
+                        border-radius: 2px;
+                        font-size: $font-size-xs;
+                        font-weight: $font-weight-medium;
+                        z-index: 3;
+                        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+                        backdrop-filter: blur(5px);
+                        letter-spacing: 0.5px;
+                        text-transform: uppercase;
+                        opacity: 0.95;
+                        transform: translateY(0);
+                        transition: all 0.3s ease;
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                    }
+                }
+
+                .card-content {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+
+                    .car-details {
+                        padding: $spacing-lg;
+
+                        h3 {
+                            font-size: $font-size-md;
+                            font-weight: $font-weight-bold;
+                            color: $text-color;
+                            margin-bottom: $spacing-md;
+                            transition: color 0.3s ease;
+                            letter-spacing: 0.3px;
+                        }
+
+                        .car-transmission {
+                            display: flex;
+                            align-items: center;
+                            font-size: $font-size-sm;
+                            color: $primary-color;
+                            margin-bottom: $spacing-md;
+                            font-weight: $font-weight-medium;
+
+                            svg {
+                                margin-right: $spacing-xs;
+                                color: $primary-color;
+                            }
+                        }
+
+                        .divider {
+                            height: 1px;
+                            background: linear-gradient(90deg, rgba($primary-color, 0.1), rgba($primary-color, 0.05), transparent);
+                            margin-bottom: $spacing-md;
+                        }
+
+                        .car-features {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: $spacing-sm;
+                            margin-bottom: $spacing-md;
+
+                            .feature {
+                                display: inline-flex;
+                                align-items: center;
+                                font-size: $font-size-xs;
+                                background-color: rgba($primary-color, 0.05);
+                                padding: 6px $spacing-sm;
+                                border-radius: 3px;
+                                color: $text-color;
+                                transition: all 0.3s ease;
+                                border: 1px solid rgba($primary-color, 0.05);
+
+                                svg {
+                                    color: $primary-color;
+                                    margin-right: 5px;
+                                }
+
+                                .feature-text {
+                                    color: rgba($text-color, 0.8);
+                                }
+
+                                &:hover {
+                                    background-color: rgba($primary-color, 0.1);
+                                    border-color: rgba($primary-color, 0.1);
+                                    transform: translateY(-2px);
+
+                                    .feature-text {
+                                        color: $primary-color;
+                                    }
+                                }
+                            }
+                        }
+
+                        .pickup-locations {
+                            p {
+                                font-size: $font-size-sm;
+                                color: $text-color;
+                                margin-bottom: $spacing-sm;
+                                font-weight: $font-weight-medium;
+                            }
+
+                            .locations-list {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: $spacing-sm;
+
+                                .location {
+                                    display: flex;
+                                    align-items: center;
+                                    font-size: $font-size-xs;
+                                    background-color: rgba($primary-color, 0.05);
+                                    color: $primary-color;
+                                    padding: 6px $spacing-sm;
+                                    border-radius: 3px;
+                                    transition: all 0.3s ease;
+                                    border: 1px solid rgba($primary-color, 0.08);
+
+                                    svg {
+                                        margin-right: 5px;
+                                    }
+
+                                    &:hover {
+                                        background-color: rgba($primary-color, 0.1);
+                                        transform: translateY(-2px);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .car-footer {
+                        padding: $spacing-md $spacing-lg;
+                        background-color: rgba($light-gray, 0.5);
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        margin-top: auto;
+                        border-top: 1px solid rgba(0, 0, 0, 0.04);
+
+                        .details-button {
+                            display: inline-flex;
+                            align-items: center;
+                            padding: $spacing-xs $spacing-md;
+                            background-color: transparent;
+                            color: $primary-color;
+                            border: 1px solid $primary-color;
+                            border-radius: 2px;
+                            font-weight: $font-weight-medium;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            font-size: $font-size-xs;
+
+                            span {
+                                margin-right: $spacing-xs;
+                                letter-spacing: 0.3px;
+                            }
+
+                            svg {
+                                transition: transform 0.3s ease;
+                            }
+
+                            &:hover {
+                                background-color: rgba($primary-color, 0.05);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .rental-benefits {
+        background-color: $white;
+        border-radius: 3px;
+        padding: $spacing-xl;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba($primary-color, 0.15);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba($primary-color, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba($primary-color, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        h2 {
+            font-size: $font-size-xl;
+            font-weight: $font-weight-bold;
+            color: $text-color;
+            margin-bottom: $spacing-xl;
+            text-align: center;
+            position: relative;
+            letter-spacing: 0.5px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, $primary-color, transparent);
+                border-radius: 2px;
+            }
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: $spacing-xl;
+            position: relative;
+            z-index: 2;
+
+            .benefit-card {
+                padding: $spacing-md;
+                transition: all 0.3s ease;
+                background-color: rgba($white, 0.7);
+                border-radius: 3px;
+                border: 1px solid rgba($primary-color, 0.1);
+                box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+                text-align: center;
+
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                    border-color: rgba($primary-color, 0.2);
+
+                    .icon {
+                        background-color: $primary-color;
+                        color: $white;
+                        box-shadow: 0 4px 10px rgba($primary-color, 0.25);
+                        transform: translateY(-3px);
+                    }
+                }
+
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                    background-color: rgba($primary-color, 0.15);
+                    color: $primary-color;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    margin: 0 auto $spacing-md;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+                    border: 1px solid rgba($primary-color, 0.15);
+                }
+
+                h3 {
+                    font-size: $font-size-md;
+                    font-weight: $font-weight-bold;
+                    color: $text-color;
+                    margin-bottom: $spacing-sm;
+                    letter-spacing: 0.3px;
+                }
+
+                p {
+                    font-size: $font-size-sm;
+                    color: rgba($text-color, 0.7);
+                    line-height: 1.6;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1500px) {
+        .rental-benefits{
+            padding: 40px 20px;
+
+            .benefits-container{
+                gap: 20px;
+            }
+        }
+    }
+
+    // Responsive styles
+    @media (max-width: $breakpoint-lg) {
+        .cars-container {
+            .cars-list {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+            }
+
+            .section-header {
+                h2 {
+                    font-size: 1.8rem;
+                }
+
+                p {
+                    font-size: $font-size-base;
+                    margin-top: 10px;
+                }
+            }
+
+            .rental-benefits {
+                padding: 20px;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        .cars-container {
+            margin-bottom: 40px;
+            .cars-list {
+                grid-template-columns: 1fr !important;
+                gap: $spacing-lg !important;
+            }
+
+            .benefits-container {
+                grid-template-columns: 1fr 1fr !important;
+                gap: $spacing-lg !important;
+            }
+
+            .car-details {
+                padding: $spacing-md !important;
+            }
+
+            .section-header {
+                h2 {
+                    font-size: 1.6rem;
+                }
+
+                p {
+                    font-size: $font-size-sm;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        .cars-container {
+            .benefits-container {
+                grid-template-columns: 1fr !important;
+                gap: $spacing-md !important;
+            }
+
+            .car-footer {
+                padding: $spacing-sm !important;
+                flex-direction: column;
+                gap: $spacing-sm;
+                align-items: center !important;
+
+                .details-button {
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+
+                h2 {
+                    font-size: 1.4rem;
+                }
+            }
+
+            .filter-tags {
+                margin-bottom: $spacing-lg;
+
+                .tag {
+                    font-size: $font-size-xs;
+                    padding: 4px $spacing-sm;
+                }
+            }
+
+            .benefit-card {
+                .icon {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                h3 {
+                    font-size: $font-size-base;
+                }
+            }
+        }
+    }
+}

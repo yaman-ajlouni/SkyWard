@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import './ExploreSyria.scss';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 
 // Import Swiper and required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,15 +13,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // Import sample image (replace with real images)
-import sampleImage from '../../assets/images/damascus.jpg';
-import golden from '../../assets/images/explore/exp-golden.jpg';
-import damascus from '../../assets/images/explore/exp-damascus.webp';
-import aleppo from '../../assets/images/explore/exp-aleppo.jpg';
-import palmyra from '../../assets/images/explore/exp-palmyra.jpg';
-import arwad from '../../assets/images/explore/exp-arwad.jpg';
-import hama from '../../assets/images/explore/exp-hama.jpg';
-import busra from '../../assets/images/explore/exp-busra.webp';
-import hoson from '../../assets/images/explore/exp-hoson.jpg';
+import golden from '../../../assets/images/explore/exp-golden.jpg';
+import damascus from '../../../assets/images/explore/exp-damascus.webp';
+import aleppo from '../../../assets/images/explore/exp-aleppo.jpg';
+import palmyra from '../../../assets/images/explore/exp-palmyra.jpg';
+import arwad from '../../../assets/images/explore/exp-arwad.jpg';
+import hama from '../../../assets/images/explore/exp-hama.jpg';
+import busra from '../../../assets/images/explore/exp-busra.webp';
+import hoson from '../../../assets/images/explore/exp-hoson.jpg';
 
 const ExploreSyria = () => {
     const { t } = useTranslation();
@@ -71,7 +70,7 @@ const ExploreSyria = () => {
         if (location.city === "Hama" || location.title.includes("Water Wheels")) return hama;
 
         // Default fallback
-        return sampleImage;
+        return 'error';
     };
 
     // Add images to locations using the mapping

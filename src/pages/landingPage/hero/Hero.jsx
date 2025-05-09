@@ -1,27 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Hero.scss';
 import { Calendar, Search, ChevronDown, Users, ArrowRightLeft } from 'lucide-react';
-import hero1 from '../../assets/images/hero/hero1.webp'
-import hero2 from '../../assets/images/hero/hero2.jpg'
-import hero3 from '../../assets/images/hero/hero3.jpg'
-import hero4 from '../../assets/images/hero/hero4.jpg'
-import hero5 from '../../assets/images/hero/hero5.jpg'
-import hero6 from '../../assets/images/hero/hero6.jpg'
-import hero7 from '../../assets/images/hero/hero7.jpg'
-import hero8 from '../../assets/images/hero/hero8.jpg'
-import hero9 from '../../assets/images/hero/hero9.jpg'
-import hero10 from '../../assets/images/hero/hero10.jpg'
-import hero11 from '../../assets/images/hero/hero11.webp'
-import hero12 from '../../assets/images/hero/hero12.jpg'
-import hero13 from '../../assets/images/hero/hero13.jpg'
-import hero14 from '../../assets/images/hero/hero14.webp'
-import hero15 from '../../assets/images/hero/hero15.webp'
-import hero16 from '../../assets/images/hero/hero16.jpg'
+import hero1 from '../../../assets/images/hero/hero1.webp'
+import hero2 from '../../../assets/images/hero/hero2.jpg'
+import hero3 from '../../../assets/images/hero/hero3.jpg'
+import hero4 from '../../../assets/images/hero/hero4.jpg'
+import hero5 from '../../../assets/images/hero/hero5.jpg'
+import hero6 from '../../../assets/images/hero/hero6.jpg'
+import hero7 from '../../../assets/images/hero/hero7.jpg'
+import hero8 from '../../../assets/images/hero/hero8.jpg'
+import hero9 from '../../../assets/images/hero/hero9.jpg'
+import hero10 from '../../../assets/images/hero/hero10.jpg'
+import hero11 from '../../../assets/images/hero/hero11.webp'
+import hero12 from '../../../assets/images/hero/hero12.jpg'
+import hero13 from '../../../assets/images/hero/hero13.jpg'
+import hero14 from '../../../assets/images/hero/hero14.webp'
+import hero15 from '../../../assets/images/hero/hero15.webp'
+import hero16 from '../../../assets/images/hero/hero16.jpg'
 import { FaPlaneDeparture, FaPlaneArrival } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useTranslation } from "react-i18next";
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 
 const images = Array.from({ length: 18 }, (_, index) => {
   const heroes = [hero1, hero2, hero3, hero4, hero5, hero6, hero7, hero8, hero9, hero10, hero11, hero12, hero13, hero14, hero15, hero16];

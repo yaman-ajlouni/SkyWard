@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.scss'
-import Navbar from './components/navbar/Navbar'
-import Hero from './pages/hero/Hero'
-import ExploreSyria from './pages/exploreSyria/ExploreSyria'
-import TopDestinations from './pages/topDestinations/TopDestinations'
-import BookAdventure from './pages/bookAdventure/BookAdventure'
-import Highlight from './pages/highlight/Highlight'
-import Newsletter from './pages/newsletter/Newsletter'
-import Footer from './components/footer/Footer'
-import { LanguageProvider } from './context/LanguageContext'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.scss';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import { LanguageProvider } from './context/LanguageContext';
+import TravelServices from './pages/travelServices/TravelServices'; // Import the new page component
+import { LandingPage } from './pages/landingPage/LandingPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <LanguageProvider>
-      <>
+      <BrowserRouter>
         <Navbar />
-        <Hero />
-        <ExploreSyria />
-        <TopDestinations />
-        <BookAdventure />
-        <Highlight />
-        <Newsletter />
-        <Footer />
-      </>
-    </LanguageProvider>
+        <Routes>
+          {/* Home page route */}
+          <Route path="/" element={
+            <>
+              <LandingPage />
+            </>
+          } />
 
-  )
+          {/* Travel Services page route */}
+          <Route path="/travel-services" element={<TravelServices />} />
+
+          {/* You can add more routes here as needed */}
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </LanguageProvider>
+  );
 }
 
-export default App
+export default App;

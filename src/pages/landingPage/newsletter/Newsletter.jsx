@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Newsletter.scss';
 import { useTranslation } from 'react-i18next';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../../context/LanguageContext';
 
 const Newsletter = () => {
     const { t } = useTranslation();
