@@ -83,6 +83,12 @@ const TravelServices = () => {
             </div>
 
             <div className="container main-content">
+
+                <div className="services-content">
+                    {activeTab === 'hotels' && <HotelReservation />}
+                    {activeTab === 'cars' && <CarRent />}
+                </div>
+
                 <div className="services-intro">
                     <div className="intro-visuals">
                         <div className="visual-icons">
@@ -111,10 +117,6 @@ const TravelServices = () => {
                     </div>
                 </div>
 
-                <div className="services-content">
-                    {activeTab === 'hotels' && <HotelReservation />}
-                    {activeTab === 'cars' && <CarRent />}
-                </div>
 
                 <div className="back-home-section">
                     <Link to="/" className="back-home-button">

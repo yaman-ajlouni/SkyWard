@@ -27,17 +27,8 @@ const CarRent = () => {
             availableAt: ['Airport', 'Downtown', 'City Center'],
             categories: ['Economy']
         },
-        // {
-        //     id: 3,
-        //     name: 'Executive Fleet',
-        //     image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800',
-        //     type: 'Premium',
-        //     specialties: ['Executive sedans', 'Corporate packages', 'Airport transfers'],
-        //     availableAt: ['Airport', 'City Center'],
-        //     categories: ['Premium']
-        // },
         {
-            id: 4,
+            id: 3,
             name: 'Adventure Wheels',
             image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800',
             type: 'SUV',
@@ -177,63 +168,6 @@ const CarRent = () => {
                 )}
             </div>
 
-            <div className="rental-benefits">
-                <h2>The Premium Rental Experience</h2>
-                <div className="benefits-container">
-                    <div className="benefit-card">
-                        <div className="icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17 14V17C17 18.1046 16.1046 19 15 19H9C7.89543 19 7 18.1046 7 17V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12 15V5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9 8L12 5L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <h3>Multiple Partners</h3>
-                        <p>Access to a network of premium rental companies at competitive rates.</p>
-                    </div>
-
-                    <div className="benefit-card">
-                        <div className="icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12 18V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M4.93 4.93L7.76 7.76" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M16.24 16.24L19.07 19.07" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M2 12H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M18 12H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M4.93 19.07L7.76 16.24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M16.24 7.76L19.07 4.93" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <h3>Quality Assurance</h3>
-                        <p>All partners are vetted to ensure high service standards and vehicle quality.</p>
-                    </div>
-
-                    <div className="benefit-card">
-                        <div className="icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9 12H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12 9L12 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M8 2L16 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <h3>Simplified Booking</h3>
-                        <p>One platform to compare and book from multiple rental providers with ease.</p>
-                    </div>
-
-                    <div className="benefit-card">
-                        <div className="icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <h3>24/7 Support</h3>
-                        <p>Round-the-clock assistance for all bookings regardless of which partner you choose.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };

@@ -26,8 +26,8 @@ const HotelReservation = () => {
         {
             id: 2,
             name: 'Beit Al-Wali Heritage Hotel',
-            image: 
-            beitAlwali,
+            image:
+                beitAlwali,
             rating: 4.6,
             reviews: 156,
             location: 'Old Aleppo',
@@ -185,56 +185,7 @@ const HotelReservation = () => {
                 )}
             </div>
 
-            <div className="why-book-section">
-                <h2>The Premium Travel Experience</h2>
-                <div className="benefits-grid">
-                    <div className="benefit-item">
-                        <div className="benefit-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <div className="benefit-content">
-                            <h3>Curated Selection</h3>
-                            <p>Every property is personally reviewed and selected for exceptional quality and authenticity.</p>
-                        </div>
-                    </div>
-                    <div className="benefit-item">
-                        <div className="benefit-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <div className="benefit-content">
-                            <h3>Cultural Heritage</h3>
-                            <p>Access to historical properties and locations with deep cultural significance and stories.</p>
-                        </div>
-                    </div>
-                    <div className="benefit-item">
-                        <div className="benefit-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <div className="benefit-content">
-                            <h3>Flexible Arrangements</h3>
-                            <p>Personalized booking options with complimentary modifications and cancellations.</p>
-                        </div>
-                    </div>
-                    <div className="benefit-item">
-                        <div className="benefit-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <div className="benefit-content">
-                            <h3>Concierge Service</h3>
-                            <p>24/7 dedicated concierge assistance in multiple languages throughout your journey.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div >
     );
 };
 
