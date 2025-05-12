@@ -1,0 +1,22 @@
+{
+    "backToHome": "Back to Home",
+    "returnToHomepage": "Return to Homepage",
+    "pageTitle": {
+        "syria": "Premium Travel Services in Syria",
+        "turkey": "Premium Travel Services in Turkey",
+        "lebanon": "Premium Travel Services in Lebanon"
+    },
+    "pageSubtitle": {
+        "syria": "Elevate your journey with sophisticated accommodations and transportation",
+        "turkey": "Elevate your Turkish journey with sophisticated accommodations and transportation",
+        "lebanon": "Enhance your Lebanese experience with luxury accommodations and premium transportation"
+    },
+    "tabs": {
+        "hotels": "Hotels",
+        "cars": "Vehicle Rentals"
+    },
+    "intro": {
+        "hotels": "Discover premium accommodations in {{country}} tailored to your preferences. From luxurious city center hotels to charming boutique properties, find your perfect stay.",
+        "cars": "Select from our curated collection of premium vehicles in {{country}}. Whether you seek elegance, performance, or comfort, our fleet offers the perfect driving experience."
+    }
+}

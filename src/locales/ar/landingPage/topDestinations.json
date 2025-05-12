@@ -1,0 +1,161 @@
+{
+    "topDestinations": {
+      "title": "أفضل الوجهات من سوريا",
+      "turkeyTitle": "أفضل الوجهات من تركيا",
+      "lebanonTitle": "أفضل الوجهات من لبنان",
+      "roundTripFrom": "رحلة ذهاب وإياب من $",
+      
+      "destinations": [
+        {
+          "id": 1,
+          "city": "إسطنبول",
+          "country": "تركيا",
+          "price": 400
+        },
+        {
+          "id": 2,
+          "city": "دبي",
+          "country": "الإمارات",
+          "price": 550
+        },
+        {
+          "id": 3,
+          "city": "بيروت",
+          "country": "لبنان",
+          "price": 250
+        },
+        {
+          "id": 4,
+          "city": "القاهرة",
+          "country": "مصر",
+          "price": 350
+        },
+        {
+          "id": 5,
+          "city": "عمان",
+          "country": "الأردن",
+          "price": 270
+        },
+        {
+          "id": 6,
+          "city": "أثينا",
+          "country": "اليونان",
+          "price": 650
+        },
+        {
+          "id": 7,
+          "city": "موسكو",
+          "country": "روسيا",
+          "price": 780
+        },
+        {
+          "id": 8,
+          "city": "الدوحة",
+          "country": "قطر",
+          "price": 490
+        }
+      ],
+      
+      "turkeyDestinations": [
+        {
+          "id": 1,
+          "city": "دمشق",
+          "country": "سوريا",
+          "price": 350
+        },
+        {
+          "id": 2,
+          "city": "دبي",
+          "country": "الإمارات",
+          "price": 500
+        },
+        {
+          "id": 3,
+          "city": "القاهرة",
+          "country": "مصر",
+          "price": 450
+        },
+        {
+          "id": 4,
+          "city": "بيروت",
+          "country": "لبنان",
+          "price": 300
+        },
+        {
+          "id": 5,
+          "city": "أثينا",
+          "country": "اليونان",
+          "price": 400
+        },
+        {
+          "id": 6,
+          "city": "موسكو",
+          "country": "روسيا",
+          "price": 600
+        },
+        {
+          "id": 7,
+          "city": "الدوحة",
+          "country": "قطر",
+          "price": 550
+        },
+        {
+          "id": 8,
+          "city": "عمان",
+          "country": "الأردن",
+          "price": 320
+        }
+      ],
+      
+      "lebanonDestinations": [
+        {
+          "id": 1,
+          "city": "دمشق",
+          "country": "سوريا",
+          "price": 250
+        },
+        {
+          "id": 2,
+          "city": "إسطنبول",
+          "country": "تركيا",
+          "price": 350
+        },
+        {
+          "id": 3,
+          "city": "القاهرة",
+          "country": "مصر",
+          "price": 400
+        },
+        {
+          "id": 4,
+          "city": "دبي",
+          "country": "الإمارات",
+          "price": 550
+        },
+        {
+          "id": 5,
+          "city": "عمان",
+          "country": "الأردن",
+          "price": 200
+        },
+        {
+          "id": 6,
+          "city": "أثينا",
+          "country": "اليونان",
+          "price": 450
+        },
+        {
+          "id": 7,
+          "city": "موسكو",
+          "country": "روسيا",
+          "price": 650
+        },
+        {
+          "id": 8,
+          "city": "الدوحة",
+          "country": "قطر",
+          "price": 500
+        }
+      ]
+    }
+  }

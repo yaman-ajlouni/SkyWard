@@ -1,0 +1,23 @@
+{
+    "planJourney": {
+        "title": "Our Partners",
+        "subtitle": "Elevate your travel experience with our exclusive partner services",
+        "viewAll": "View our partners",
+        "accommodation": {
+            "title": "Accommodations",
+            "features": [
+                "24/7 Priority Booking",
+                "Member-Exclusive Rates"
+            ],
+            "cta": "Find Hotels"
+        },
+        "carRental": {
+            "title": "Car Rentals",
+            "features": [
+                "Seamless Airport Pickup",
+                "Chauffeur-Driven Fleet"
+            ],
+            "cta": "Find Car Rentals"
+        }
+    }
+}

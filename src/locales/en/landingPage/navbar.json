@@ -6,6 +6,11 @@
         "events": "Events",
         "support": "Support",
         "contact": "Contact",
-        "login": "Log in"
+        "login": "Log in",
+        "locations": {
+            "syria": "Syria",
+            "turkey": "Turkey",
+            "lebanon": "Lebanon"
+        }
     }
 }

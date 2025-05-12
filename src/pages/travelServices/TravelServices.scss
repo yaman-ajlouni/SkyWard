@@ -5,6 +5,67 @@
     background-color: #f8f9fa;
     position: relative;
 
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .header-top {
+            .back-button {
+                flex-direction: row-reverse;
+                
+                span {
+                    margin-right: $spacing-xs;
+                    margin-left: 0;
+                }
+
+                &:hover {
+                    transform: translateX(3px);
+                }
+            }
+        }
+
+        .header-content {
+            h1 {
+                &::after {
+                    right: auto;
+                    transform: translateX(50%);
+                }
+            }
+        }
+
+        .tab-button {
+            .tab-icon {
+                margin-left: $spacing-xs;
+                margin-right: 0;
+            }
+        }
+
+        .services-intro {
+            &::before {
+                right: 0;
+                left: auto;
+            }
+
+            .intro-visuals {
+                margin-left: $spacing-xl;
+                margin-right: 0;
+            }
+        }
+
+        .back-home-button {
+            flex-direction: row-reverse;
+
+            span {
+                margin-right: $spacing-xs;
+                margin-left: 0;
+            }
+
+            &:hover {
+                transform: translateX(3px);
+            }
+        }
+    }
+
     .container {
         max-width: 1400px;
         margin: 0 auto;
@@ -20,7 +81,6 @@
         padding: 40px 0 0;
         position: relative;
         top: 0;
-        z-index: 100;
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
         
         &.hidden {
@@ -379,6 +439,12 @@
                 margin-right: 0;
                 margin-bottom: $spacing-md;
             }
+            
+            .rtl & {
+                .intro-visuals {
+                    margin-left: 0;
+                }
+            }
         }
     }
 
@@ -461,6 +527,11 @@
                 
                 .tab-icon {
                     margin-right: 4px;
+                    
+                    .rtl & {
+                        margin-left: 4px;
+                        margin-right: 0;
+                    }
                 }
             }
         }

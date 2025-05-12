@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ChevronLeft, Hotel, Car, ArrowLeft, Calendar, MapPin } from 'lucide-react';
 import './TravelServices.scss';
 import HotelReservation from './hotelReservation/HotelReservation';
 import CarRent from './carRent/CarRent';
+import { useLocation } from '../../context/LocationContext';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../context/LanguageContext';
 
 const TravelServices = () => {
+    const { location } = useLocation(); // Get the selected location from context
     const [activeTab, setActiveTab] = useState('hotels');
     const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+    const { t } = useTranslation();
+    const { dir } = useLanguage();
 
     useEffect(() => {
         // Scroll to top when component mounts
@@ -18,8 +24,7 @@ const TravelServices = () => {
         if (hash === 'hotels' || hash === 'cars') {
             setActiveTab(hash);
         }
-
-    },);
+    }, []);
 
     // Handle hash change while component is mounted
     useEffect(() => {
@@ -36,21 +41,38 @@ const TravelServices = () => {
         };
     }, []);
 
+    // Get country name in correct format
+    const getCountryName = () => {
+        switch (location) {
+            case 'turkey':
+                return t('Turkey');
+            case 'lebanon':
+                return t('Lebanon');
+            case 'syria':
+            default:
+                return t('Syria');
+        }
+    };
+
     return (
-        <div className="travel-services-page">
+        <div className={`travel-services-page ${dir === 'rtl' ? 'rtl' : ''}`}>
             <div className={`page-header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
                 <div className="header-background"></div>
                 <div className="container">
                     <div className="header-top">
-                        <Link to="/" className="back-button">
-                            <ArrowLeft size={18} strokeWidth={2} />
-                            <span>Back to Home</span>
-                        </Link>
+                        <NavLink to="/" className="back-button">
+                            {dir === 'ltr' ? (
+                                <ArrowLeft size={18} strokeWidth={2} />
+                            ) : (
+                                <ChevronLeft size={18} strokeWidth={2} />
+                            )}
+                            <span>{t('backToHome')}</span>
+                        </NavLink>
                     </div>
 
                     <div className="header-content">
-                        <h1>Premium Travel Services</h1>
-                        <p>Elevate your journey with sophisticated accommodations and transportation</p>
+                        <h1>{t(`pageTitle.${location}`)}</h1>
+                        <p>{t(`pageSubtitle.${location}`)}</p>
                     </div>
 
                     <div className="service-tabs">
@@ -64,7 +86,7 @@ const TravelServices = () => {
                             <span className="tab-icon">
                                 <Hotel size={18} strokeWidth={1.5} />
                             </span>
-                            <span className="tab-text">Hotels</span>
+                            <span className="tab-text">{t('tabs.hotels')}</span>
                         </button>
                         <button
                             className={`tab-button ${activeTab === 'cars' ? 'active' : ''}`}
@@ -76,14 +98,13 @@ const TravelServices = () => {
                             <span className="tab-icon">
                                 <Car size={18} strokeWidth={1.5} />
                             </span>
-                            <span className="tab-text">Vehicle Rentals</span>
+                            <span className="tab-text">{t('tabs.cars')}</span>
                         </button>
                     </div>
                 </div>
             </div>
 
             <div className="container main-content">
-
                 <div className="services-content">
                     {activeTab === 'hotels' && <HotelReservation />}
                     {activeTab === 'cars' && <CarRent />}
@@ -109,20 +130,21 @@ const TravelServices = () => {
                         <div className="intro-divider"></div>
                     </div>
                     <div className="intro-text">
-                        {activeTab === 'hotels' ? (
-                            <p>Discover premium accommodations tailored to your preferences. From luxurious city center hotels to charming boutique properties, find your perfect stay.</p>
-                        ) : (
-                            <p>Select from our curated collection of premium vehicles. Whether you seek elegance, performance, or comfort, our fleet offers the perfect driving experience.</p>
-                        )}
+                        <p>
+                            {t(`intro.${activeTab}`, { country: getCountryName() })}
+                        </p>
                     </div>
                 </div>
 
-
                 <div className="back-home-section">
-                    <Link to="/" className="back-home-button">
-                        <ArrowLeft size={18} strokeWidth={2} />
-                        <span>Return to Homepage</span>
-                    </Link>
+                    <NavLink to="/" className="back-home-button">
+                        {dir === 'ltr' ? (
+                            <ArrowLeft size={18} strokeWidth={2} />
+                        ) : (
+                            <ChevronLeft size={18} strokeWidth={2} />
+                        )}
+                        <span>{t('returnToHomepage')}</span>
+                    </NavLink>
                 </div>
             </div>
         </div>

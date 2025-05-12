@@ -1,0 +1,161 @@
+{
+    "topDestinations": {
+      "title": "Top Destinations From Syria",
+      "turkeyTitle": "Top Destinations From Turkey",
+      "lebanonTitle": "Top Destinations From Lebanon",
+      "roundTripFrom": "Round trip from $",
+      
+      "destinations": [
+        {
+          "id": 1,
+          "city": "Istanbul",
+          "country": "Turkey",
+          "price": 400
+        },
+        {
+          "id": 2,
+          "city": "Dubai",
+          "country": "UAE",
+          "price": 550
+        },
+        {
+          "id": 3,
+          "city": "Beirut",
+          "country": "Lebanon",
+          "price": 250
+        },
+        {
+          "id": 4,
+          "city": "Cairo",
+          "country": "Egypt",
+          "price": 350
+        },
+        {
+          "id": 5,
+          "city": "Amman",
+          "country": "Jordan",
+          "price": 270
+        },
+        {
+          "id": 6,
+          "city": "Athens",
+          "country": "Greece",
+          "price": 650
+        },
+        {
+          "id": 7,
+          "city": "Moscow",
+          "country": "Russia",
+          "price": 780
+        },
+        {
+          "id": 8,
+          "city": "Doha",
+          "country": "Qatar",
+          "price": 490
+        }
+      ],
+      
+      "turkeyDestinations": [
+        {
+          "id": 1,
+          "city": "Damascus",
+          "country": "Syria",
+          "price": 350
+        },
+        {
+          "id": 2,
+          "city": "Dubai",
+          "country": "UAE",
+          "price": 500
+        },
+        {
+          "id": 3,
+          "city": "Cairo",
+          "country": "Egypt",
+          "price": 450
+        },
+        {
+          "id": 4,
+          "city": "Beirut",
+          "country": "Lebanon",
+          "price": 300
+        },
+        {
+          "id": 5,
+          "city": "Athens",
+          "country": "Greece",
+          "price": 400
+        },
+        {
+          "id": 6,
+          "city": "Moscow",
+          "country": "Russia",
+          "price": 600
+        },
+        {
+          "id": 7,
+          "city": "Doha",
+          "country": "Qatar",
+          "price": 550
+        },
+        {
+          "id": 8,
+          "city": "Amman",
+          "country": "Jordan",
+          "price": 320
+        }
+      ],
+      
+      "lebanonDestinations": [
+        {
+          "id": 1,
+          "city": "Damascus",
+          "country": "Syria",
+          "price": 250
+        },
+        {
+          "id": 2,
+          "city": "Istanbul",
+          "country": "Turkey",
+          "price": 350
+        },
+        {
+          "id": 3,
+          "city": "Cairo",
+          "country": "Egypt",
+          "price": 400
+        },
+        {
+          "id": 4,
+          "city": "Dubai",
+          "country": "UAE",
+          "price": 550
+        },
+        {
+          "id": 5,
+          "city": "Amman",
+          "country": "Jordan",
+          "price": 200
+        },
+        {
+          "id": 6,
+          "city": "Athens",
+          "country": "Greece",
+          "price": 450
+        },
+        {
+          "id": 7,
+          "city": "Moscow",
+          "country": "Russia",
+          "price": 650
+        },
+        {
+          "id": 8,
+          "city": "Doha",
+          "country": "Qatar",
+          "price": 500
+        }
+      ]
+    }
+  }

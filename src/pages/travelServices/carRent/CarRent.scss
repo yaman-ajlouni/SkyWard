@@ -1,6 +1,66 @@
 @import '../../../assets/styles/variables.scss';
 
 .car-section {
+    // RTL Styles
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .car-transmission {
+            svg {
+                margin-left: $spacing-xs;
+                margin-right: 0;
+            }
+        }
+
+        .car-features {
+            .feature {
+                svg {
+                    margin-left: 5px;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .pickup-locations {
+            .locations-list {
+                .location {
+                    svg {
+                        margin-left: 5px;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+        .car-footer {
+            .details-button {
+                flex-direction: row-reverse;
+
+                span {
+                    margin-left: $spacing-xs;
+                    margin-right: 0;
+                }
+
+                &:hover {
+                    svg {
+                        transform: translateX(-3px);
+                    }
+                }
+            }
+        }
+
+        .section-header {
+            h2 {
+                &::after {
+                    right: auto;
+                    left: auto;
+                    transform: translateX(50%);
+                }
+            }
+        }
+    }
+
     // Removed search-card styling since we're removing that section
 
     .cars-container {
@@ -39,6 +99,7 @@
                 font-size: $font-size-md;
                 line-height: 1.6;
                 margin: 0;
+                margin-top: $spacing-md;
             }
         }
 
@@ -168,6 +229,12 @@
                         svg {
                             transform: translateX(3px);
                         }
+                        
+                        .rtl & {
+                            svg {
+                                transform: translateX(-3px);
+                            }
+                        }
                     }
 
                     .car-type-badge {
@@ -218,6 +285,11 @@
                         transform: translateY(0);
                         transition: all 0.3s ease;
                         border: 1px solid rgba(255, 255, 255, 0.3);
+                        
+                        .rtl & {
+                            left: auto;
+                            right: $spacing-md;
+                        }
                     }
                 }
 
@@ -256,6 +328,10 @@
                             height: 1px;
                             background: linear-gradient(90deg, rgba($primary-color, 0.1), rgba($primary-color, 0.05), transparent);
                             margin-bottom: $spacing-md;
+                            
+                            .rtl & {
+                                background: linear-gradient(90deg, transparent, rgba($primary-color, 0.05), rgba($primary-color, 0.1));
+                            }
                         }
 
                         .car-features {
@@ -341,6 +417,10 @@
                         align-items: center;
                         margin-top: auto;
                         border-top: 1px solid rgba(0, 0, 0, 0.04);
+                        
+                        .rtl & {
+                            justify-content: flex-start;
+                        }
 
                         .details-button {
                             display: inline-flex;
@@ -439,6 +519,15 @@
                 .details-button {
                     width: 100%;
                     justify-content: center;
+                    
+                    .rtl & {
+                        flex-direction: row-reverse;
+                        
+                        span {
+                            margin-right: 0;
+                            margin-left: $spacing-xs;
+                        }
+                    }
                 }
             }
 
@@ -467,6 +556,34 @@
 
                 h3 {
                     font-size: $font-size-base;
+                }
+            }
+            
+            .car-features {
+                .feature {
+                    svg {
+                        margin-right: 3px;
+                        
+                        .rtl & {
+                            margin-left: 3px;
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+            
+            .pickup-locations {
+                .locations-list {
+                    .location {
+                        svg {
+                            margin-right: 3px;
+                            
+                            .rtl & {
+                                margin-left: 3px;
+                                margin-right: 0;
+                            }
+                        }
+                    }
                 }
             }
         }

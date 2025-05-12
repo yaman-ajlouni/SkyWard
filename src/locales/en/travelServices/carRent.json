@@ -1,0 +1,64 @@
+{
+    "carRent": {
+        "sectionTitle": {
+            "syria": "Premium Rental Companies in Syria",
+            "turkey": "Premium Rental Companies in Turkey",
+            "lebanon": "Premium Rental Companies in Lebanon"
+        },
+        "sectionDescription": {
+            "syria": "Choose from our trusted network of car rental partners to enhance your journey with quality service",
+            "turkey": "Choose from our trusted network of car rental partners across Turkey to enhance your journey with quality service",
+            "lebanon": "Select from our carefully curated car rental partners in Lebanon offering premium vehicles and exceptional service"
+        },
+        "filterCategories": {
+            "all": "All Companies",
+            "premium": "Premium",
+            "economy": "Economy",
+            "suv": "SUV Specialists",
+            "convertible": "Convertibles",
+            "coastal": "Coastal",
+            "mountain": "Mountain"
+        },
+        "noResults": "No rental companies match the selected filter. Please try another category.",
+        "rentalProvider": "Rental Provider",
+        "availableLocations": "Available locations:",
+        "viewCompanyDetails": "View Company Details",
+        "countries": {
+            "syria": "Syria",
+            "turkey": "Turkey",
+            "lebanon": "Lebanon"
+        },
+        "specialties": {
+            "luxuryVehicles": "Luxury vehicles",
+            "chauffeurService": "Chauffeur service",
+            "corporateAccounts": "Corporate accounts",
+            "economyCars": "Economy cars",
+            "longTermRental": "Long-term rental",
+            "studentDiscounts": "Student discounts",
+            "suvOffroad": "SUVs & off-road",
+            "campingEquipment": "Camping equipment",
+            "adventureTours": "Adventure tours",
+            "luxurySedans": "Luxury sedans",
+            "airportTransfers": "Airport transfers",
+            "executiveService": "Executive service",
+            "affordableVehicles": "Affordable vehicles",
+            "touristPackages": "Tourist packages",
+            "cityExploration": "City exploration",
+            "4x4vehicles": "4x4 vehicles",
+            "guidedTours": "Guided tours",
+            "campingGear": "Camping gear",
+            "convertibleCars": "Convertible cars",
+            "coastalDrives": "Coastal drives",
+            "weekendRentals": "Weekend rentals",
+            "highEndVehicles": "High-end vehicles",
+            "vipService": "VIP service",
+            "weddingCars": "Wedding cars",
+            "budgetFriendly": "Budget-friendly",
+            "studentRates": "Student rates",
+            "dailyRentals": "Daily rentals",
+            "allTerrainVehicles": "All-terrain vehicles",
+            "mountainTours": "Mountain tours",
+            "snowReady": "Snow-ready"
+        }
+    }
+}

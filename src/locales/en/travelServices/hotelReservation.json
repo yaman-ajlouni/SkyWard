@@ -1,0 +1,105 @@
+{
+    "hotelReservation": {
+        "sectionTitle": {
+            "syria": "Exceptional Accommodations in Syria",
+            "turkey": "Exceptional Accommodations in Turkey",
+            "lebanon": "Exceptional Accommodations in Lebanon"
+        },
+        "sectionDescription": {
+            "syria": "Discover our curated selection of premium hotels and heritage properties in Syria's most historic and scenic locations",
+            "turkey": "Discover our curated selection of premium hotels in Turkey's most vibrant cities and scenic coastal areas",
+            "lebanon": "Explore our handpicked collection of luxury hotels and boutique properties across Lebanon's diverse landscapes"
+        },
+        "filterCategories": {
+            "allProperties": "All Properties",
+            "damascus": "Damascus",
+            "aleppo": "Aleppo",
+            "istanbul": "Istanbul",
+            "beirut": "Beirut",
+            "cappadocia": "Cappadocia",
+            "coastal": "Coastal",
+            "beach": "Beach Resorts",
+            "mountain": "Mountain",
+            "historic": "Historic",
+            "luxury": "Luxury"
+        },
+        "categories": {
+            "Damascus": "Damascus",
+            "Aleppo": "Aleppo",
+            "Historic": "Historic",
+            "Coastal": "Coastal",
+            "Istanbul": "Istanbul",
+            "Cappadocia": "Cappadocia",
+            "Beach": "Beach",
+            "Beirut": "Beirut",
+            "Luxury": "Luxury",
+            "Mountain": "Mountain"
+        },
+        "noResults": "No properties match the selected filter. Please try another category.",
+        "guestReviews": "guest reviews",
+        "amenities": {
+            "freeWifi": "Free Wi-Fi",
+            "breakfastIncluded": "Breakfast included",
+            "swimmingPool": "Swimming pool",
+            "spa": "Spa",
+            "restaurant": "Restaurant",
+            "traditionalBreakfast": "Traditional breakfast",
+            "historicArchitecture": "Historic architecture",
+            "courtyard": "Courtyard",
+            "seaView": "Sea view",
+            "beachAccess": "Beach access",
+            "pool": "Pool",
+            "archaeologicalTours": "Archaeological tours",
+            "desertViews": "Desert views",
+            "historicBuilding": "Historic building",
+            "caveRooms": "Cave rooms",
+            "balloonTours": "Balloon tours",
+            "terraceViews": "Terrace views",
+            "privateBeach": "Private beach",
+            "yachtTours": "Yacht tours",
+            "allInclusive": "All-inclusive",
+            "beachfront": "Beachfront",
+            "multipleRestaurants": "Multiple restaurants",
+            "waterSports": "Water sports",
+            "rooftopPool": "Rooftop pool",
+            "fineDining": "Fine dining",
+            "cityViews": "City views",
+            "concierge": "Concierge",
+            "waterActivities": "Water activities",
+            "mountainView": "Mountain view",
+            "traditionalCuisine": "Traditional cuisine",
+            "garden": "Garden",
+            "heritageProperty": "Heritage property",
+            "historicViews": "Historic views"
+        },
+        "locations": {
+            "damascusOldCity": "Damascus Old City",
+            "oldAleppo": "Old Aleppo",
+            "lattakiaCorniche": "Lattakia Corniche",
+            "palmyra": "Palmyra",
+            "beyogluIstanbul": "Beyoglu, Istanbul",
+            "goremeCappadocia": "Goreme, Cappadocia",
+            "marinaBodrum": "Marina District, Bodrum",
+            "laraBeachAntalya": "Lara Beach, Antalya",
+            "downtownBeirut": "Downtown Beirut",
+            "byblosHarbor": "Byblos Harbor",
+            "zahle": "Zahle",
+            "baalbek": "Baalbek"
+        },
+        "distances": {
+            "fromAirport": "{distance} from {airport} Airport",
+            "fromCity": "{distance} from {city} center",
+            "fromRuins": "{distance} from ancient ruins",
+            "fromBeach": "{distance} from the beach",
+            "fromHistoric": "{distance} from {place} historic center",
+            "fromCapital": "{distance} from {capital}",
+            "fromTemple": "{distance} from {place} temple complex"
+        },
+        "countries": {
+            "syria": "Syria",
+            "turkey": "Turkey",
+            "lebanon": "Lebanon"
+        },
+        "cityCenter": "city center"
+    }
+}

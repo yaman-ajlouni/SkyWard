@@ -1,16 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.scss';
-import { Globe, Menu, X } from 'lucide-react';
+import { Globe, Menu, X, MapPin } from 'lucide-react';
 import logoImage from '../../assets/images/FlySyria-With-Text-cropped.svg';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
+import { useLocation } from '../../context/LocationContext';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const { t } = useTranslation();
     const { language, changeLanguage } = useLanguage();
+    const { location, changeLocation } = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
     const scrollTimeoutRef = useRef(null);
+    const locationDropdownRef = useRef(null);
 
     // Handle scrolling effect with stronger debounce and hysteresis
     useEffect(() => {
@@ -67,9 +72,37 @@ const Navbar = () => {
         };
     }, [isMenuOpen]);
 
+    // Close location dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (locationDropdownRef.current && !locationDropdownRef.current.contains(event.target)) {
+                setIsLocationDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     // Toggle language
     const handleLanguageChange = () => {
         changeLanguage(language === 'en' ? 'ar' : 'en');
+    };
+
+    // Get location display name
+    const getLocationDisplayName = () => {
+        switch(location) {
+            case 'syria':
+                return t('navbar.locations.syria');
+            case 'turkey':
+                return t('navbar.locations.turkey');
+            case 'lebanon':
+                return t('navbar.locations.lebanon');
+            default:
+                return t('navbar.locations.syria');
+        }
     };
 
     return (
@@ -77,7 +110,9 @@ const Navbar = () => {
             <div className="navbar-container">
                 <div className="navbar-left">
                     <div className="logo">
-                        <img src={logoImage} alt="Company Logo" />
+                        <Link to="/">
+                            <img src={logoImage} alt="Company Logo" />
+                        </Link>
                     </div>
 
                     {/* Desktop navigation links */}
@@ -92,6 +127,50 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-right">
+                    {/* Location selector */}
+                    <div className="location-selector" ref={locationDropdownRef}>
+                        <div 
+                            className="location-toggle" 
+                            onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
+                        >
+                            <MapPin size={18} />
+                            <span>{getLocationDisplayName()}</span>
+                        </div>
+                        {isLocationDropdownOpen && (
+                            <div className="location-dropdown">
+                                <div 
+                                    className={`location-option ${location === 'syria' ? 'active' : ''}`}
+                                    onClick={() => {
+                                        changeLocation('syria');
+                                        setIsLocationDropdownOpen(false);
+                                    }}
+                                >
+                                    {t('navbar.locations.syria')}
+                                </div>
+                                <div 
+                                    className={`location-option ${location === 'turkey' ? 'active' : ''}`}
+                                    onClick={() => {
+                                        changeLocation('turkey');
+                                        setIsLocationDropdownOpen(false);
+                                    }}
+                                >
+                                    {t('navbar.locations.turkey')}
+                                </div>
+                                <div 
+                                    className={`location-option ${location === 'lebanon' ? 'active' : ''}`}
+                                    onClick={() => {
+                                        changeLocation('lebanon');
+                                        setIsLocationDropdownOpen(false);
+                                    }}
+                                >
+                                    {t('navbar.locations.lebanon')}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="divider"></div>
+
                     <div className="language-selector" onClick={handleLanguageChange}>
                         <Globe size={18} />
                         <span>{language === 'en' ? 'العربية' : 'English'}</span>
@@ -130,6 +209,40 @@ const Navbar = () => {
                 </ul>
 
                 <div className="mobile-bottom-menu">
+                    {/* Mobile location selector */}
+                    <div className="mobile-location-selector">
+                        <div 
+                            className={`location-option ${location === 'syria' ? 'active' : ''}`}
+                            onClick={() => {
+                                changeLocation('syria');
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <MapPin size={16} />
+                            <span>{t('navbar.locations.syria')}</span>
+                        </div>
+                        <div 
+                            className={`location-option ${location === 'turkey' ? 'active' : ''}`}
+                            onClick={() => {
+                                changeLocation('turkey');
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <MapPin size={16} />
+                            <span>{t('navbar.locations.turkey')}</span>
+                        </div>
+                        <div 
+                            className={`location-option ${location === 'lebanon' ? 'active' : ''}`}
+                            onClick={() => {
+                                changeLocation('lebanon');
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <MapPin size={16} />
+                            <span>{t('navbar.locations.lebanon')}</span>
+                        </div>
+                    </div>
+
                     <div className="mobile-language-selector" onClick={handleLanguageChange}>
                         <Globe size={20} />
                         <span>{language === 'en' ? 'العربية' : 'English'}</span>

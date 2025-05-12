@@ -1,0 +1,122 @@
+{
+    "bookAdventures": {
+        "title": "Book your next adventure in Syria",
+        "turkeyTitle": "Book your next adventure in Turkey",
+        "lebanonTitle": "Book your next adventure in Lebanon",
+        "bookNow": "Book now",
+        "adventures": [
+            {
+                "id": 1,
+                "city": "Damascus",
+                "title": "Visit Umayyad Mosque",
+                "price": 200
+            },
+            {
+                "id": 2,
+                "city": "Aleppo",
+                "title": "Explore the Ancient Citadel",
+                "price": 180
+            },
+            {
+                "id": 3,
+                "city": "Palmyra",
+                "title": "Ancient Ruins Tour",
+                "price": 250
+            },
+            {
+                "id": 4,
+                "city": "Lattakia",
+                "title": "Beach Day Experience",
+                "price": 150
+            },
+            {
+                "id": 5,
+                "city": "Homs",
+                "title": "Krak des Chevaliers Tour",
+                "price": 220
+            },
+            {
+                "id": 6,
+                "city": "Tartus",
+                "title": "Arwad Island Boat Trip",
+                "price": 160
+            }
+        ],
+        "turkeyAdventures": [
+            {
+                "id": 1,
+                "city": "Istanbul",
+                "title": "Blue Mosque Tour",
+                "price": 180
+            },
+            {
+                "id": 2,
+                "city": "Cappadocia",
+                "title": "Hot Air Balloon Ride",
+                "price": 300
+            },
+            {
+                "id": 3,
+                "city": "Pamukkale",
+                "title": "Thermal Pools Experience",
+                "price": 220
+            },
+            {
+                "id": 4,
+                "city": "Antalya",
+                "title": "Beach & Ruins Combo Tour",
+                "price": 190
+            },
+            {
+                "id": 5,
+                "city": "Ephesus",
+                "title": "Ancient City Walk",
+                "price": 160
+            },
+            {
+                "id": 6,
+                "city": "Bodrum",
+                "title": "Coastal Boat Excursion",
+                "price": 210
+            }
+        ],
+        "lebanonAdventures": [
+            {
+                "id": 1,
+                "city": "Beirut",
+                "title": "City Walking Tour",
+                "price": 150
+            },
+            {
+                "id": 2,
+                "city": "Baalbek",
+                "title": "Roman Temple Complex Tour",
+                "price": 250
+            },
+            {
+                "id": 3,
+                "city": "Jeita Grotto",
+                "title": "Underground Cave Adventure",
+                "price": 180
+            },
+            {
+                "id": 4,
+                "city": "Byblos",
+                "title": "Ancient Port City Tour",
+                "price": 170
+            },
+            {
+                "id": 5,
+                "city": "Sidon",
+                "title": "Sea Castle Experience",
+                "price": 160
+            },
+            {
+                "id": 6,
+                "city": "Tripoli",
+                "title": "Old Souk & Citadel Tour",
+                "price": 140
+            }
+        ]
+    }
+}

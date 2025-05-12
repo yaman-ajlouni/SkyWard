@@ -146,6 +146,22 @@
             grid-row: 2 / 3; // 50% height
         }
     }
+
+    .no-highlights-message {
+        text-align: center;
+        padding: $spacing-xl 0;
+        background-color: $white;
+        border-radius: $border-radius-md;
+        border: 1px solid rgba($primary-color, 0.1);
+        margin: 0 $spacing-lg;
+
+        p {
+            font-size: $font-size-lg;
+            color: $text-color;
+            opacity: 0.7;
+        }
+    }
+
 }
 
 // Media queries for responsiveness - Updated to match other sections
@@ -153,7 +169,7 @@
     .highlights-section {
         .highlights-grid {
             height: 550px;
-            
+
             .highlight-item {
                 .highlight-content {
                     h3 {
@@ -171,7 +187,7 @@
 
         .section-header {
             margin-bottom: $spacing-lg;
-            
+
             .section-title {
                 font-size: 1.75rem;
             }
@@ -181,16 +197,16 @@
             padding: 0;
             height: 500px;
             gap: $spacing-md;
-            
+
             .highlight-item {
                 .highlight-content {
                     padding: $spacing-sm;
-                    
+
                     h3 {
                         font-size: $font-size-base;
                         margin: 0 0 4px 0;
                     }
-                    
+
                     p {
                         font-size: $font-size-sm;
                     }
@@ -204,10 +220,10 @@
     .highlights-section {
         .section-header {
             padding: 0 $spacing-md;
-            
+
             .section-title {
                 font-size: 1.5rem;
-                
+
                 &::after {
                     width: 50px;
                     height: 2px;
@@ -222,14 +238,14 @@
 
             .highlight-item {
                 border-radius: $border-radius-md;
-                
+
                 .highlight-content {
                     padding: $spacing-sm;
-                    
+
                     h3 {
                         font-size: $font-size-base;
                     }
-                    
+
                     p {
                         font-size: $font-size-sm;
                     }
@@ -283,14 +299,14 @@
 
             .highlight-item {
                 height: 200px;
-                
+
                 .highlight-content {
-                    
+
                     h3 {
                         font-size: $font-size-sm;
                         margin: 0 0 2px 0;
                     }
-                    
+
                     p {
                         font-size: $font-size-xs;
                     }

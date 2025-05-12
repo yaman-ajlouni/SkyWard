@@ -1,0 +1,139 @@
+{
+    "exploreSyria": {
+      "title": "Explore Syria",
+      "locations": [
+        {
+          "id": 1,
+          "city": "Lattakia City",
+          "title": "Golden Beach Hotel"
+        },
+        {
+          "id": 2,
+          "city": "Damascus",
+          "title": "Old City Experience"
+        },
+        {
+          "id": 3,
+          "city": "Aleppo",
+          "title": "Ancient Citadel Tour"
+        },
+        {
+          "id": 4,
+          "city": "Palmyra",
+          "title": "Historical Ruins"
+        },
+        {
+          "id": 5,
+          "city": "Tartus",
+          "title": "Arwad Island Getaway"
+        },
+        {
+          "id": 6,
+          "city": "Homs",
+          "title": "Krak des Chevaliers"
+        },
+        {
+          "id": 7,
+          "city": "Busra",
+          "title": "Roman Amphitheater"
+        },
+        {
+          "id": 8,
+          "city": "Hama",
+          "title": "Water Wheels Experience"
+        }
+      ]
+    },
+    "exploreLocations": {
+      "turkey": {
+        "title": "Explore Turkey",
+        "locations": [
+          {
+            "id": 1,
+            "city": "Istanbul",
+            "title": "Blue Mosque Tour"
+          },
+          {
+            "id": 2,
+            "city": "Antalya",
+            "title": "Mediterranean Beach Resort"
+          },
+          {
+            "id": 3,
+            "city": "Cappadocia",
+            "title": "Hot Air Balloon Adventure"
+          },
+          {
+            "id": 4,
+            "city": "Bodrum",
+            "title": "Aegean Coast Experience"
+          },
+          {
+            "id": 5,
+            "city": "Pamukkale",
+            "title": "Thermal Pools Visit"
+          },
+          {
+            "id": 6,
+            "city": "Ephesus",
+            "title": "Ancient City Ruins"
+          },
+          {
+            "id": 7,
+            "city": "Izmir",
+            "title": "Harbor City Tour"
+          },
+          {
+            "id": 8,
+            "city": "Ankara",
+            "title": "Capital City Highlights"
+          }
+        ]
+      },
+      "lebanon": {
+        "title": "Explore Lebanon",
+        "locations": [
+          {
+            "id": 1,
+            "city": "Beirut",
+            "title": "Downtown Experience"
+          },
+          {
+            "id": 2,
+            "city": "Byblos",
+            "title": "Ancient Port City"
+          },
+          {
+            "id": 3,
+            "city": "Baalbek",
+            "title": "Roman Temple Complex"
+          },
+          {
+            "id": 4,
+            "city": "Tripoli",
+            "title": "Old Souk and Citadel"
+          },
+          {
+            "id": 5,
+            "city": "Tyre",
+            "title": "UNESCO Heritage Site"
+          },
+          {
+            "id": 6,
+            "city": "Sidon",
+            "title": "Sea Castle Adventure"
+          },
+          {
+            "id": 7,
+            "city": "Jeita Grotto",
+            "title": "Limestone Cave Tour"
+          },
+          {
+            "id": 8,
+            "city": "Bcharre",
+            "title": "Cedar Forest Reserve"
+          }
+        ]
+      }
+    }
+  }

@@ -6,6 +6,11 @@
         "events": "فعاليات",
         "support": "الدعم",
         "contact": "اتصل بنا",
-        "login": "تسجيل الدخول"
+        "login": "تسجيل الدخول",
+        "locations": {
+            "syria": "سوريا",
+            "turkey": "تركيا",
+            "lebanon": "لبنان"
+        }
     }
 }

@@ -1,0 +1,73 @@
+{
+    "highlight": {
+        "title": "Highlights of Syria",
+        "turkeyTitle": "Highlights of Turkey",
+        "lebanonTitle": "Highlights of Lebanon",
+        "items": [
+            {
+                "id": 1,
+                "title": "Ancient City of Damascus",
+                "description": "Explore one of the oldest continuously inhabited cities in the world"
+            },
+            {
+                "id": 2,
+                "title": "Krak des Chevaliers",
+                "description": "Visit the most iconic Crusader castle in the world"
+            },
+            {
+                "id": 3,
+                "title": "Palmyra Ruins",
+                "description": "Discover the ancient desert oasis city"
+            },
+            {
+                "id": 4,
+                "title": "Mediterranean Coastline",
+                "description": "Relax on Syria's beautiful beaches and coastal towns"
+            }
+        ],
+        "turkeyItems": [
+            {
+                "id": 1,
+                "title": "Historic Istanbul",
+                "description": "Explore the vibrant city where East meets West"
+            },
+            {
+                "id": 2,
+                "title": "Cappadocia",
+                "description": "Experience the magical landscapes and hot air balloon rides"
+            },
+            {
+                "id": 3,
+                "title": "Pamukkale Terraces",
+                "description": "Visit the stunning white calcium pools"
+            },
+            {
+                "id": 4,
+                "title": "Turquoise Coast",
+                "description": "Sail along the beautiful Mediterranean shoreline"
+            }
+        ],
+        "lebanonItems": [
+            {
+                "id": 1,
+                "title": "Vibrant Beirut",
+                "description": "Experience the energetic capital known for its nightlife and culture"
+            },
+            {
+                "id": 2,
+                "title": "Ancient Baalbek",
+                "description": "Explore the most impressive Roman temple complex in the Middle East"
+            },
+            {
+                "id": 3,
+                "title": "Jeita Grotto",
+                "description": "Discover the spectacular limestone cave system"
+            },
+            {
+                "id": 4,
+                "title": "Cedar Forests",
+                "description": "Visit Lebanon's iconic cedar trees in the beautiful mountains"
+            }
+        ]
+    }
+}

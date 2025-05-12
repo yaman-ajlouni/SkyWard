@@ -1,7 +1,74 @@
 @import '../../../assets/styles/variables.scss';
 
 .hotel-section {
-    // Removed search-card styling since we're removing that section
+
+    // RTL Styles
+    &.rtl {
+        direction: rtl;
+        text-align: right;
+
+        .hotel-location {
+            svg {
+                margin-left: $spacing-xs;
+                margin-right: 0;
+            }
+        }
+
+        .hotel-amenities {
+            .amenity {
+                svg {
+                    margin-left: 5px;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .section-header {
+            h2 {
+                &::after {
+                    right: auto;
+                    left: auto;
+                    transform: translateX(50%);
+                }
+            }
+        }
+
+        .divider {
+            background: linear-gradient(90deg, transparent, rgba($primary-color, 0.05), rgba($primary-color, 0.1));
+        }
+
+        .hotels-container {
+            .hotels-list {
+                .hotel-card {
+                    .hotel-image {
+                        .card-rating {
+                            right: auto;
+                            left: $spacing-md;
+                            display: inline-flex;
+                            width: auto;
+
+                            span {
+                                margin-right: 0;
+                                margin-left: 0;
+                            }
+                        }
+
+                        .category-tag {
+                            left: auto;
+                            right: $spacing-md;
+                            display: inline-block;
+                            width: auto;
+
+                            &:nth-child(3) {
+                                right: auto;
+                                left: $spacing-md;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     .hotels-container {
         margin-bottom: $spacing-xl * 1.5;
@@ -39,6 +106,7 @@
                 font-size: $font-size-md;
                 line-height: 1.6;
                 margin: 0;
+                margin-top: $spacing-md;
             }
         }
 
@@ -167,6 +235,12 @@
                         svg {
                             transform: translateX(3px);
                         }
+
+                        .rtl & {
+                            svg {
+                                transform: translateX(-3px);
+                            }
+                        }
                     }
 
                     .category-tag {
@@ -284,8 +358,8 @@
                         .hotel-distance {
                             font-size: $font-size-xs;
                             color: rgba($text-color, 0.6);
+                            margin-top: $spacing-sm;
                             margin-bottom: $spacing-md;
-                            padding-left: $spacing-xl;
                         }
 
                         .divider {
@@ -374,6 +448,15 @@
                             &:hover {
                                 background-color: rgba($primary-color, 0.05);
                             }
+
+                            .rtl & {
+                                flex-direction: row-reverse;
+
+                                span {
+                                    margin-left: $spacing-xs;
+                                    margin-right: 0;
+                                }
+                            }
                         }
                     }
                 }
@@ -448,6 +531,10 @@
                     width: 100%;
                     justify-content: center;
                     margin-top: $spacing-xs;
+
+                    .rtl & {
+                        flex-direction: row-reverse;
+                    }
                 }
             }
 
@@ -465,6 +552,19 @@
                 .tag {
                     font-size: $font-size-xs;
                     padding: 4px $spacing-sm;
+                }
+            }
+
+            .hotel-amenities {
+                .amenity {
+                    svg {
+                        margin-right: 3px;
+
+                        .rtl & {
+                            margin-left: 3px;
+                            margin-right: 0;
+                        }
+                    }
                 }
             }
         }

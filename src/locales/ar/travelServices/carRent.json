@@ -1,0 +1,64 @@
+{
+    "carRent": {
+        "sectionTitle": {
+            "syria": "شركات تأجير السيارات الفاخرة في سوريا",
+            "turkey": "شركات تأجير السيارات الفاخرة في تركيا",
+            "lebanon": "شركات تأجير السيارات الفاخرة في لبنان"
+        },
+        "sectionDescription": {
+            "syria": "اختر من شبكتنا الموثوقة من شركاء تأجير السيارات لتعزيز رحلتك بخدمة عالية الجودة",
+            "turkey": "اختر من شبكتنا الموثوقة من شركاء تأجير السيارات في جميع أنحاء تركيا لتعزيز رحلتك بخدمة عالية الجودة",
+            "lebanon": "اختر من شركاء تأجير السيارات المختارين بعناية في لبنان والذين يقدمون مركبات فاخرة وخدمة استثنائية"
+        },
+        "filterCategories": {
+            "all": "جميع الشركات",
+            "premium": "فاخرة",
+            "economy": "اقتصادية",
+            "suv": "متخصصون في سيارات الدفع الرباعي",
+            "convertible": "سيارات مكشوفة",
+            "coastal": "ساحلية",
+            "mountain": "جبلية"
+        },
+        "noResults": "لا توجد شركات تأجير تطابق الفلتر المحدد. يرجى تجربة فئة أخرى.",
+        "rentalProvider": "مزود خدمة التأجير",
+        "availableLocations": "المواقع المتاحة:",
+        "viewCompanyDetails": "عرض تفاصيل الشركة",
+        "countries": {
+            "syria": "سوريا",
+            "turkey": "تركيا",
+            "lebanon": "لبنان"
+        },
+        "specialties": {
+            "luxuryVehicles": "سيارات فاخرة",
+            "chauffeurService": "خدمة السائق الخاص",
+            "corporateAccounts": "حسابات الشركات",
+            "economyCars": "سيارات اقتصادية",
+            "longTermRental": "تأجير طويل الأمد",
+            "studentDiscounts": "خصومات للطلاب",
+            "suvOffroad": "سيارات الدفع الرباعي والطرق الوعرة",
+            "campingEquipment": "معدات التخييم",
+            "adventureTours": "جولات المغامرة",
+            "luxurySedans": "سيدان فاخرة",
+            "airportTransfers": "خدمة النقل من وإلى المطار",
+            "executiveService": "خدمة تنفيذية",
+            "affordableVehicles": "مركبات بأسعار معقولة",
+            "touristPackages": "باقات سياحية",
+            "cityExploration": "استكشاف المدينة",
+            "4x4vehicles": "سيارات دفع رباعي",
+            "guidedTours": "جولات مع مرشد",
+            "campingGear": "معدات التخييم",
+            "convertibleCars": "سيارات مكشوفة",
+            "coastalDrives": "رحلات ساحلية",
+            "weekendRentals": "تأجير لعطلة نهاية الأسبوع",
+            "highEndVehicles": "مركبات فائقة الفخامة",
+            "vipService": "خدمة كبار الشخصيات",
+            "weddingCars": "سيارات الأعراس",
+            "budgetFriendly": "أسعار مناسبة للميزانية",
+            "studentRates": "أسعار للطلاب",
+            "dailyRentals": "تأجير يومي",
+            "allTerrainVehicles": "مركبات لجميع التضاريس",
+            "mountainTours": "جولات جبلية",
+            "snowReady": "مجهزة للثلوج"
+        }
+    }
+}

@@ -89,7 +89,8 @@
                     box-shadow: 0 0 0 2px rgba($primary-color, 0.4);
                 }
 
-                &.disabled, &.swiper-button-disabled {
+                &.disabled,
+                &.swiper-button-disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
                 }
@@ -103,6 +104,18 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
+
+        .no-destinations-message {
+            text-align: center;
+            padding: $spacing-xl 0;
+
+            p {
+                font-size: $font-size-lg;
+                color: $text-color;
+                opacity: 0.7;
+            }
+        }
+
     }
 
     // Slider container for horizontal scrolling
@@ -110,7 +123,7 @@
         width: 100%;
         padding: 0 $spacing-lg;
         overflow: visible; // Allow for overflow to create the "peek" effect
-        
+
         .swiper-wrapper {
             align-items: stretch; // Ensure all slides have the same height
         }
@@ -191,7 +204,7 @@
 
         .section-header {
             margin-bottom: $spacing-lg;
-            
+
             .section-title {
                 font-size: 1.75rem;
             }
@@ -213,16 +226,16 @@
     .top-destinations-section {
         .section-header {
             padding: 0 $spacing-md;
-            
+
             .section-title {
                 font-size: 1.5rem;
-                
+
                 &::after {
                     width: 50px;
                     height: 2px;
                 }
             }
-            
+
             .navigation-arrows .nav-arrow {
                 width: 40px;
                 height: 40px;
@@ -276,7 +289,7 @@
 
             .navigation-arrows {
                 align-self: center;
-                
+
                 .nav-arrow {
                     width: 36px;
                     height: 36px;
@@ -293,7 +306,7 @@
 
             .card-image {
                 height: 180px;
-                
+
                 img {
                     border-radius: $border-radius-md;
                 }

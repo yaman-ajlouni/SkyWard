@@ -1,0 +1,105 @@
+{
+    "hotelReservation": {
+        "sectionTitle": {
+            "syria": "أماكن إقامة استثنائية في سوريا",
+            "turkey": "أماكن إقامة استثنائية في تركيا",
+            "lebanon": "أماكن إقامة استثنائية في لبنان"
+        },
+        "sectionDescription": {
+            "syria": "اكتشف مجموعتنا المختارة من الفنادق الفاخرة والعقارات التراثية في أكثر المواقع التاريخية والخلابة في سوريا",
+            "turkey": "اكتشف مجموعتنا المختارة من الفنادق الفاخرة في أكثر مدن تركيا حيوية ومناطقها الساحلية الخلابة",
+            "lebanon": "استكشف مجموعتنا المختارة بعناية من الفنادق الفاخرة والعقارات البوتيكية عبر المناظر الطبيعية المتنوعة في لبنان"
+        },
+        "filterCategories": {
+            "allProperties": "جميع العقارات",
+            "damascus": "دمشق",
+            "aleppo": "حلب",
+            "istanbul": "إسطنبول",
+            "beirut": "بيروت",
+            "cappadocia": "كابادوكيا",
+            "coastal": "ساحلي",
+            "beach": "منتجعات شاطئية",
+            "mountain": "جبلي",
+            "historic": "تاريخي",
+            "luxury": "فاخر"
+        },
+        "categories": {
+            "Damascus": "دمشق",
+            "Aleppo": "حلب",
+            "Historic": "تاريخي",
+            "Coastal": "ساحلي",
+            "Istanbul": "إسطنبول",
+            "Cappadocia": "كابادوكيا",
+            "Beach": "شاطئي",
+            "Beirut": "بيروت",
+            "Luxury": "فاخر",
+            "Mountain": "جبلي"
+        },
+        "noResults": "لا توجد عقارات تطابق الفلتر المحدد. يرجى تجربة فئة أخرى.",
+        "guestReviews": "تقييمات الضيوف",
+        "amenities": {
+            "freeWifi": "واي فاي مجاني",
+            "breakfastIncluded": "الإفطار مشمول",
+            "swimmingPool": "حوض سباحة",
+            "spa": "سبا",
+            "restaurant": "مطعم",
+            "traditionalBreakfast": "إفطار تقليدي",
+            "historicArchitecture": "عمارة تاريخية",
+            "courtyard": "فناء",
+            "seaView": "إطلالة على البحر",
+            "beachAccess": "وصول إلى الشاطئ",
+            "pool": "حوض سباحة",
+            "archaeologicalTours": "جولات أثرية",
+            "desertViews": "إطلالات صحراوية",
+            "historicBuilding": "مبنى تاريخي",
+            "caveRooms": "غرف كهفية",
+            "balloonTours": "جولات بالمنطاد",
+            "terraceViews": "إطلالات من الشرفة",
+            "privateBeach": "شاطئ خاص",
+            "yachtTours": "جولات باليخت",
+            "allInclusive": "شامل جميع الخدمات",
+            "beachfront": "على الشاطئ",
+            "multipleRestaurants": "مطاعم متعددة",
+            "waterSports": "رياضات مائية",
+            "rooftopPool": "حوض سباحة على السطح",
+            "fineDining": "مطعم فاخر",
+            "cityViews": "إطلالات على المدينة",
+            "concierge": "خدمة الكونسيرج",
+            "waterActivities": "أنشطة مائية",
+            "mountainView": "إطلالة على الجبل",
+            "traditionalCuisine": "مأكولات تقليدية",
+            "garden": "حديقة",
+            "heritageProperty": "عقار تراثي",
+            "historicViews": "إطلالات تاريخية"
+        },
+        "locations": {
+            "damascusOldCity": "دمشق القديمة",
+            "oldAleppo": "حلب القديمة",
+            "lattakiaCorniche": "كورنيش اللاذقية",
+            "palmyra": "تدمر",
+            "beyogluIstanbul": "بيوغلو، إسطنبول",
+            "goremeCappadocia": "جوريمي، كابادوكيا",
+            "marinaBodrum": "منطقة المارينا، بودروم",
+            "laraBeachAntalya": "شاطئ لارا، أنطاليا",
+            "downtownBeirut": "وسط بيروت",
+            "byblosHarbor": "مرفأ جبيل",
+            "zahle": "زحلة",
+            "baalbek": "بعلبك"
+        },
+        "distances": {
+            "fromAirport": "{distance} من مطار {airport}",
+            "fromCity": "{distance} من وسط {city}",
+            "fromRuins": "{distance} من الآثار القديمة",
+            "fromBeach": "{distance} من الشاطئ",
+            "fromHistoric": "{distance} من المركز التاريخي {place}",
+            "fromCapital": "{distance} من {capital}",
+            "fromTemple": "{distance} من مجمع معابد {place}"
+        },
+        "countries": {
+            "syria": "سوريا",
+            "turkey": "تركيا",
+            "lebanon": "لبنان"
+        },
+        "cityCenter": "وسط المدينة"
+    }
+}
