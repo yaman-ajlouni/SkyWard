@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MapPin, Gauge, Settings, Shield, Clock, ChevronRight, Users, Wind, Navigation, Briefcase, ChevronLeft } from 'lucide-react';
 import './CarRent.scss';
-import { useLocation } from '../../../context/LocationContext';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../context/LanguageContext';
 
@@ -9,8 +8,8 @@ import { useLanguage } from '../../../context/LanguageContext';
 import economy from '../../../assets/images/travelServices/cars/economy.jpg';
 
 const CarRent = () => {
-    const { location } = useLocation(); // Get the selected location from context
-    const [activeFilter, setActiveFilter] = useState('all');
+    const [selectedCountry, setSelectedCountry] = useState('syria'); // Default to Syria
+    const [activeCategory, setActiveCategory] = useState('all'); // Default to all categories
     const [filteredCompanies, setFilteredCompanies] = useState([]);
     const { t } = useTranslation();
     const { dir } = useLanguage();
@@ -29,7 +28,8 @@ const CarRent = () => {
                 t('carRent.specialties.corporateAccounts')
             ],
             availableAt: ['Airport', 'Downtown'],
-            categories: ['Premium']
+            categories: ['Premium'],
+            country: 'syria'
         },
         {
             id: 2,
@@ -42,7 +42,8 @@ const CarRent = () => {
                 t('carRent.specialties.studentDiscounts')
             ],
             availableAt: ['Airport', 'Downtown', 'City Center'],
-            categories: ['Economy']
+            categories: ['Economy'],
+            country: 'syria'
         },
         {
             id: 3,
@@ -55,14 +56,15 @@ const CarRent = () => {
                 t('carRent.specialties.adventureTours')
             ],
             availableAt: ['Airport', 'City Center'],
-            categories: ['SUV']
+            categories: ['SUV'],
+            country: 'syria'
         }
     ], [t]);
 
     // Turkey car rental companies data
     const turkeyCompanies = useMemo(() => [
         {
-            id: 1,
+            id: 4,
             name: 'Istanbul Premium Auto',
             image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800',
             type: t('carRent.filterCategories.premium'),
@@ -72,10 +74,11 @@ const CarRent = () => {
                 t('carRent.specialties.executiveService')
             ],
             availableAt: ['Istanbul Airport', 'City Center'],
-            categories: ['Premium']
+            categories: ['Premium'],
+            country: 'turkey'
         },
         {
-            id: 2,
+            id: 5,
             name: 'Turkish Budget Cars',
             image: economy,
             type: t('carRent.filterCategories.economy'),
@@ -85,10 +88,11 @@ const CarRent = () => {
                 t('carRent.specialties.cityExploration')
             ],
             availableAt: ['All major cities', 'Tourist areas'],
-            categories: ['Economy']
+            categories: ['Economy'],
+            country: 'turkey'
         },
         {
-            id: 3,
+            id: 6,
             name: 'Cappadocia Explorers',
             image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800',
             type: t('carRent.filterCategories.suv'),
@@ -98,10 +102,11 @@ const CarRent = () => {
                 t('carRent.specialties.campingGear')
             ],
             availableAt: ['Cappadocia', 'Antalya'],
-            categories: ['SUV', 'Adventure']
+            categories: ['SUV', 'Adventure'],
+            country: 'turkey'
         },
         {
-            id: 4,
+            id: 7,
             name: 'Antalya Beach Rides',
             image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800',
             type: t('carRent.filterCategories.convertible'),
@@ -111,14 +116,15 @@ const CarRent = () => {
                 t('carRent.specialties.weekendRentals')
             ],
             availableAt: ['Antalya', 'Bodrum', 'Marmaris'],
-            categories: ['Convertible', 'Coastal']
+            categories: ['Convertible', 'Coastal'],
+            country: 'turkey'
         }
     ], [t]);
 
     // Lebanon car rental companies data
     const lebanonCompanies = useMemo(() => [
         {
-            id: 1,
+            id: 8,
             name: 'Beirut Luxury Motors',
             image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800',
             type: t('carRent.filterCategories.premium'),
@@ -128,10 +134,11 @@ const CarRent = () => {
                 t('carRent.specialties.weddingCars')
             ],
             availableAt: ['Beirut Airport', 'Downtown'],
-            categories: ['Premium']
+            categories: ['Premium'],
+            country: 'lebanon'
         },
         {
-            id: 2,
+            id: 9,
             name: 'Lebanon Travel Cars',
             image: economy,
             type: t('carRent.filterCategories.economy'),
@@ -141,10 +148,11 @@ const CarRent = () => {
                 t('carRent.specialties.dailyRentals')
             ],
             availableAt: ['Multiple locations', 'Universities'],
-            categories: ['Economy']
+            categories: ['Economy'],
+            country: 'lebanon'
         },
         {
-            id: 3,
+            id: 10,
             name: 'Mountain Terrain Vehicles',
             image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800',
             type: t('carRent.filterCategories.suv'),
@@ -154,38 +162,43 @@ const CarRent = () => {
                 t('carRent.specialties.snowReady')
             ],
             availableAt: ['Beirut', 'Mountain resorts'],
-            categories: ['SUV', 'Mountain']
+            categories: ['SUV', 'Mountain'],
+            country: 'lebanon'
         }
     ], [t]);
 
-    // Get companies based on selected location - memoized
-    const companies = useMemo(() => {
-        switch(location) {
-            case 'turkey':
-                return turkeyCompanies;
-            case 'lebanon':
-                return lebanonCompanies;
-            case 'syria':
-            default:
-                return syriaCompanies;
-        }
-    }, [location, syriaCompanies, turkeyCompanies, lebanonCompanies]);
+    // Combine all companies
+    const allCompanies = useMemo(() => [
+        ...syriaCompanies,
+        ...turkeyCompanies,
+        ...lebanonCompanies
+    ], [syriaCompanies, turkeyCompanies, lebanonCompanies]);
 
-    // Get location-specific filter categories - memoized
-    const filterCategories = useMemo(() => {
-        switch(location) {
+    // Country filter categories
+    const countryFilters = useMemo(() => [
+        { id: 'syria', name: t('carRent.countries.syria') },
+        { id: 'turkey', name: t('carRent.countries.turkey') },
+        { id: 'lebanon', name: t('carRent.countries.lebanon') }
+    ], [t]);
+
+    // Get category filter options based on country
+    const getCategoryFilters = () => {
+        const baseFilters = [
+            { id: 'all', name: t('carRent.filterCategories.all') },
+        ];
+        
+        switch (selectedCountry) {
             case 'turkey':
                 return [
-                    { id: 'all', name: t('carRent.filterCategories.all') },
+                    ...baseFilters,
                     { id: 'Premium', name: t('carRent.filterCategories.premium') },
                     { id: 'Economy', name: t('carRent.filterCategories.economy') },
                     { id: 'SUV', name: t('carRent.filterCategories.suv') },
-                    { id: 'Convertible', name: t('carRent.filterCategories.convertible') },
-                    { id: 'Coastal', name: t('carRent.filterCategories.coastal') }
+                    { id: 'Convertible', name: t('carRent.filterCategories.convertible') }
                 ];
             case 'lebanon':
                 return [
-                    { id: 'all', name: t('carRent.filterCategories.all') },
+                    ...baseFilters,
                     { id: 'Premium', name: t('carRent.filterCategories.premium') },
                     { id: 'Economy', name: t('carRent.filterCategories.economy') },
                     { id: 'SUV', name: t('carRent.filterCategories.suv') },
@@ -194,34 +207,38 @@ const CarRent = () => {
             case 'syria':
             default:
                 return [
-                    { id: 'all', name: t('carRent.filterCategories.all') },
+                    ...baseFilters,
+                    { id: 'Premium', name: t('carRent.filterCategories.premium') },
                     { id: 'Economy', name: t('carRent.filterCategories.economy') },
-                    { id: 'SUV', name: t('carRent.filterCategories.suv') },
-                    { id: 'Premium', name: t('carRent.filterCategories.premium') }
+                    { id: 'SUV', name: t('carRent.filterCategories.suv') }
                 ];
         }
-    }, [location, t]);
+    };
 
-    // Reset filter when location changes
+    // Apply both country and category filters
     useEffect(() => {
-        setActiveFilter('all');
-    }, [location]);
-
-    // Apply filters whenever the active filter or location changes
-    useEffect(() => {
-        if (activeFilter === 'all') {
-            setFilteredCompanies(companies);
-        } else {
-            const filtered = companies.filter(company =>
-                company.categories.includes(activeFilter)
+        // First filter by country
+        let filtered = allCompanies.filter(company => company.country === selectedCountry);
+        
+        // Then apply category filter if it's not 'all'
+        if (activeCategory !== 'all') {
+            filtered = filtered.filter(company => 
+                company.categories.includes(activeCategory)
             );
-            setFilteredCompanies(filtered);
         }
-    }, [activeFilter, companies]);
+        
+        setFilteredCompanies(filtered);
+    }, [selectedCountry, activeCategory, allCompanies]);
 
-    // Function to handle filter changes
-    const handleFilterChange = (filterId) => {
-        setActiveFilter(filterId);
+    // Function to handle country selection
+    const handleCountryChange = (countryId) => {
+        setSelectedCountry(countryId);
+        setActiveCategory('all'); // Reset category filter when country changes
+    };
+
+    // Function to handle category selection
+    const handleCategoryChange = (categoryId) => {
+        setActiveCategory(categoryId);
     };
 
     // Function to render feature icons - memoized
@@ -259,16 +276,30 @@ const CarRent = () => {
         <div className={`car-section ${dir === 'rtl' ? 'rtl' : ''}`}>
             <div className="cars-container">
                 <header className="section-header">
-                    <h2>{t(`carRent.sectionTitle.${location}`)}</h2>
-                    <p>{t(`carRent.sectionDescription.${location}`)}</p>
+                    <h2>{t(`carRent.sectionTitle.${selectedCountry}`)}</h2>
+                    <p>{t(`carRent.sectionDescription.${selectedCountry}`)}</p>
                 </header>
 
+                {/* Country Selection Tabs */}
+                <div className="country-selector">
+                    {countryFilters.map(country => (
+                        <div
+                            key={country.id}
+                            className={`country-tab ${selectedCountry === country.id ? 'active' : ''}`}
+                            onClick={() => handleCountryChange(country.id)}
+                        >
+                            {country.name}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Category Filters */}
                 <div className="filter-tags">
-                    {filterCategories.map(category => (
+                    {getCategoryFilters().map(category => (
                         <div
                             key={category.id}
-                            className={`tag ${activeFilter === category.id ? 'active' : ''}`}
-                            onClick={() => handleFilterChange(category.id)}
+                            className={`tag ${activeCategory === category.id ? 'active' : ''}`}
+                            onClick={() => handleCategoryChange(category.id)}
                         >
                             {category.name}
                         </div>

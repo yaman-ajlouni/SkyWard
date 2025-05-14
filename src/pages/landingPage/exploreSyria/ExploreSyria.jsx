@@ -3,7 +3,6 @@ import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import './ExploreSyria.scss';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../context/LanguageContext';
-import { useLocation } from '../../../context/LocationContext';
 
 // Import Swiper and required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,146 +22,86 @@ import hama from '../../../assets/images/explore/exp-hama.jpg';
 import busra from '../../../assets/images/explore/exp-busra.webp';
 import hoson from '../../../assets/images/explore/exp-hoson.jpg';
 
-
-import blueMosque from '../../../assets/images/explore/turkey/blue-mosque.jpg';
-import mediterranean from '../../../assets/images/explore/turkey/mediterranean.jpg';
-import hot from '../../../assets/images/explore/turkey/hot.jpg';
-import aegean from '../../../assets/images/explore/turkey/aegean.webp';
-import thermal from '../../../assets/images/explore/turkey/thermal.jpg';
-import ancient from '../../../assets/images/explore/turkey/ancient.webp';
-import harbor from '../../../assets/images/explore/turkey/harbor.jpg';
-import capital from '../../../assets/images/explore/turkey/capital.jpg';
-
 // Default location data if translations fail
-const defaultLocations = {
-    syria: [
-        {
-            id: 1,
-            city: "Lattakia City",
-            title: "Golden Beach Hotel"
-        },
-        {
-            id: 2,
-            city: "Damascus",
-            title: "Old City Experience"
-        },
-        {
-            id: 3,
-            city: "Aleppo",
-            title: "Ancient Citadel Tour"
-        },
-        {
-            id: 4,
-            city: "Palmyra",
-            title: "Historical Ruins"
-        }
-    ],
-    turkey: [
-        {
-            id: 1,
-            city: "Istanbul",
-            title: "Blue Mosque Tour"
-        },
-        {
-            id: 2,
-            city: "Antalya",
-            title: "Mediterranean Beach Resort"
-        },
-        {
-            id: 3,
-            city: "Cappadocia",
-            title: "Hot Air Balloon Adventure"
-        },
-        {
-            id: 4,
-            city: "Bodrum",
-            title: "Aegean Coast Experience"
-        }
-    ],
-    lebanon: [
-        {
-            id: 1,
-            city: "Beirut",
-            title: "Downtown Experience"
-        },
-        {
-            id: 2,
-            city: "Byblos",
-            title: "Ancient Port City"
-        },
-        {
-            id: 3,
-            city: "Baalbek",
-            title: "Roman Temple Complex"
-        },
-        {
-            id: 4,
-            city: "Tripoli",
-            title: "Old Souk and Citadel"
-        }
-    ]
-};
+const defaultLocations = [
+    {
+        id: 1,
+        city: "Lattakia City",
+        title: "Golden Beach Hotel"
+    },
+    {
+        id: 2,
+        city: "Damascus",
+        title: "Old City Experience"
+    },
+    {
+        id: 3,
+        city: "Aleppo",
+        title: "Ancient Citadel Tour"
+    },
+    {
+        id: 4,
+        city: "Palmyra",
+        title: "Historical Ruins"
+    },
+    {
+        id: 5,
+        city: "Tartus",
+        title: "Arwad Island Getaway"
+    },
+    {
+        id: 6,
+        city: "Homs",
+        title: "Krak des Chevaliers"
+    },
+    {
+        id: 7,
+        city: "Busra",
+        title: "Roman Amphitheater"
+    },
+    {
+        id: 8,
+        city: "Hama",
+        title: "Water Wheels Experience"
+    }
+];
 
 const ExploreSyria = () => {
     const { t } = useTranslation();
     const { dir } = useLanguage();
-    const { location } = useLocation(); // Get the current location
     const isRTL = dir === 'rtl';
     const prevRef = React.useRef(null);
     const nextRef = React.useRef(null);
 
-    // Add a key state to force re-render when language or location changes
+    // Add a key state to force re-render when language changes
     const [swiperKey, setSwiperKey] = useState(0);
 
-    // Update key when direction or location changes to force re-render
+    // Update key when direction changes to force re-render
     useEffect(() => {
         setSwiperKey(prevKey => prevKey + 1);
-    }, [dir, location]);
+    }, [dir]);
 
-    // Get section title based on selected location
+    // Get section title
     const getSectionTitle = () => {
-        switch(location) {
-            case 'syria':
-                return t('exploreSyria.title') || "Explore Syria";
-            case 'turkey':
-                return t('exploreLocations.turkey.title') || "Explore Turkey";
-            case 'lebanon':
-                return t('exploreLocations.lebanon.title') || "Explore Lebanon";
-            default:
-                return t('exploreSyria.title') || "Explore Syria";
-        }
+        return t('exploreSyria.title') || "Explore Syria";
     };
 
-    // Get locations based on the selected location
+    // Get Syria locations
     const getExploreLocations = () => {
         try {
-            let locationsData;
-            
-            switch(location) {
-                case 'syria':
-                    locationsData = t('exploreSyria.locations', { returnObjects: true });
-                    return Array.isArray(locationsData) ? locationsData : defaultLocations.syria;
-                case 'turkey':
-                    locationsData = t('exploreLocations.turkey.locations', { returnObjects: true });
-                    return Array.isArray(locationsData) ? locationsData : defaultLocations.turkey;
-                case 'lebanon':
-                    locationsData = t('exploreLocations.lebanon.locations', { returnObjects: true });
-                    return Array.isArray(locationsData) ? locationsData : defaultLocations.lebanon;
-                default:
-                    locationsData = t('exploreSyria.locations', { returnObjects: true });
-                    return Array.isArray(locationsData) ? locationsData : defaultLocations.syria;
-            }
+            const locationsData = t('exploreSyria.locations', { returnObjects: true });
+            return Array.isArray(locationsData) ? locationsData : defaultLocations;
         } catch (error) {
             console.error("Error getting locations data:", error);
-            return defaultLocations[location] || defaultLocations.syria;
+            return defaultLocations;
         }
     };
 
     const exploreLocations = getExploreLocations();
 
     // Image mappings
-    const syriaImageMapping = {
-        1: golden,  // Lattakia - Holiday Beach Hotel
+    const imageMapping = {
+        1: golden,  // Lattakia - Golden Beach Hotel
         2: damascus,  // Damascus - Old City Experience
         3: aleppo,  // Aleppo - Ancient Citadel Tour
         4: palmyra,  // Palmyra - Historical Ruins
@@ -171,46 +110,6 @@ const ExploreSyria = () => {
         7: busra,   // Busra - Roman Amphitheater
         8: hama,    // Hama - Water Wheels Experience
     };
-
-    // For this example, we'll reuse Syria images for Turkey and Lebanon
-    // In a real application, you would use actual images for these locations
-    const turkeyImageMapping = {
-        1: blueMosque,  // Istanbul
-        2: mediterranean,    // Antalya
-        3: hot,   // Cappadocia
-        4: aegean,     // Bodrum
-        5: thermal,     // Pamukkale
-        6: ancient,     // Ephesus
-        7: harbor,      // Izmir
-        8: capital,    // Ankara
-    };
-
-    const lebanonImageMapping = {
-        1: aleppo,    // Beirut
-        2: palmyra,   // Byblos
-        3: damascus,  // Baalbek
-        4: golden,    // Tripoli
-        5: hama,      // Tyre
-        6: arwad,     // Sidon
-        7: busra,     // Jeita Grotto
-        8: hoson,     // Bcharre
-    };
-
-    // Get the right image mapping based on location
-    const getImageMapping = () => {
-        switch(location) {
-            case 'syria':
-                return syriaImageMapping;
-            case 'turkey':
-                return turkeyImageMapping;
-            case 'lebanon':
-                return lebanonImageMapping;
-            default:
-                return syriaImageMapping;
-        }
-    };
-
-    const imageMapping = getImageMapping();
 
     // Get image by location
     const getImageByLocation = (location) => {
@@ -336,7 +235,7 @@ const ExploreSyria = () => {
                     </Swiper>
                 ) : (
                     <div className="no-locations-message">
-                        <p>No destinations available for this location.</p>
+                        <p>No destinations available for Syria.</p>
                     </div>
                 )}
             </div>

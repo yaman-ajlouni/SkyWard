@@ -35,6 +35,11 @@
             "Luxury": "Luxury",
             "Mountain": "Mountain"
         },
+        "countries": {
+            "syria": "Syria",
+            "turkey": "Turkey",
+            "lebanon": "Lebanon"
+        },
         "noResults": "No properties match the selected filter. Please try another category.",
         "guestReviews": "guest reviews",
         "amenities": {
@@ -94,11 +99,6 @@
             "fromHistoric": "{distance} from {place} historic center",
             "fromCapital": "{distance} from {capital}",
             "fromTemple": "{distance} from {place} temple complex"
-        },
-        "countries": {
-            "syria": "Syria",
-            "turkey": "Turkey",
-            "lebanon": "Lebanon"
         },
         "cityCenter": "city center"
     }

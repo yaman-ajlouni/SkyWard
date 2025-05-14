@@ -111,7 +111,7 @@ const TravelServices = () => {
                 </div>
 
                 <div className="services-intro">
-                    <div className="intro-visuals">
+                    <div className={`intro-visuals ${dir === 'rtl' ? 'rtl' : ''}`}>
                         <div className="visual-icons">
                             {activeTab === 'hotels' ? (
                                 <>

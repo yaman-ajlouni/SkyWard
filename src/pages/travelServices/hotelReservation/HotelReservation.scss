@@ -1,11 +1,80 @@
 @import '../../../assets/styles/variables.scss';
 
 .hotel-section {
+    // Country selector styles that match the existing design patterns
+    .country-selector {
+        display: flex;
+        justify-content: center;
+        margin-bottom: $spacing-xl;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba($primary-color, 0.1), transparent);
+        }
+        
+        .country-tab {
+            padding: $spacing-sm $spacing-lg;
+            cursor: pointer;
+            font-weight: $font-weight-medium;
+            transition: all 0.3s ease;
+            position: relative;
+            color: rgba($text-color, 0.7);
+            font-size: $font-size-md;
+            
+            &:hover {
+                color: $primary-color;
+                transform: translateY(-2px);
+            }
+            
+            &.active {
+                color: $primary-color;
+                font-weight: $font-weight-bold;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 40px;
+                    height: 3px;
+                    background: $primary-color;
+                    border-radius: 3px;
+                    box-shadow: 0 1px 4px rgba($primary-color, 0.3);
+                    animation: expandWidth 0.3s ease-out forwards;
+                }
+                
+                @keyframes expandWidth {
+                    from { width: 0; }
+                    to { width: 40px; }
+                }
+            }
+        }
+    }
 
-    // RTL Styles
+    // RTL Styles for country selector
     &.rtl {
         direction: rtl;
         text-align: right;
+
+        .country-selector {
+            .country-tab {
+                &.active {
+                    &::after {
+                        right: 50%;
+                        left: auto;
+                        transform: translateX(50%);
+                    }
+                }
+            }
+        }
 
         .hotel-location {
             svg {
@@ -110,7 +179,7 @@
             }
         }
 
-        // New filter tags
+        // Filter tags
         .filter-tags {
             display: flex;
             flex-wrap: wrap;
@@ -482,6 +551,13 @@
                 }
             }
         }
+
+        .country-selector {
+            .country-tab {
+                padding: $spacing-xs $spacing-md;
+                font-size: $font-size-base;
+            }
+        }
     }
 
     @media (max-width: $breakpoint-md) {
@@ -509,6 +585,20 @@
 
                 p {
                     font-size: $font-size-sm;
+                }
+            }
+        }
+
+        .country-selector {
+            margin-bottom: $spacing-lg;
+            
+            &::after {
+                width: 80%;
+            }
+            
+            .country-tab {
+                &.active::after {
+                    width: 30px;
                 }
             }
         }
@@ -566,6 +656,18 @@
                         }
                     }
                 }
+            }
+        }
+
+        .country-selector {
+            flex-wrap: wrap;
+            gap: $spacing-xs;
+            
+            .country-tab {
+                font-size: $font-size-sm;
+                padding: $spacing-xs $spacing-sm;
+                flex: 1;
+                text-align: center;
             }
         }
     }

@@ -12,7 +12,7 @@
         .header-top {
             .back-button {
                 flex-direction: row-reverse;
-                
+
                 span {
                     margin-right: $spacing-xs;
                     margin-left: 0;
@@ -40,15 +40,17 @@
             }
         }
 
-        .services-intro {
-            &::before {
-                right: 0;
-                left: auto;
-            }
+        .container {
+            .services-intro {
+                &::before {
+                    right: 0;
+                    left: auto;
+                }
 
-            .intro-visuals {
-                margin-left: $spacing-xl;
-                margin-right: 0;
+                .intro-visuals {
+                    margin-left: $spacing-xl;
+                    margin-right: 0;
+                }
             }
         }
 
@@ -82,17 +84,17 @@
         position: relative;
         top: 0;
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-        
+
         &.hidden {
             transform: translateY(-100%);
             opacity: 0;
         }
-        
+
         &.visible {
             transform: translateY(0);
             opacity: 1;
         }
-        
+
         .header-background {
             position: absolute;
             top: 0;
@@ -102,7 +104,7 @@
             background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 15%) 100%);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             z-index: -1;
-            
+
             &::before {
                 content: '';
                 position: absolute;
@@ -111,7 +113,7 @@
                 right: 0;
                 bottom: 0;
                 background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-                                  radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+                    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
                 z-index: 0;
             }
         }
@@ -147,13 +149,13 @@
                 }
             }
         }
-        
+
         .header-content {
             text-align: center;
             max-width: 700px;
             margin: 0 auto $spacing-lg;
             padding: $spacing-lg 0;
-            
+
             h1 {
                 font-size: 2.2rem;
                 font-weight: $font-weight-bold;
@@ -162,7 +164,7 @@
                 letter-spacing: 0.5px;
                 position: relative;
                 display: inline-block;
-                
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -211,7 +213,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             .tab-icon {
                 margin-right: $spacing-xs;
                 display: flex;
@@ -219,12 +221,12 @@
                 justify-content: center;
                 transition: transform 0.3s ease;
             }
-            
+
             .tab-text {
                 letter-spacing: 0.5px;
                 font-weight: $font-weight-medium;
             }
-            
+
             &::before {
                 content: '';
                 position: absolute;
@@ -237,12 +239,12 @@
                 transition: opacity 0.3s ease;
                 border-radius: 2px 2px 0 0;
             }
-            
+
             &:hover {
                 &::before {
                     opacity: 1;
                 }
-                
+
                 .tab-icon {
                     transform: translateY(-2px);
                 }
@@ -252,7 +254,7 @@
                 background-color: #f8f9fa;
                 color: $primary-color;
                 font-weight: $font-weight-bold;
-                
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -272,7 +274,7 @@
         position: relative;
         z-index: 4;
     }
-    
+
     // New - Intro section
     .services-intro {
         background-color: $white;
@@ -284,7 +286,7 @@
         align-items: center;
         position: relative;
         overflow: hidden;
-        
+
         &::before {
             content: '';
             position: absolute;
@@ -294,18 +296,18 @@
             height: 100%;
             background-color: $primary-color;
         }
-        
+
         .intro-visuals {
             margin-right: $spacing-xl;
             display: flex;
             flex-direction: column;
             align-items: center;
-            
+
             .visual-icons {
                 display: flex;
                 gap: $spacing-md;
                 margin-bottom: $spacing-md;
-                
+
                 .visual-icon {
                     width: 50px;
                     height: 50px;
@@ -317,7 +319,7 @@
                     color: $primary-color;
                     box-shadow: 0 4px 10px rgba($primary-color, 0.1);
                     transition: all 0.3s ease;
-                    
+
                     &:hover {
                         transform: translateY(-3px);
                         background-color: rgba($primary-color, 0.15);
@@ -325,7 +327,7 @@
                     }
                 }
             }
-            
+
             .intro-divider {
                 width: 40px;
                 height: 2px;
@@ -333,10 +335,10 @@
                 border-radius: 2px;
             }
         }
-        
+
         .intro-text {
             flex: 1;
-            
+
             p {
                 font-size: $font-size-base;
                 color: $text-color;
@@ -346,7 +348,7 @@
             }
         }
     }
-    
+
     .services-content {
         margin-bottom: $spacing-xl;
     }
@@ -356,7 +358,7 @@
         margin-top: $spacing-xl;
         padding-top: $spacing-lg;
         position: relative;
-        
+
         &::before {
             content: '';
             position: absolute;
@@ -421,28 +423,27 @@
 
         .container {
             padding: 30px $spacing-md 40px;
-        }
-        
-        .services-intro {
-            padding: $spacing-lg;
-            flex-direction: column;
-            text-align: center;
-            
-            &::before {
-                width: 100%;
-                height: 4px;
-                top: 0;
-                left: 0;
-            }
-            
-            .intro-visuals {
-                margin-right: 0;
-                margin-bottom: $spacing-md;
-            }
-            
-            .rtl & {
+
+
+            .services-intro {
+                padding: $spacing-lg;
+                flex-direction: column;
+                text-align: center;
+
+                &::before {
+                    width: 100%;
+                    height: 4px;
+                    top: 0;
+                    left: 0;
+                }
+
                 .intro-visuals {
-                    margin-left: 0;
+                    margin-right: 0;
+                    margin-bottom: $spacing-md;
+
+                    &.rtl {
+                        margin-left: 0;
+                    }
                 }
             }
         }
@@ -471,19 +472,20 @@
                 min-width: auto;
                 padding: $spacing-sm;
                 font-size: $font-size-xs;
-                
+
                 .tab-text {
                     font-size: $font-size-xs;
                 }
             }
         }
-        
+
         .services-intro {
             margin-bottom: 20px;
+
             .intro-visuals {
                 .visual-icons {
                     gap: $spacing-sm;
-                    
+
                     .visual-icon {
                         width: 40px;
                         height: 40px;
@@ -510,7 +512,7 @@
 
             .header-top {
                 margin-bottom: $spacing-sm;
-                
+
                 .back-button {
                     font-size: $font-size-xs;
                     padding: 6px $spacing-sm;
@@ -520,14 +522,14 @@
 
         .service-tabs {
             gap: $spacing-sm;
-            
+
             .tab-button {
                 padding: 6px $spacing-xs;
                 font-size: $font-size-xs;
-                
+
                 .tab-icon {
                     margin-right: 4px;
-                    
+
                     .rtl & {
                         margin-left: 4px;
                         margin-right: 0;
@@ -543,10 +545,10 @@
         .main-content {
             padding: 40px $spacing-md 40px;
         }
-        
+
         .services-intro {
             padding: $spacing-md;
-            
+
             .intro-visuals {
                 .visual-icons {
                     .visual-icon {
@@ -555,14 +557,14 @@
                     }
                 }
             }
-            
+
             .intro-text {
                 p {
                     font-size: $font-size-xs;
                 }
             }
         }
-        
+
         .back-home-button {
             width: 100%;
             justify-content: center;

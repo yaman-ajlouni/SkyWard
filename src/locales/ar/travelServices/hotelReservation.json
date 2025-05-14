@@ -35,6 +35,11 @@
             "Luxury": "فاخر",
             "Mountain": "جبلي"
         },
+        "countries": {
+            "syria": "سوريا",
+            "turkey": "تركيا",
+            "lebanon": "لبنان"
+        },
         "noResults": "لا توجد عقارات تطابق الفلتر المحدد. يرجى تجربة فئة أخرى.",
         "guestReviews": "تقييمات الضيوف",
         "amenities": {
@@ -94,11 +99,6 @@
             "fromHistoric": "{distance} من المركز التاريخي {place}",
             "fromCapital": "{distance} من {capital}",
             "fromTemple": "{distance} من مجمع معابد {place}"
-        },
-        "countries": {
-            "syria": "سوريا",
-            "turkey": "تركيا",
-            "lebanon": "لبنان"
         },
         "cityCenter": "وسط المدينة"
     }

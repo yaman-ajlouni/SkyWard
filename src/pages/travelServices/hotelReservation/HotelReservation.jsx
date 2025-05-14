@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MapPin, Wifi, Coffee, Waves, Utensils, Dumbbell, Bus, Star, ChevronRight, ChevronLeft } from 'lucide-react';
 import './HotelReservation.scss';
-import { useLocation } from '../../../context/LocationContext';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../../context/LanguageContext';
 
@@ -24,7 +23,7 @@ import byblos from '../../../assets/images/travelServices/hotels/lebanon/byblos.
 import palmyraLebanon from '../../../assets/images/travelServices/hotels/lebanon/palmyra.jpg';
 
 const HotelReservation = () => {
-    const { location } = useLocation(); // Get the selected location from context
+    const [selectedCountry, setSelectedCountry] = useState('syria'); // Default to Syria
     const [activeFilter, setActiveFilter] = useState('all');
     const [filteredHotels, setFilteredHotels] = useState([]);
     const { t } = useTranslation();
@@ -47,7 +46,8 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.swimmingPool'), 
                 t('hotelReservation.amenities.spa'), 
                 t('hotelReservation.amenities.restaurant')
-            ]
+            ],
+            country: 'syria'
         },
         {
             id: 2,
@@ -63,7 +63,8 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.traditionalBreakfast'), 
                 t('hotelReservation.amenities.historicArchitecture'), 
                 t('hotelReservation.amenities.courtyard')
-            ]
+            ],
+            country: 'syria'
         },
         {
             id: 3,
@@ -80,7 +81,8 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.beachAccess'), 
                 t('hotelReservation.amenities.pool')
-            ]
+            ],
+            country: 'syria'
         },
         {
             id: 4,
@@ -96,14 +98,15 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.freeWifi'), 
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.desertViews')
-            ]
+            ],
+            country: 'syria'
         }
     ], [t]); // Only recreate when t changes
 
     // Turkey hotels data
     const turkeyHotels = useMemo(() => [
         {
-            id: 1,
+            id: 5,
             name: 'Pera Palace Hotel',
             image: pera,
             rating: 5,
@@ -117,10 +120,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.spa'), 
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.historicBuilding')
-            ]
+            ],
+            country: 'turkey'
         },
         {
-            id: 2,
+            id: 6,
             name: 'Cappadocia Cave Suites',
             image: cappadocia,
             rating: 5,
@@ -133,10 +137,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.balloonTours'), 
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.terraceViews')
-            ]
+            ],
+            country: 'turkey'
         },
         {
-            id: 3,
+            id: 7,
             name: 'Bodrum Marina Palace',
             image: bodrum,
             rating: 5,
@@ -150,10 +155,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.pool'), 
                 t('hotelReservation.amenities.yachtTours')
-            ]
+            ],
+            country: 'turkey'
         },
         {
-            id: 4,
+            id: 8,
             name: 'Divan Antalya',
             image: divan,
             rating: 5,
@@ -167,14 +173,15 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.multipleRestaurants'), 
                 t('hotelReservation.amenities.spa'), 
                 t('hotelReservation.amenities.waterSports')
-            ]
+            ],
+            country: 'turkey'
         }
     ], [t]); // Only recreate when t changes
 
     // Lebanon hotels data
     const lebanonHotels = useMemo(() => [
         {
-            id: 1,
+            id: 9,
             name: 'Le Gray Beirut',
             image: leGray,
             rating: 4.8,
@@ -188,10 +195,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.fineDining'), 
                 t('hotelReservation.amenities.cityViews'), 
                 t('hotelReservation.amenities.concierge')
-            ]
+            ],
+            country: 'lebanon'
         },
         {
-            id: 2,
+            id: 10,
             name: 'Byblos Sur Mer',
             image: byblos,
             rating: 4.6,
@@ -204,10 +212,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.restaurant'), 
                 t('hotelReservation.amenities.privateBeach'), 
                 t('hotelReservation.amenities.waterActivities')
-            ]
+            ],
+            country: 'lebanon'
         },
         {
-            id: 3,
+            id: 11,
             name: 'Grand Kadri Hotel',
             image: grand,
             rating: 4.4,
@@ -220,10 +229,11 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.traditionalCuisine'), 
                 t('hotelReservation.amenities.garden'), 
                 t('hotelReservation.amenities.historicBuilding')
-            ]
+            ],
+            country: 'lebanon'
         },
         {
-            id: 4,
+            id: 12,
             name: 'Palmyra Hotel Baalbek',
             image: palmyraLebanon,
             rating: 4.5,
@@ -236,26 +246,21 @@ const HotelReservation = () => {
                 t('hotelReservation.amenities.archaeologicalTours'), 
                 t('hotelReservation.amenities.traditionalCuisine'), 
                 t('hotelReservation.amenities.historicViews')
-            ]
+            ],
+            country: 'lebanon'
         }
     ], [t]); // Only recreate when t changes
 
-    // Memoize the hotels selection based on location
-    const hotels = useMemo(() => {
-        switch (location) {
-            case 'turkey':
-                return turkeyHotels;
-            case 'lebanon':
-                return lebanonHotels;
-            case 'syria':
-            default:
-                return syriaHotels;
-        }
-    }, [location, syriaHotels, turkeyHotels, lebanonHotels]);
+    // All hotels combined
+    const allHotels = useMemo(() => [
+        ...syriaHotels,
+        ...turkeyHotels,
+        ...lebanonHotels
+    ], [syriaHotels, turkeyHotels, lebanonHotels]);
 
-    // Get location-specific filter categories
-    const filterCategories = useMemo(() => {
-        switch (location) {
+    // Get filter categories based on the selected country
+    const getFilterCategories = () => {
+        switch (selectedCountry) {
             case 'turkey':
                 return [
                     { id: 'all', name: t('hotelReservation.filterCategories.allProperties') },
@@ -282,28 +287,44 @@ const HotelReservation = () => {
                     { id: 'Historic', name: t('hotelReservation.filterCategories.historic') }
                 ];
         }
-    }, [location, t]);
+    };
 
-    // Reset filter when location changes
-    useEffect(() => {
-        setActiveFilter('all');
-    }, [location]);
+    // Country filter categories
+    const countryFilters = useMemo(() => [
+        { id: 'syria', name: t('hotelReservation.countries.syria') },
+        { id: 'turkey', name: t('hotelReservation.countries.turkey') },
+        { id: 'lebanon', name: t('hotelReservation.countries.lebanon') }
+    ], [t]);
 
-    // Apply filters whenever the active filter or location changes
+    // Apply filters whenever the active filter or selected country changes
     useEffect(() => {
+        // First filter by country
+        const countryHotels = allHotels.filter(hotel => hotel.country === selectedCountry);
+        
+        // Then apply category filter
         if (activeFilter === 'all') {
-            setFilteredHotels(hotels);
+            setFilteredHotels(countryHotels);
         } else {
-            const filtered = hotels.filter(hotel =>
+            const filtered = countryHotels.filter(hotel =>
                 hotel.categories.includes(activeFilter)
             );
             setFilteredHotels(filtered);
         }
-    }, [activeFilter, hotels]);
+    }, [activeFilter, selectedCountry, allHotels]);
+
+    // Reset category filter when country changes
+    useEffect(() => {
+        setActiveFilter('all');
+    }, [selectedCountry]);
 
     // Function to handle filter changes
     const handleFilterChange = (filterId) => {
         setActiveFilter(filterId);
+    };
+
+    // Function to handle country selection
+    const handleCountryChange = (countryId) => {
+        setSelectedCountry(countryId);
     };
 
     // Function to render amenity icons - memoized to prevent recreation on every render
@@ -343,12 +364,26 @@ const HotelReservation = () => {
         <div className={`hotel-section ${dir === 'rtl' ? 'rtl' : ''}`}>
             <div className="hotels-container">
                 <header className="section-header">
-                    <h2>{t(`hotelReservation.sectionTitle.${location}`)}</h2>
-                    <p>{t(`hotelReservation.sectionDescription.${location}`)}</p>
+                    <h2>{t(`hotelReservation.sectionTitle.${selectedCountry}`)}</h2>
+                    <p>{t(`hotelReservation.sectionDescription.${selectedCountry}`)}</p>
                 </header>
 
+                {/* Country Selection Tabs */}
+                <div className="country-selector">
+                    {countryFilters.map(country => (
+                        <div
+                            key={country.id}
+                            className={`country-tab ${selectedCountry === country.id ? 'active' : ''}`}
+                            onClick={() => handleCountryChange(country.id)}
+                        >
+                            {country.name}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Category Filters */}
                 <div className="filter-tags">
-                    {filterCategories.map(category => (
+                    {getFilterCategories().map(category => (
                         <div
                             key={category.id}
                             className={`tag ${activeFilter === category.id ? 'active' : ''}`}
