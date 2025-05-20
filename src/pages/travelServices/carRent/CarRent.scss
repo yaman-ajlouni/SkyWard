@@ -1,13 +1,14 @@
 @import '../../../assets/styles/variables.scss';
 
 .car-section {
+
     // Country selector styles that match the existing design patterns
     .country-selector {
         display: flex;
         justify-content: center;
         margin-bottom: $spacing-xl;
         position: relative;
-        
+
         &::after {
             content: '';
             position: absolute;
@@ -18,7 +19,7 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba($primary-color, 0.1), transparent);
         }
-        
+
         .country-tab {
             padding: $spacing-sm $spacing-lg;
             cursor: pointer;
@@ -27,16 +28,16 @@
             position: relative;
             color: rgba($text-color, 0.7);
             font-size: $font-size-md;
-            
+
             &:hover {
                 color: $primary-color;
                 transform: translateY(-2px);
             }
-            
+
             &.active {
                 color: $primary-color;
                 font-weight: $font-weight-bold;
-                
+
                 &::after {
                     content: '';
                     position: absolute;
@@ -50,10 +51,15 @@
                     box-shadow: 0 1px 4px rgba($primary-color, 0.3);
                     animation: expandWidth 0.3s ease-out forwards;
                 }
-                
+
                 @keyframes expandWidth {
-                    from { width: 0; }
-                    to { width: 40px; }
+                    from {
+                        width: 0;
+                    }
+
+                    to {
+                        width: 40px;
+                    }
                 }
             }
         }
@@ -299,7 +305,7 @@
                         svg {
                             transform: translateX(3px);
                         }
-                        
+
                         .rtl & {
                             svg {
                                 transform: translateX(-3px);
@@ -355,7 +361,7 @@
                         transform: translateY(0);
                         transition: all 0.3s ease;
                         border: 1px solid rgba(255, 255, 255, 0.3);
-                        
+
                         .rtl & {
                             left: auto;
                             right: $spacing-md;
@@ -398,7 +404,7 @@
                             height: 1px;
                             background: linear-gradient(90deg, rgba($primary-color, 0.1), rgba($primary-color, 0.05), transparent);
                             margin-bottom: $spacing-md;
-                            
+
                             .rtl & {
                                 background: linear-gradient(90deg, transparent, rgba($primary-color, 0.05), rgba($primary-color, 0.1));
                             }
@@ -487,7 +493,7 @@
                         align-items: center;
                         margin-top: auto;
                         border-top: 1px solid rgba(0, 0, 0, 0.04);
-                        
+
                         .rtl & {
                             justify-content: flex-start;
                         }
@@ -542,7 +548,7 @@
                 }
             }
         }
-        
+
         .country-selector {
             .country-tab {
                 padding: $spacing-xs $spacing-md;
@@ -554,6 +560,7 @@
     @media (max-width: $breakpoint-md) {
         .cars-container {
             margin-bottom: 40px;
+
             .cars-list {
                 grid-template-columns: 1fr !important;
                 gap: $spacing-lg !important;
@@ -578,14 +585,14 @@
                 }
             }
         }
-        
+
         .country-selector {
             margin-bottom: $spacing-lg;
-            
+
             &::after {
                 width: 80%;
             }
-            
+
             .country-tab {
                 &.active::after {
                     width: 30px;
@@ -610,10 +617,10 @@
                 .details-button {
                     width: 100%;
                     justify-content: center;
-                    
+
                     .rtl & {
                         flex-direction: row-reverse;
-                        
+
                         span {
                             margin-right: 0;
                             margin-left: $spacing-xs;
@@ -649,12 +656,12 @@
                     font-size: $font-size-base;
                 }
             }
-            
+
             .car-features {
                 .feature {
                     svg {
                         margin-right: 3px;
-                        
+
                         .rtl & {
                             margin-left: 3px;
                             margin-right: 0;
@@ -662,13 +669,13 @@
                     }
                 }
             }
-            
+
             .pickup-locations {
                 .locations-list {
                     .location {
                         svg {
                             margin-right: 3px;
-                            
+
                             .rtl & {
                                 margin-left: 3px;
                                 margin-right: 0;
@@ -678,11 +685,11 @@
                 }
             }
         }
-        
+
         .country-selector {
             flex-wrap: wrap;
             gap: $spacing-xs;
-            
+
             .country-tab {
                 font-size: $font-size-sm;
                 padding: $spacing-xs $spacing-sm;
