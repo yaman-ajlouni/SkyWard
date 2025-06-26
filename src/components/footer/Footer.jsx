@@ -1,12 +1,9 @@
-import React from 'react';
 import './Footer.scss';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 
-// Import logo (replace with your actual logo)
-import logo from '../../assets/images/FlySyria-With-Text-cropped.svg';
+import logo from '../../assets/images/SkyWard-Logo-withoutBG.png';
 
-// Import social media icons
 import { X } from 'lucide-react';
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 
@@ -15,7 +12,6 @@ const Footer = () => {
     const { dir } = useLanguage();
     const currentYear = new Date().getFullYear();
 
-    // Get footer content from translations
     const footerColumns = t('footer.columns', { returnObjects: true }) || [];
     const legalLinks = t('footer.legal', { returnObjects: true }) || [];
 
@@ -23,7 +19,6 @@ const Footer = () => {
         <footer className={`site-footer ${dir}`}>
             <div className="container">
                 <div className="footer-top">
-                    {/* Left Column - Logo and Social */}
                     <div className="footer-branding">
                         <div className="footer-logo">
                             <img src={logo} alt="Company Logo" className="white-filter" />

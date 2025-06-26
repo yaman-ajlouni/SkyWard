@@ -41,7 +41,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
         }
 
-        // Green gradient effect
+        // Purple gradient effect
         &::before {
             content: '';
             position: absolute;
@@ -50,9 +50,9 @@
             width: 90%;
             height: 100%;
             background: radial-gradient(circle at 20% 100%,
-                    rgba(40, 167, 69, 0.95) 0%,
-                    rgba(30, 140, 50, 0.7) 25%,
-                    rgba(20, 100, 40, 0.4) 50%,
+                    rgba(105, 39, 138, 0.95) 0%,
+                    rgba(85, 31, 112, 0.7) 25%,
+                    rgba(65, 23, 86, 0.4) 50%,
                     rgba(0, 0, 0, 0) 100%);
             z-index: 1;
             filter: blur(30px);
@@ -75,9 +75,9 @@
             mix-blend-mode: multiply;
         }
 
-        // Add overlay texture
+        // Add overlay texture with purple tones
         background-image: radial-gradient(circle at 80% 40%,
-            rgba(40, 167, 69, 0.15) 10%,
+            rgba(105, 39, 138, 0.15) 10%,
             transparent 50%),
         linear-gradient(to bottom,
             rgba(0, 0, 0, 0.1) 50%,
@@ -153,7 +153,7 @@
         }
 
         .success-message {
-            color: #66d37e;
+            color: #c785f0; // Updated to purple success color
             font-size: 14px;
             margin-top: 8px;
             text-align: left;
@@ -354,7 +354,7 @@
             padding: 25px 20px;
             border-radius: 10px;
 
-            // Enhanced gradient for mobile devices
+            // Enhanced purple gradient for mobile devices
             &::before {
                 opacity: 0.9; // Increased opacity
                 bottom: -20%; // Moved up for better visibility
@@ -362,16 +362,16 @@
                 width: 120%; // Increased width to cover more area
                 height: 120%; // Increased height to cover more area
                 background: radial-gradient(circle at 20% 100%, // Adjusted gradient origin
-                    rgba(40, 167, 70, 0.733) 0%,
-                    rgba(30, 140, 50, 0.8) 25%,
-                    rgba(20, 100, 40, 0.5) 50%,
+                    rgba(105, 39, 138, 0.733) 0%,
+                    rgba(85, 31, 112, 0.8) 25%,
+                    rgba(65, 23, 86, 0.5) 50%,
                     rgba(0, 0, 0, 0) 100%);
                 filter: blur(25px); // Slightly less blur for sharper gradient
             }
             
-            // Enhanced overlay for mobile
+            // Enhanced overlay for mobile with purple tones
             background-image: radial-gradient(circle at 30% 10%, // Centered for mobile
-                rgba(40, 167, 69, 0.25) 0%,
+                rgba(105, 39, 138, 0.25) 0%,
                 transparent 70%),
             linear-gradient(to bottom,
                 rgba(0, 0, 0, 0.1) 50%,

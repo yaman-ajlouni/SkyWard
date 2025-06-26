@@ -109,7 +109,7 @@
         }
     }
 
-    // Green gradient at the bottom
+    // Purple gradient at the bottom
     .green-gradient {
         position: absolute;
         bottom: 0;
@@ -117,17 +117,17 @@
         width: 100%;
         height: 70%;
         background:
-            // Left side gradient
+            // Left side gradient - purple theme
             linear-gradient(105deg,
-                rgba(0, 104, 55, 0.9) 0%,
-                rgba(0, 104, 55, 0.7) 30%,
-                rgba(0, 104, 55, 0.4) 50%,
+                rgba(105, 39, 138, 0.9) 0%,
+                rgba(105, 39, 138, 0.7) 30%,
+                rgba(105, 39, 138, 0.4) 50%,
                 transparent 80%),
-            // Right side gradient (mirrored)
+            // Right side gradient (mirrored) - purple theme
             linear-gradient(255deg,
-                rgba(0, 104, 55, 0.9) 0%,
-                rgba(0, 104, 55, 0.7) 30%,
-                rgba(0, 104, 55, 0.4) 50%,
+                rgba(105, 39, 138, 0.9) 0%,
+                rgba(105, 39, 138, 0.7) 30%,
+                rgba(105, 39, 138, 0.4) 50%,
                 transparent 80%);
         mask-image:
             linear-gradient(to top,
@@ -144,8 +144,8 @@
             right: 0;
             height: 150px;
             background: linear-gradient(to top,
-                    rgba(0, 104, 55, 1) 0%,
-                    rgba(0, 104, 55, 0) 100%);
+                    rgba(105, 39, 138, 1) 0%,
+                    rgba(105, 39, 138, 0) 100%);
         }
     }
 
@@ -260,14 +260,14 @@
                         }
 
                         &.active {
-                            background-color: rgba($primary-color, 0.1);
-                            color: $primary-color;
+                            background-color: rgba(#69278a, 0.1);
+                            color: #69278a;
 
                             .radio-circle {
-                                border-color: $primary-color;
+                                border-color: #69278a;
 
                                 &::before {
-                                    background-color: $primary-color;
+                                    background-color: #69278a;
                                 }
                             }
                         }
@@ -336,13 +336,13 @@
                                 cursor: pointer;
 
                                 &.active {
-                                    background-color: rgba($primary-color, 0.1);
-                                    color: $primary-color;
+                                    background-color: rgba(#69278a, 0.1);
+                                    color: #69278a;
                                 }
 
                                 &:hover {
                                     background-color: $light-gray;
-                                    color: $primary-color;
+                                    color: #69278a;
                                 }
                             }
                         }
@@ -377,8 +377,8 @@
                     position: relative; // Added to establish a positioning context
 
                     &:focus-within {
-                        border-color: $primary-color;
-                        box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+                        border-color: #69278a;
+                        box-shadow: 0 0 0 2px rgba(#69278a, 0.1);
                     }
 
                     // City input field specific styling
@@ -411,8 +411,8 @@
                                 cursor: pointer;
 
                                 &:hover {
-                                    background-color: rgba($primary-color, 0.1);
-                                    color: $primary-color;
+                                    background-color: rgba(#69278a, 0.1);
+                                    color: #69278a;
                                 }
                             }
 
@@ -426,7 +426,7 @@
                     }
 
                     .input-icon {
-                        color: $primary-color;
+                        color: #69278a;
                         margin-right: $spacing-md;
                         display: flex;
                         align-items: center;
@@ -481,7 +481,7 @@
                     justify-content: center;
                     align-items: center;
                     padding: 0 $spacing-sm;
-                    color: $primary-color;
+                    color: #69278a; // Updated to purple
                     margin: 0 -5px;
                     cursor: pointer;
                     transition: transform 0.3s ease;
@@ -495,7 +495,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background-color: $primary-color;
+                    background-color: #69278a;
                     color: white;
                     border: none;
                     border-radius: $border-radius-md;
@@ -510,7 +510,7 @@
                     }
 
                     &:hover {
-                        background-color: darken($primary-color, 5%);
+                        background-color: darken(#69278a, 5%);
                     }
                 }
             }
@@ -542,10 +542,10 @@
 
         &--selected,
         &--keyboard-selected {
-            background-color: $primary-color;
+            background-color: #69278a;
 
             &:hover {
-                background-color: darken($primary-color, 5%);
+                background-color: darken(#69278a, 5%);
             }
         }
 
@@ -764,22 +764,22 @@ body {
             pointer-events: none;
         }
 
-        // Full-height green gradient for better text contrast
+        // Full-height purple gradient for better text contrast
         .green-gradient {
             height: 100%; // Full height instead of 70%
             background:
-                // Left side gradient with increased opacity
+                // Left side gradient with increased opacity - purple theme
                 linear-gradient(0deg,
-                    rgba(0, 104, 55, 0.95) 0%,
-                    rgba(0, 104, 55, 0.85) 30%,
-                    rgba(0, 104, 55, 0.6) 50%,
-                    rgba(0, 104, 55, 0) 80%),
-                // Right side gradient (mirrored) with increased opacity
+                    rgba(105, 39, 138, 0.95) 0%,
+                    rgba(105, 39, 138, 0.85) 30%,
+                    rgba(105, 39, 138, 0.6) 50%,
+                    rgba(105, 39, 138, 0) 80%),
+                // Right side gradient (mirrored) with increased opacity - purple theme
                 linear-gradient(0deg,
-                    rgba(0, 104, 55, 0.95) 0%,
-                    rgba(0, 104, 55, 0.85) 30%,
-                    rgba(0, 104, 55, 0.6) 50%,
-                    rgba(0, 104, 55, 0) 80%);
+                    rgba(105, 39, 138, 0.95) 0%,
+                    rgba(105, 39, 138, 0.85) 30%,
+                    rgba(105, 39, 138, 0.6) 50%,
+                    rgba(105, 39, 138, 0) 80%);
 
             // Adjust mask to allow more of the gradient to be visible
             mask-image: none; // Remove mask on mobile for better visibility
@@ -787,6 +787,9 @@ body {
             &::after {
                 opacity: 0.9; // Increase the opacity of the bottom gradient
                 height: 180px; // Slightly taller bottom gradient
+                background: linear-gradient(to top,
+                        rgba(105, 39, 138, 1) 0%,
+                        rgba(105, 39, 138, 0) 100%);
             }
         }
 

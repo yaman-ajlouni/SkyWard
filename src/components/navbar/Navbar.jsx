@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Navbar.scss';
 import { Globe, Menu, X, MapPin } from 'lucide-react';
-import logoImage from '../../assets/images/FlySyria-With-Text-cropped.svg';
+import logoImage from '../../assets/images/Purple-Logo-with-Without-BG.png';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../../context/LanguageContext';
 import { useLocation } from '../../context/LocationContext';
@@ -17,48 +17,39 @@ const Navbar = () => {
     const scrollTimeoutRef = useRef(null);
     const locationDropdownRef = useRef(null);
 
-    // Handle scrolling effect with stronger debounce and hysteresis
     useEffect(() => {
-        // Add hysteresis to prevent rapid toggling
-        const scrollDownThreshold = 15; // Higher threshold for scrolling down
-        const scrollUpThreshold = 5;   // Lower threshold for scrolling up
-        
-        // Track last known scroll position
+        const scrollDownThreshold = 15;
+        const scrollUpThreshold = 5;
+
         let lastScrollY = window.scrollY;
-        
+
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            
-            // Clear any pending timeout
+
             if (scrollTimeoutRef.current) {
                 clearTimeout(scrollTimeoutRef.current);
             }
-            
-            // Use a longer debounce for stability
+
             scrollTimeoutRef.current = setTimeout(() => {
-                // Apply hysteresis based on scroll direction
                 if (!scrolled && currentScrollY > scrollDownThreshold) {
                     setScrolled(true);
                 } else if (scrolled && currentScrollY < scrollUpThreshold) {
                     setScrolled(false);
                 }
-                
-                // Update last known position
+
                 lastScrollY = currentScrollY;
-            }, 50); // Longer timeout for better stability
+            }, 50);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            // Clear timeout on cleanup
             if (scrollTimeoutRef.current) {
                 clearTimeout(scrollTimeoutRef.current);
             }
         };
-    }, [scrolled]); // Add scrolled to dependencies
+    }, [scrolled]);
 
-    // Close mobile menu when window resizes to desktop size
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 992 && isMenuOpen) {
@@ -93,7 +84,7 @@ const Navbar = () => {
 
     // Get location display name
     const getLocationDisplayName = () => {
-        switch(location) {
+        switch (location) {
             case 'syria':
                 return t('navbar.locations.syria');
             case 'turkey':
@@ -111,7 +102,7 @@ const Navbar = () => {
                 <div className="navbar-left">
                     <div className="logo">
                         <Link to="/">
-                            <img src={logoImage} alt="Company Logo" />
+                            <img className='image-logo' src={logoImage} alt="Company Logo" />
                         </Link>
                     </div>
 
@@ -129,8 +120,8 @@ const Navbar = () => {
                 <div className="navbar-right">
                     {/* Location selector */}
                     <div className="location-selector" ref={locationDropdownRef}>
-                        <div 
-                            className="location-toggle" 
+                        <div
+                            className="location-toggle"
                             onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}
                         >
                             <MapPin size={18} />
@@ -138,7 +129,7 @@ const Navbar = () => {
                         </div>
                         {isLocationDropdownOpen && (
                             <div className="location-dropdown">
-                                <div 
+                                <div
                                     className={`location-option ${location === 'syria' ? 'active' : ''}`}
                                     onClick={() => {
                                         changeLocation('syria');
@@ -147,7 +138,7 @@ const Navbar = () => {
                                 >
                                     {t('navbar.locations.syria')}
                                 </div>
-                                <div 
+                                <div
                                     className={`location-option ${location === 'turkey' ? 'active' : ''}`}
                                     onClick={() => {
                                         changeLocation('turkey');
@@ -156,7 +147,7 @@ const Navbar = () => {
                                 >
                                     {t('navbar.locations.turkey')}
                                 </div>
-                                <div 
+                                <div
                                     className={`location-option ${location === 'lebanon' ? 'active' : ''}`}
                                     onClick={() => {
                                         changeLocation('lebanon');
@@ -211,7 +202,7 @@ const Navbar = () => {
                 <div className="mobile-bottom-menu">
                     {/* Mobile location selector */}
                     <div className="mobile-location-selector">
-                        <div 
+                        <div
                             className={`location-option ${location === 'syria' ? 'active' : ''}`}
                             onClick={() => {
                                 changeLocation('syria');
@@ -221,7 +212,7 @@ const Navbar = () => {
                             <MapPin size={16} />
                             <span>{t('navbar.locations.syria')}</span>
                         </div>
-                        <div 
+                        <div
                             className={`location-option ${location === 'turkey' ? 'active' : ''}`}
                             onClick={() => {
                                 changeLocation('turkey');
@@ -231,7 +222,7 @@ const Navbar = () => {
                             <MapPin size={16} />
                             <span>{t('navbar.locations.turkey')}</span>
                         </div>
-                        <div 
+                        <div
                             className={`location-option ${location === 'lebanon' ? 'active' : ''}`}
                             onClick={() => {
                                 changeLocation('lebanon');
