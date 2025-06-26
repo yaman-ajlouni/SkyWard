@@ -1,5 +1,5 @@
 @use './assets/styles/variables.scss' as *;
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -19,30 +19,79 @@ body {
     flex-direction: column;
 }
 
-// @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Markazi+Text:wght@400;500&display=swap');
-
-// html[dir="rtl"] {
-//   body {
-//     font-family: 'Markazi Text', serif;
-//   }
-//   h1, h2, h3 {
-//     font-family: 'Almarai', sans-serif;
-//   }
-// }
-
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;500;700;800&display=swap');
 
 html[dir="rtl"] {
-  body {
-    font-family: 'Almarai', sans-serif;
-  }
+    body {
+        font-family: 'Almarai', sans-serif;
+    }
 }
-
-
 
 html[dir="ltr"] {
     body {
-        // font-family: 'Poppins', 'Roboto', sans-serif;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Josefin Sans', sans-serif; // Secondary font for body text
     }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Playfair Display', serif; // Primary font for headings
+    }
+}
+
+/* Base scrollbar styling for Webkit (Chrome, Safari, newer Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #501e69, #69278a);
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #501e69, #69278a);
+}
+
+/* Safari-specific scrollbar styling */
+@supports (-webkit-backdrop-filter: none) {
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #69278a;
+        /* Safari may have issues with gradients in scrollbars */
+        border-radius: 10px;
+        border: 3px solid #f1f1f1;
+    }
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #69278a #f1f1f1;
+}
+
+/* For Edge and Internet Explorer */
+body {
+    -ms-overflow-style: none;
+    scrollbar-face-color: #69278a;
+    scrollbar-track-color: #f1f1f1;
+    scrollbar-arrow-color: #69278a;
+    scrollbar-shadow-color: #69278a;
 }
